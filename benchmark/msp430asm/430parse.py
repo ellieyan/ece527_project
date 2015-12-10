@@ -52,6 +52,8 @@ class DFGG:
 	def readArg(self,arg,num,yan):
 		#if arg is imm, dont do shit
 		if arg[0] == '#':
+			yan.add_node( -1 * gen.instNumber, None, arg[1:])
+			yan.add_edge( -1 * gen.instNumber, gen.instNumber)
 			return
 		#if arg is a reg/contains a reg
 		reg = None
