@@ -47,7 +47,7 @@ class DFGG:
 
 	def callAddEdge(self, reg, num, yan=YAN()):
 		yan.add_edge(gen.writetable[reg], num)
-		print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.writetable[reg]])])
+		#print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.writetable[reg]])])
 
 	def readArg(self,arg,num,yan):
 		#if arg is imm, dont do shit
@@ -59,16 +59,19 @@ class DFGG:
 			if key in arg:
 				reg = key
 
-		#do read on reg
-		if reg in (self.writetable).keys():
-			if self.writetable[reg] != None:
-				self.callAddEdge(reg,num,yan)
-
 		#do read on arg
 		if arg != reg:
 			if arg in (self.writetable).keys():
 				if self.writetable[arg] != None:
 					self.callAddEdge(arg,num,yan)
+					return 
+
+		#do read on reg
+		if reg in (self.writetable).keys():
+			if self.writetable[reg] != None:
+				self.callAddEdge(reg,num,yan)
+
+		
 		return
 
 	def writeArg(self,arg,num,yan):
@@ -96,7 +99,7 @@ class DFGG:
 				if reg in key:
 					(self.writetable)[reg] = None
 		self.writetable[arg] = num
-		print("Wrote to: "+ str(arg))
+		#print("Wrote to: "+ str(arg))
 		return
 
 
@@ -112,7 +115,7 @@ for index in range(len(a)):
 		_,_,gen.funcName = (line.partition('`'))
 		#hack to get the function name..
 		gen.funcName = gen.funcName[:-3]
-		print(gen.funcName)
+		#print(gen.funcName)
 		gen.func_start = index
 		gen.doLabels = True
 		continue
@@ -122,7 +125,7 @@ for index in range(len(a)):
 		if line[-1] == ':':
 			#print(line, 'is label')
 			gen.labels[line[:-1]] = index
-			print gen.labels
+			#print gen.labels
 
 	if "End of function" in line:
 		gen.doLabels = False
@@ -130,7 +133,7 @@ for index in range(len(a)):
 		i = gen.func_start + 1
 		while(True):
 			line = a[i]
-			print(line)
+			#print(line)
 			spl = line.split('\t')
 			#is it an instruction
 			if len(spl) > 1:
@@ -142,7 +145,7 @@ for index in range(len(a)):
 				inst = inst.rstrip()
 				#is it a jmp?
 				if inst == 'jmp':
-					print('Jumping to label: '+ str(spl[2]))
+					#print('Jumping to label: '+ str(spl[2]))
 					gen.jmpflag = True
 					gen.retaddr = i + 1
 					i = gen.labels[spl[2].rstrip()] + 1
@@ -151,7 +154,7 @@ for index in range(len(a)):
 				if inst == 'ret':
 					#ret from a jmp?
 					if gen.jmpflag is True:
-						print("Returnning form jmp")
+						#print("Returnning form jmp")
 						gen.jmpflag = False
 						i = gen.retaddr
 						gen.retaddr = 0
@@ -198,7 +201,7 @@ for index in range(len(a)):
 
 						if reg0 is None:
 							#TODO : weird push needs handling...
-							print("Does not recognize argument: " + str(arg0))
+							#print("Does not recognize argument: " + str(arg0))
 							i += 1
 							continue
 
@@ -209,8 +212,8 @@ for index in range(len(a)):
 							#do write
 							gen.writeArg(arg0, gen.instNumber, yan)
 
-				else:
-					print('Unknown instruction', spl)
+				#else:
+					#print('Unknown instruction', spl)
 			
 			i += 1
 			if i >= gen.func_end:
@@ -220,10 +223,13 @@ for index in range(len(a)):
 					print("Something is wrong...Did not return but reached end")
 				break
 
+		print("Finished function" + str(gen.funcName))
+
 		yan.generate_dot(gen.funcName + ".dot")
 		yan.extract_pattern(gen.funcName + "_patterns.txt")
+		print("Finished pattern extraction for function: " + str(gen.funcName))
 		yan.__init__()
 		gen.__init__()
 
-
+print("Finished file: " + str(sys.argv[1]))
 

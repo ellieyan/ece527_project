@@ -2,6 +2,7 @@
 
 for s in *.s 
 do
+    echo "working on file $s"
     python 430parse.py $s
 done
 
