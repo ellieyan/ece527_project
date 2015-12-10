@@ -49,6 +49,13 @@ class DFGG:
 		yan.add_edge(gen.regtable[reg], num)
 		print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.regtable[reg]])])
 
+	def redReg(self,reg,num,yan):
+		return
+
+	def writereg(self,reg,num,yan):
+		return
+
+
 input = open(sys.argv[1])
 a = input.readlines()
 
@@ -133,15 +140,24 @@ for index in range(len(a)):
 							if reg0 is not 'imm':
 								if gen.regtable[reg0] is not None:
 									gen.callAddEdge(reg0, gen.instNumber, yan)
+								if reg0 != arg0:
+									if arg0 in (gen.regtable).keys():
+										if gen.regtable[arg0] is not None:
+											gen.callAddEdge(arg0, gen.instNumber, yan)
 							#we wrote to arg1
+							#Register case
 							if reg1 == arg1:
+								for key in (gen.regtable).keys():
+									if reg1 in key:
+										gen.regtable[key] = None
 								gen.regtable[reg1] = gen.instNumber
 								print("Wrote to: "+ str(reg1))
-								#TODO handle memory write cases for re-read
 							else:
 								#read
 								if gen.regtable[reg1] is not None:
 									gen.callAddEdge(reg1, gen.instNumber, yan)
+								#handle memory case
+								gen.regtable[arg1] = gen.instNumber
 
 						#read arg0, read arg1, write arg1
 						if inst in twoArg1:
@@ -149,13 +165,22 @@ for index in range(len(a)):
 							if reg0 is not 'imm':
 								if gen.regtable[reg0] is not None:
 									gen.callAddEdge(reg0, gen.instNumber, yan)
+								if reg0 != arg0:
+									if arg0 in (gen.regtable).keys():
+										if gen.regtable[arg0] is not None:
+											gen.callAddEdge(arg0, gen.instNumber, yan)
 							#we def read from reg1...
 							if gen.regtable[reg1] is not None:
 								gen.callAddEdge(reg1, gen.instNumber, yan)
 							#we wrote to arg1
 							if reg1 == arg1:
+								for key in (gen.regtable).keys():
+									if reg1 in key:
+										gen.regtable[key] = None
 								gen.regtable[reg1] = gen.instNumber
 								print("Wrote to: "+ str(reg1))
+							else:
+								gen.regtable[arg1] = gen.instNumbet
 							#TODO handle memory write cases for re-read
 
 						#Read both
@@ -164,8 +189,15 @@ for index in range(len(a)):
 							if reg0 is not 'imm':
 								if gen.regtable[reg0] is not None:
 									gen.callAddEdge(reg0, gen.instNumber, yan)
+								if arg0 in (gen.regtable).keys():
+									if gen.regtable[arg0] is not None:
+										gen.callAddEdge(arg0, gen.instNumbet, yan)
 							if gen.regtable[reg1] is not None:
 								gen.callAddEdge(reg1, gen.instNumber, yan)
+							if reg1 != arg1:
+								if arg1 in (gen.regtable).keys():
+									if gen.regtable[arg1] is not None:
+										gen.callAddEdge(arg1, gen.instNumber, yan)
 					elif inst in oneArg0 or inst in oneArg1 or inst in oneArg2:
 						arg0 = spl[2].rstrip()
 						reg0 = None
