@@ -3,7 +3,7 @@ from sets import Set
 
 
 MAX_INPUT_SIZE = 2
-MIN_PATTERN_SIZE = 5
+MIN_PATTERN_SIZE = 2
 
 
 
