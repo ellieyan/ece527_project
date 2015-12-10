@@ -8,13 +8,15 @@ twoArg1 = ['add','sub','bic','bis','xor','and']
 #reads both dst and src 
 twoArg2 = ['cmp','bit']
 #reads and write to dst
-oneArg0 = ['rrc','rra','swpb','sxt','clrc','rla']
+oneArg0 = ['rrc','rra','swpb','sxt','clr','rla']
 #read src
 oneArg1 = ['push']
 #write src
 oneArg2 = ['pop']
 #jump/br instructions
 jmpInst = ['call','jc','jhs','br','ret','jmp','jne','jge','jl','jeq','jlo']
+#unhandled
+otherInst = ['clrc']
 
 allInst = []
 allInst.extend(twoArg0)
@@ -24,6 +26,7 @@ allInst.extend(oneArg0)
 allInst.extend(oneArg1)
 allInst.extend(oneArg2)
 allInst.extend(jmpInst)
+allInst.extend(otherInst)
 
 class DFGG:
 	def __init__(self):
@@ -36,13 +39,15 @@ class DFGG:
 		self.regtable = defaultdict(None)
 		self.regtable = {'r0':None,'r1':None,'r2':None,'r3':None,'r4':None,'r5':None,'r6':None,'r7':None,
 						'r8':None,'r9':None,'r10':None,'r11':None,'r12':None,'r13':None,'r14':None,'r15':None}
+		self.funcName = ''
 		#count number of insts
 		self.instNumber = -1
-
+		#map from instNumbet to actual number
+		self.instNumberToActual = {}
 
 	def callAddEdge(self, reg, num, yan=YAN()):
 		yan.add_edge(gen.regtable[reg], num)
-		print("dependency from instruction: "+ a[int(gen.regtable[reg])])
+		print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.regtable[reg]])])
 
 input = open(sys.argv[1])
 a = input.readlines()
@@ -53,6 +58,10 @@ for index in range(len(a)):
 	line = a[index]
 	if "Function" in line:
 		gen.__init__()
+		_,_,gen.funcName = (line.partition('`'))
+		#hack to get the function name..
+		gen.funcName = gen.funcName[:-3]
+		print(gen.funcName)
 		gen.func_start = index
 		gen.doLabels = True
 		continue
@@ -103,6 +112,7 @@ for index in range(len(a)):
 					#increment instNumber, flat view
 					gen.instNumber += 1
 					yan.add_node(gen.instNumber,inst,line)
+					gen.instNumberToActual[gen.instNumber] = i
 					if inst in twoArg0 or inst in twoArg1 or inst in twoArg2:
 						arg0,_,arg1 = (spl[2].rstrip()).partition(', ')
 						reg0 = None
@@ -150,18 +160,25 @@ for index in range(len(a)):
 
 						#Read both
 						if inst in twoArg2:
-							if gen.regtable[reg0] is not None:
-								gen.callAddEdge(reg0, gen.instNumber, yan)
+							#reg0 can be imm here for cmp
+							if reg0 is not 'imm':
+								if gen.regtable[reg0] is not None:
+									gen.callAddEdge(reg0, gen.instNumber, yan)
 							if gen.regtable[reg1] is not None:
 								gen.callAddEdge(reg1, gen.instNumber, yan)
 					elif inst in oneArg0 or inst in oneArg1 or inst in oneArg2:
 						arg0 = spl[2].rstrip()
 						reg0 = None
 						for reg in (gen.regtable).keys():
-							if reg == arg0:
+							if reg in arg0:
 								reg0 = reg
+
 						if reg0 is None:
+							#TODO : weird push needs handling...
 							print("Does not recognize argument: " + str(arg0))
+							i += 1
+							continue
+
 						if inst in oneArg0 or inst in oneArg1:
 							#do read
 							if gen.regtable[reg0] is not None:
@@ -176,10 +193,16 @@ for index in range(len(a)):
 			
 			i += 1
 			if i >= gen.func_end:
-				print("Something is wrong...Did not return but reached end")
+				if 'main' in gen.funcName:
+					print("Reached end of main function, breaking")
+				else:
+					print("Something is wrong...Did not return but reached end")
 				break
 
-yan.generate_dot(sys.argv[1][:-2] + ".dot")
+		yan.generate_dot(gen.funcName + ".dot")
+		yan.__init__()
+		gen.__init__()
+
 	
 
 
