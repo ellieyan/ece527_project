@@ -36,9 +36,9 @@ class DFGG:
 		self.doLabels = False
 		self.jmpflag = False
 		self.retaddr = 0
-		self.regtable = defaultdict(None)
-		self.regtable = {'r0':None,'r1':None,'r2':None,'r3':None,'r4':None,'r5':None,'r6':None,'r7':None,
-						'r8':None,'r9':None,'r10':None,'r11':None,'r12':None,'r13':None,'r14':None,'r15':None}
+		self.writetable = defaultdict(None)
+		self.regtable = ['r0', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7'
+						, 'r8', 'r9', 'r10', 'r11', 'r12', 'r13', 'r14', 'r15']
 		self.funcName = ''
 		#count number of insts
 		self.instNumber = -1
@@ -46,13 +46,57 @@ class DFGG:
 		self.instNumberToActual = {}
 
 	def callAddEdge(self, reg, num, yan=YAN()):
-		yan.add_edge(gen.regtable[reg], num)
-		print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.regtable[reg]])])
+		yan.add_edge(gen.writetable[reg], num)
+		print("dependency from instruction: "+ a[int(gen.instNumberToActual[gen.writetable[reg]])])
 
-	def redReg(self,reg,num,yan):
+	def readArg(self,arg,num,yan):
+		#if arg is imm, dont do shit
+		if arg[0] == '#':
+			return
+		#if arg is a reg/contains a reg
+		reg = None
+		for key in self.regtable:
+			if key in arg:
+				reg = key
+
+		#do read on reg
+		if reg in (self.writetable).keys():
+			if self.writetable[reg] != None:
+				self.callAddEdge(reg,num,yan)
+
+		#do read on arg
+		if arg != reg:
+			if arg in (self.writetable).keys():
+				if self.writetable[arg] != None:
+					self.callAddEdge(arg,num,yan)
 		return
 
-	def writereg(self,reg,num,yan):
+	def writeArg(self,arg,num,yan):
+
+		if arg[0] == '#':
+			print("ERROR: Writing to an imm")
+			return
+		#if arg is a reg/contains a reg
+		reg = None
+		for key in self.regtable:
+			if key in arg:
+				reg = key
+		'''
+		if reg == None:
+			print("This arg sucks: " + str(arg))
+		'''
+		#memory case
+		if arg != reg:
+			if reg in (self.writetable).keys():
+				if self.writetable[reg] != None:
+					self.callAddEdge(reg,num,yan)
+		else:
+		#if writing to reg, clear shit up
+			for key in (self.writetable).keys():
+				if reg in key:
+					(self.writetable)[reg] = None
+		self.writetable[arg] = num
+		print("Wrote to: "+ str(arg))
 		return
 
 
@@ -122,88 +166,35 @@ for index in range(len(a)):
 					gen.instNumberToActual[gen.instNumber] = i
 					if inst in twoArg0 or inst in twoArg1 or inst in twoArg2:
 						arg0,_,arg1 = (spl[2].rstrip()).partition(', ')
-						reg0 = None
-						reg1 = None
-						for reg in (gen.regtable).keys():
-							if reg in arg0:
-								reg0 = reg
-							if reg in arg1:
-								reg1 = reg
-						if reg0 is None:
-							if arg0[0] == '#':
-								reg0 = 'imm'
-							else:
-								print("Does not recognize argument: " + str(arg0))
 						#read arg0, write arg1
 						if inst in twoArg0:
 							#we read from reg0, if arg0 is not immediate
-							if reg0 is not 'imm':
-								if gen.regtable[reg0] is not None:
-									gen.callAddEdge(reg0, gen.instNumber, yan)
-								if reg0 != arg0:
-									if arg0 in (gen.regtable).keys():
-										if gen.regtable[arg0] is not None:
-											gen.callAddEdge(arg0, gen.instNumber, yan)
+							gen.readArg(arg0, gen.instNumber, yan)
 							#we wrote to arg1
 							#Register case
-							if reg1 == arg1:
-								for key in (gen.regtable).keys():
-									if reg1 in key:
-										gen.regtable[key] = None
-								gen.regtable[reg1] = gen.instNumber
-								print("Wrote to: "+ str(reg1))
-							else:
-								#read
-								if gen.regtable[reg1] is not None:
-									gen.callAddEdge(reg1, gen.instNumber, yan)
-								#handle memory case
-								gen.regtable[arg1] = gen.instNumber
+							gen.writeArg(arg1, gen.instNumber, yan)
 
 						#read arg0, read arg1, write arg1
 						if inst in twoArg1:
 							#we read from reg0, if arg0 is not immediate
-							if reg0 is not 'imm':
-								if gen.regtable[reg0] is not None:
-									gen.callAddEdge(reg0, gen.instNumber, yan)
-								if reg0 != arg0:
-									if arg0 in (gen.regtable).keys():
-										if gen.regtable[arg0] is not None:
-											gen.callAddEdge(arg0, gen.instNumber, yan)
+							gen.readArg(arg0, gen.instNumber, yan)
 							#we def read from reg1...
-							if gen.regtable[reg1] is not None:
-								gen.callAddEdge(reg1, gen.instNumber, yan)
+							gen.readArg(arg1, gen.instNumber, yan)
 							#we wrote to arg1
-							if reg1 == arg1:
-								for key in (gen.regtable).keys():
-									if reg1 in key:
-										gen.regtable[key] = None
-								gen.regtable[reg1] = gen.instNumber
-								print("Wrote to: "+ str(reg1))
-							else:
-								gen.regtable[arg1] = gen.instNumbet
-							#TODO handle memory write cases for re-read
+							gen.writeArg(arg1, gen.instNumber, yan)
 
 						#Read both
 						if inst in twoArg2:
 							#reg0 can be imm here for cmp
-							if reg0 is not 'imm':
-								if gen.regtable[reg0] is not None:
-									gen.callAddEdge(reg0, gen.instNumber, yan)
-								if arg0 in (gen.regtable).keys():
-									if gen.regtable[arg0] is not None:
-										gen.callAddEdge(arg0, gen.instNumbet, yan)
-							if gen.regtable[reg1] is not None:
-								gen.callAddEdge(reg1, gen.instNumber, yan)
-							if reg1 != arg1:
-								if arg1 in (gen.regtable).keys():
-									if gen.regtable[arg1] is not None:
-										gen.callAddEdge(arg1, gen.instNumber, yan)
+							gen.readArg(arg0, gen.instNumber, yan)
+							gen.readArg(arg1, gen.instNumber, yan)
+
 					elif inst in oneArg0 or inst in oneArg1 or inst in oneArg2:
 						arg0 = spl[2].rstrip()
 						reg0 = None
-						for reg in (gen.regtable).keys():
-							if reg in arg0:
-								reg0 = reg
+						for key in gen.regtable:
+							if key in arg0:
+								reg0 = key
 
 						if reg0 is None:
 							#TODO : weird push needs handling...
@@ -213,12 +204,10 @@ for index in range(len(a)):
 
 						if inst in oneArg0 or inst in oneArg1:
 							#do read
-							if gen.regtable[reg0] is not None:
-								gen.callAddEdge(reg0, gen.instNumber, yan)
+							gen.readArg(arg0, gen.instNumber, yan)
 						if inst in oneArg0 or inst in oneArg2:		
 							#do write
-							gen.regtable[reg0] = gen.instNumber
-							print("!!!Wrote to: "+ str(reg0))
+							gen.writeArg(arg0, gen.instNumber, yan)
 
 				else:
 					print('Unknown instruction', spl)
