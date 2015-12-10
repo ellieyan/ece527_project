@@ -36,6 +36,13 @@ class DFGG:
 		self.regtable = defaultdict(None)
 		self.regtable = {'r0':None,'r1':None,'r2':None,'r3':None,'r4':None,'r5':None,'r6':None,'r7':None,
 						'r8':None,'r9':None,'r10':None,'r11':None,'r12':None,'r13':None,'r14':None,'r15':None}
+		#count number of insts
+		self.instNumber = -1
+
+
+	def callAddEdge(self, reg, num, yan=YAN()):
+		yan.add_edge(gen.regtable[reg], num)
+		print("dependency from instruction: "+ a[int(gen.regtable[reg])])
 
 input = open(sys.argv[1])
 a = input.readlines()
@@ -61,7 +68,6 @@ for index in range(len(a)):
 		gen.doLabels = False
 		gen.func_end = index
 		i = gen.func_start + 1
-		print(i)
 		while(True):
 			line = a[i]
 			print(line)
@@ -74,7 +80,6 @@ for index in range(len(a)):
 				else:
 					inst = spl[1]
 				inst = inst.rstrip()
-				yan.add_node(i,inst,line)
 				#is it a jmp?
 				if inst == 'jmp':
 					print('Jumping to label: '+ str(spl[2]))
@@ -95,6 +100,9 @@ for index in range(len(a)):
 					else:
 						break
 				if inst in allInst:
+					#increment instNumber, flat view
+					gen.instNumber += 1
+					yan.add_node(gen.instNumber,inst,line)
 					if inst in twoArg0 or inst in twoArg1 or inst in twoArg2:
 						arg0,_,arg1 = (spl[2].rstrip()).partition(', ')
 						reg0 = None
@@ -114,44 +122,38 @@ for index in range(len(a)):
 							#we read from reg0, if arg0 is not immediate
 							if reg0 is not 'imm':
 								if gen.regtable[reg0] is not None:
-									yan.add_edge(gen.regtable[reg0], i)
-									print("dependency from instruction: "+ a[int(str(gen.regtable[reg0]))])
+									gen.callAddEdge(reg0, gen.instNumber, yan)
 							#we wrote to arg1
 							if reg1 == arg1:
-								gen.regtable[reg1] = i
+								gen.regtable[reg1] = gen.instNumber
 								print("Wrote to: "+ str(reg1))
 								#TODO handle memory write cases for re-read
 							else:
 								#read
 								if gen.regtable[reg1] is not None:
-									yan.add_edge(gen.regtable[reg1], i)
-									print("dependency from instruction: "+ a[int(str(gen.regtable[reg1]))])
+									gen.callAddEdge(reg1, gen.instNumber, yan)
 
 						#read arg0, read arg1, write arg1
 						if inst in twoArg1:
 							#we read from reg0, if arg0 is not immediate
 							if reg0 is not 'imm':
 								if gen.regtable[reg0] is not None:
-									yan.add_edge(gen.regtable[reg0], i)
-									print("dependency from instruction: "+ a[int(str(gen.regtable[reg0]))])
+									gen.callAddEdge(reg0, gen.instNumber, yan)
 							#we def read from reg1...
 							if gen.regtable[reg1] is not None:
-								yan.add_edge(gen.regtable[reg1],i)
-								print("dependency from instruction: "+ a[int(str(gen.regtable[reg1]))])
+								gen.callAddEdge(reg1, gen.instNumber, yan)
 							#we wrote to arg1
 							if reg1 == arg1:
-								gen.regtable[reg1] = i
+								gen.regtable[reg1] = gen.instNumber
 								print("Wrote to: "+ str(reg1))
 							#TODO handle memory write cases for re-read
 
 						#Read both
 						if inst in twoArg2:
 							if gen.regtable[reg0] is not None:
-								yan.add_edge(gen.regtable[reg0],i)
-								print("dependency from instruction: "+ a[int(str(gen.regtable[reg0]))])
+								gen.callAddEdge(reg0, gen.instNumber, yan)
 							if gen.regtable[reg1] is not None:
-								yan.add_edge(gen.regtable[reg1],i)
-								print("dependency from instruction: "+ a[int(str(gen.regtable[reg1]))])
+								gen.callAddEdge(reg1, gen.instNumber, yan)
 					elif inst in oneArg0 or inst in oneArg1 or inst in oneArg2:
 						arg0 = spl[2].rstrip()
 						reg0 = None
@@ -163,11 +165,10 @@ for index in range(len(a)):
 						if inst in oneArg0 or inst in oneArg1:
 							#do read
 							if gen.regtable[reg0] is not None:
-								yan.add_edge(gen.regtable[reg0],i)
-								print("dependency from instruction: "+ a[int(str(gen.regtable[reg0]))])
+								gen.callAddEdge(reg0, gen.instNumber, yan)
 						if inst in oneArg0 or inst in oneArg2:		
 							#do write
-							gen.regtable[reg0] = i
+							gen.regtable[reg0] = gen.instNumber
 							print("!!!Wrote to: "+ str(reg0))
 
 				else:
