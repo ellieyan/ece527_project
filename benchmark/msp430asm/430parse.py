@@ -221,9 +221,9 @@ for index in range(len(a)):
 				break
 
 		yan.generate_dot(gen.funcName + ".dot")
+		yan.extract_pattern(gen.funcName + "_patterns.txt")
 		yan.__init__()
 		gen.__init__()
 
-	
 
 

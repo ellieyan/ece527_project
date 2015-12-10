@@ -136,6 +136,9 @@ class DAG:
 			f.write("\"" + str(e.source.index) + "\" -> \"" + str(e.target.index) + "\"\n")
 		f.write("}\n")
 
+	def extract_pattern(self, filename):
+		write_patterns(find_patterns(self), filename)
+
 def get_input_size(p):
 	inputs = Set([])
 	for n in p.nodes:
