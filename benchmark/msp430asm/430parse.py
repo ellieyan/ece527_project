@@ -179,6 +179,7 @@ for index in range(len(a)):
 				break
 
 yan.generate_dot(sys.argv[1][:-2] + ".dot")
+yan.extract_pattern(sys.argv[1][:-2] + "_patterns.txt")
 	
 
 
