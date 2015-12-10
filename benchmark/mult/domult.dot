@@ -1,0 +1,38 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t1" [label="  %t1 = alloca i32, align 4"]
+"t2" [label="  %t2 = alloca i32, align 4"]
+"_1" [label="  store i32 %a, i32* %t1, align 4"]
+"_2" [label="  store i32 %b, i32* %t2, align 4"]
+"t3" [label="  %t3 = load i32* %t1, align 4"]
+"t4" [label="  %t4 = zext i32 %t3 to i64"]
+"t5" [label="  %t5 = load i32* %t2, align 4"]
+"t6" [label="  %t6 = zext i32 %t5 to i64"]
+"t7" [label="  %t7 = mul i64 %t4, %t6"]
+"_3" [label="  ret i64 %t7"]
+"unk_block_1" -> "t1"[color=red]
+"i32 1" -> "t1"
+"t1" -> "t2"[color=red weight=2]
+"i32 1" -> "t2"
+"t2" -> "_1"[color=red weight=2]
+"a" -> "_1"
+"t1" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"b" -> "_2"
+"t2" -> "_2"
+"_2" -> "t3"[color=red weight=2]
+"t1" -> "t3"
+"t3" -> "t4"[color=red weight=2]
+"t3" -> "t4"
+"t4" -> "t5"[color=red weight=2]
+"t2" -> "t5"
+"t5" -> "t6"[color=red weight=2]
+"t5" -> "t6"
+"t6" -> "t7"[color=red weight=2]
+"t4" -> "t7"
+"t6" -> "t7"
+"t7" -> "_3"[color=red weight=2]
+"t7" -> "_3"
+
+}

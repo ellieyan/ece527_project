@@ -1,0 +1,130 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"n" [label="  %n = alloca i32, align 4"]
+"NotFound" [label="  %NotFound = alloca i32, align 4"]
+"key" [label="  %key = alloca i32, align 4"]
+"index" [label="  %index = alloca i32, align 4"]
+"a" [label="  %a = alloca i32, align 4"]
+"b" [label="  %b = alloca i32, align 4"]
+"c" [label="  %c = alloca i32, align 4"]
+"_1" [label="  store i32 16, i32* %n, align 4"]
+"_2" [label="  store i32 -1, i32* %NotFound, align 4"]
+"_3" [label="  store i32 0, i32* %key, align 4"]
+"t72" [label="  %t72 = load i32* %n, align 4"]
+"t73" [label="  %t73 = call i32 @bsearch(i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0), i32 %t72, i32* %key, i32 (i32*, i32*)* @cmpObject, i32 -1)"]
+"_4" [label="  store i32 %t73, i32* %index, align 4"]
+"_5" [label="  store i32 65535, i32* %key, align 4"]
+"t74" [label="  %t74 = load i32* %n, align 4"]
+"t75" [label="  %t75 = call i32 @bsearch(i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0), i32 %t74, i32* %key, i32 (i32*, i32*)* @cmpObject, i32 -1)"]
+"_6" [label="  store i32 %t75, i32* %index, align 4"]
+"_7" [label="  store i32 255, i32* %key, align 4"]
+"t76" [label="  %t76 = load i32* %n, align 4"]
+"t77" [label="  %t77 = call i32 @bsearch(i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0), i32 %t76, i32* %key, i32 (i32*, i32*)* @cmpObject, i32 -1)"]
+"_8" [label="  store i32 %t77, i32* %index, align 4"]
+"t78" [label="  %t78 = load i32* %n, align 4"]
+"t79" [label="  %t79 = call i32 @bsearch(i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0), i32 %t78, i32* null, i32 (i32*, i32*)* @cmpObject, i32 -1)"]
+"_9" [label="  store i32 %t79, i32* %index, align 4"]
+"_10" [label="  store i32 1, i32* %a, align 4"]
+"_11" [label="  store i32 32767, i32* %b, align 4"]
+"t80" [label="  %t80 = load i32* %a, align 4"]
+"t81" [label="  %t81 = load i32* %b, align 4"]
+"t82" [label="  %t82 = add nsw i32 %t80, %t81"]
+"_12" [label="  store i32 %t82, i32* %c, align 4"]
+"_13" [label="  ret void"]
+"unk_block_1" -> "n"[color=red]
+"i32 1" -> "n"
+"n" -> "NotFound"[color=red weight=2]
+"i32 1" -> "NotFound"
+"NotFound" -> "key"[color=red weight=2]
+"i32 1" -> "key"
+"key" -> "index"[color=red weight=2]
+"i32 1" -> "index"
+"index" -> "a"[color=red weight=2]
+"i32 1" -> "a"
+"a" -> "b"[color=red weight=2]
+"i32 1" -> "b"
+"b" -> "c"[color=red weight=2]
+"i32 1" -> "c"
+"c" -> "_1"[color=red weight=2]
+"i32 16" -> "_1"
+"n" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"i32 -1" -> "_2"
+"NotFound" -> "_2"
+"_2" -> "_3"[color=red weight=2]
+"i32 0" -> "_3"
+"key" -> "_3"
+"_3" -> "t72"[color=red weight=2]
+"n" -> "t72"
+"t72" -> "t73"[color=red weight=2]
+"i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0)" -> "t73"
+"t72" -> "t73"
+"key" -> "t73"
+"cmpObject" -> "t73"
+"i32 -1" -> "t73"
+"bsearch" -> "t73"
+"t73" -> "_4"[color=red weight=2]
+"t73" -> "_4"
+"index" -> "_4"
+"_4" -> "_5"[color=red weight=2]
+"i32 65535" -> "_5"
+"key" -> "_5"
+"_5" -> "t74"[color=red weight=2]
+"n" -> "t74"
+"t74" -> "t75"[color=red weight=2]
+"i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0)" -> "t75"
+"t74" -> "t75"
+"key" -> "t75"
+"cmpObject" -> "t75"
+"i32 -1" -> "t75"
+"bsearch" -> "t75"
+"t75" -> "_6"[color=red weight=2]
+"t75" -> "_6"
+"index" -> "_6"
+"_6" -> "_7"[color=red weight=2]
+"i32 255" -> "_7"
+"key" -> "_7"
+"_7" -> "t76"[color=red weight=2]
+"n" -> "t76"
+"t76" -> "t77"[color=red weight=2]
+"i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0)" -> "t77"
+"t76" -> "t77"
+"key" -> "t77"
+"cmpObject" -> "t77"
+"i32 -1" -> "t77"
+"bsearch" -> "t77"
+"t77" -> "_8"[color=red weight=2]
+"t77" -> "_8"
+"index" -> "_8"
+"_8" -> "t78"[color=red weight=2]
+"n" -> "t78"
+"t78" -> "t79"[color=red weight=2]
+"i32* getelementptr inbounds ([17 x i32]* @a, i32 0, i32 0)" -> "t79"
+"t78" -> "t79"
+"i32* null" -> "t79"
+"cmpObject" -> "t79"
+"i32 -1" -> "t79"
+"bsearch" -> "t79"
+"t79" -> "_9"[color=red weight=2]
+"t79" -> "_9"
+"index" -> "_9"
+"_9" -> "_10"[color=red weight=2]
+"i32 1" -> "_10"
+"a" -> "_10"
+"_10" -> "_11"[color=red weight=2]
+"i32 32767" -> "_11"
+"b" -> "_11"
+"_11" -> "t80"[color=red weight=2]
+"a" -> "t80"
+"t80" -> "t81"[color=red weight=2]
+"b" -> "t81"
+"t81" -> "t82"[color=red weight=2]
+"t80" -> "t82"
+"t81" -> "t82"
+"t82" -> "_12"[color=red weight=2]
+"t82" -> "_12"
+"c" -> "_12"
+"_12" -> "_13"[color=red weight=2]
+
+}

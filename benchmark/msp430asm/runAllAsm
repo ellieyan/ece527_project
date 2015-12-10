@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for s in *.s 
+do
+    python 430parse.py $s
+done
+

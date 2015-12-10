@@ -1,0 +1,60 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t17" [label="  %t17 = alloca i32, align 4"]
+"t18" [label="  %t18 = alloca i32, align 4"]
+"Enum_Loc" [label="  %Enum_Loc = alloca i32, align 4"]
+"_1" [label="  store i32 %Enum_Par_Val, i32* %t18, align 4"]
+"t19" [label="  %t19 = load i32* %t18, align 4"]
+"_2" [label="  store i32 %t19, i32* %Enum_Loc, align 4"]
+"t20" [label="  %t20 = load i32* %Enum_Loc, align 4"]
+"t21" [label="  %t21 = icmp eq i32 %t20, 2"]
+"_3" [label="  br i1 %t21, label %1, label %2"]
+"unk_block_1" -> "t17"[color=red]
+"i32 1" -> "t17"
+"t17" -> "t18"[color=red weight=2]
+"i32 1" -> "t18"
+"t18" -> "Enum_Loc"[color=red weight=2]
+"i32 1" -> "Enum_Loc"
+"Enum_Loc" -> "_1"[color=red weight=2]
+"Enum_Par_Val" -> "_1"
+"t18" -> "_1"
+"_1" -> "t19"[color=red weight=2]
+"t18" -> "t19"
+"t19" -> "_2"[color=red weight=2]
+"t19" -> "_2"
+"Enum_Loc" -> "_2"
+"_2" -> "t20"[color=red weight=2]
+"Enum_Loc" -> "t20"
+"t20" -> "t21"[color=red weight=2]
+"t20" -> "t21"
+"i32 2" -> "t21"
+"t21" -> "_3"[color=red weight=2]
+"t21" -> "_3"
+"_3" -> ""[color=red]
+"_3" -> ""[color=red]
+
+"_4" [label="  store i32 1, i32* %t17"]
+"_5" [label="  br label %3"]
+"unk_block_2" -> "_4"[color=red]
+"i32 1" -> "_4"
+"t17" -> "_4"
+"_4" -> "_5"[color=red weight=2]
+"_5" -> ""[color=red]
+
+"_6" [label="  store i32 0, i32* %t17"]
+"_7" [label="  br label %3"]
+"unk_block_3" -> "_6"[color=red]
+"i32 0" -> "_6"
+"t17" -> "_6"
+"_6" -> "_7"[color=red weight=2]
+"_7" -> ""[color=red]
+
+"t22" [label="  %t22 = load i32* %t17"]
+"_8" [label="  ret i32 %t22"]
+"unk_block_4" -> "t22"[color=red]
+"t17" -> "t22"
+"t22" -> "_8"[color=red weight=2]
+"t22" -> "_8"
+
+}

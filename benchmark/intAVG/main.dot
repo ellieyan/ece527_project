@@ -1,0 +1,34 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"avg" [label="  %avg = alloca i32, align 4"]
+"_1" [label="  store volatile i32 23168, i32* inttoptr (i64 288 to i32*), align 4"]
+"_2" [label="  store volatile i8 1, i8* inttoptr (i64 25 to i8*), align 1"]
+"t34" [label="  %t34 = call i32 @run_bm()"]
+"_3" [label="  store i32 %t34, i32* %avg, align 4"]
+"_4" [label="  store volatile i8 0, i8* inttoptr (i64 25 to i8*), align 1"]
+"_5" [label="  store volatile i8 1, i8* inttoptr (i64 29 to i8*), align 1"]
+"_6" [label="  ret i32 0"]
+"unk_block_1" -> "avg"[color=red]
+"i32 1" -> "avg"
+"avg" -> "_1"[color=red weight=2]
+"i32 23168" -> "_1"
+"i32* inttoptr (i64 288 to i32*)" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"i8 1" -> "_2"
+"i8* inttoptr (i64 25 to i8*)" -> "_2"
+"_2" -> "t34"[color=red weight=2]
+"run_bm" -> "t34"
+"t34" -> "_3"[color=red weight=2]
+"t34" -> "_3"
+"avg" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+"i8 0" -> "_4"
+"i8* inttoptr (i64 25 to i8*)" -> "_4"
+"_4" -> "_5"[color=red weight=2]
+"i8 1" -> "_5"
+"i8* inttoptr (i64 29 to i8*)" -> "_5"
+"_5" -> "_6"[color=red weight=2]
+"i32 0" -> "_6"
+
+}

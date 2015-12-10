@@ -1,0 +1,357 @@
+
+intAVG.elf:     file format elf32-msp430
+
+SYMBOL TABLE:
+0000a000 l    d  .text	00000000 .text
+00000200 l    d  .data	00000000 .data
+000003b6 l    d  .bss	00000000 .bss
+0000ffe0 l    d  .vectors	00000000 .vectors
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+000017c2 l    d  .noinit.crt0	00000000 .noinit.crt0
+00000000 l    df *ABS*	00000000 intAVG.c
+00000200 l     O .data	00000190 input_buf1
+00000390 l     O .data	00000022 input_buf2
+0000a070 l       .text	00000000 __br_unexpected_
+00000000 l    df *ABS*	00000000 omsp_func.c
+000003b8 g     O .bss	00000004 Microseconds
+0000a116 g     F .text	00000032 putchar
+000001b6 g       *ABS*	00000000 __data_size
+0000a070  w      .text	00000000 __isr_14
+000003bc g     O .bss	00000004 Dhrystones_Per_Second
+0000a148 g       .text	00000000 __ext_divmod16
+0000a070  w      .text	00000000 __isr_4
+00000138 g       *ABS*	00000000 __OP2
+000003c0 g     O .bss	00000004 User_Time
+000003c4 g     O .bss	00000004 Begin_Time
+0000a182 g     F .text	00000000 __udivhi3
+00000130 g       *ABS*	00000000 __MPY
+0000013a g       *ABS*	00000000 __RESLO
+00000136 g       *ABS*	00000000 __MACS
+0000a1ac g       *ABS*	00000000 _etext
+0000140c g       *ABS*	00000000 __bss_size
+0000a000  w      .text	00000000 __watchdog_support
+0000a1a6  w      .text	00000000 __stop_progExec__
+0000a070  w      .text	00000000 __isr_11
+000003c8 g     O .bss	00001388 Arr_2_Glob
+0000a070  w      .text	00000000 __isr_5
+0000a1ac g       *ABS*	00000000 __data_load_start
+0000a070 g       .text	00000000 __dtors_end
+0000a070  w      .text	00000000 __isr_2
+0000a17a g     F .text	00000000 __modhi3
+00001750 g     O .bss	00000004 End_Time
+0000a070  w      .text	00000000 __isr_10
+00001754 g     O .bss	00000002 Next_Ptr_Glob
+0000013c g       *ABS*	00000000 __RESHI
+000017c2 g     O .noinit.crt0	00000002 __wdt_clear_value
+0000a070  w      .text	00000000 __isr_7
+0000ffe0 g     O .vectors	00000020 __ivtbl_16
+000003b4 g     O .data	00000002 size2
+0000a19c g     F .text	00000000 __umodhi3
+0000a070  w      .text	00000000 __isr_0
+0000a028  w      .text	00000000 __do_clear_bss
+000003b6 g     O .bss	00000002 Reg
+0000a074 g     F .text	000000a2 run_bm
+00001756 g     O .bss	00000002 Int_Glob
+00001758 g     O .bss	00000001 Ch_1_Glob
+0000a1a4  w      .text	00000000 _unexpected_
+0000a070  w      .text	00000000 __isr_8
+00001759 g     O .bss	00000001 Ch_2_Glob
+0000a070  w      .text	00000000 __isr_3
+0000175a g     O .bss	00000002 Ptr_Glob
+0000a148 g     F .text	00000000 __divhi3
+0000a182 g       .text	00000000 __ext_udivmod16
+0000a000  w      .text	00000000 _reset_vector__
+0000a070 g       .text	00000000 __ctors_start
+0000a070  w      .text	00000000 __isr_12
+0000a010  w      .text	00000000 __do_copy_data
+000003b6 g       .bss	00000000 __bss_start
+0000a03e g     F .text	00000032 main
+0000a070  w      .text	00000000 __isr_13
+00010000 g       .vectors	00000000 _vectors_end
+000003b2 g     O .data	00000002 size1
+0000a070  w      .text	00000000 __isr_9
+0000a00c  w      .text	00000000 __init_stack
+0000a070 g       .text	00000000 __dtors_start
+0000a070  w      .text	00000000 __isr_6
+0000a070 g       .text	00000000 __ctors_end
+00000132 g       *ABS*	00000000 __MPYS
+00004200 g       *ABS*	00000000 __stack
+0000a070  w      .text	00000000 __isr_1
+000003b6 g       .data	00000000 _edata
+000017c2 g       .bss	00000000 _end
+0000175c g     O .bss	00000064 Arr_1_Glob
+00000134 g       *ABS*	00000000 __MAC
+0000a1a6  w      .text	00000000 _endless_loop__
+0000a010  w      .text	00000000 __low_level_init
+000017c0 g     O .bss	00000002 Bool_Glob
+00000200 g       .data	00000000 __data_start
+00000120 g       *ABS*	00000000 __WDTCTL
+0000013e g       *ABS*	00000000 __SUMEXT
+
+
+
+Disassembly of section .text:
+
+0000a000 <__watchdog_support>:
+    a000:	55 42 20 01 	mov.b	&0x0120,r5	
+    a004:	35 d0 08 5a 	bis	#23048,	r5	;#0x5a08
+    a008:	82 45 c2 17 	mov	r5,	&0x17c2	
+
+0000a00c <__init_stack>:
+    a00c:	31 40 00 42 	mov	#16896,	r1	;#0x4200
+
+0000a010 <__do_copy_data>:
+    a010:	3f 40 b6 01 	mov	#438,	r15	;#0x01b6
+    a014:	0f 93       	tst	r15		
+    a016:	08 24       	jz	$+18     	;abs 0xa028
+    a018:	92 42 c2 17 	mov	&0x17c2,&0x0120	
+    a01c:	20 01 
+    a01e:	2f 83       	decd	r15		
+    a020:	9f 4f ac a1 	mov	-24148(r15),512(r15);0xa1ac(r15), 0x0200(r15)
+    a024:	00 02 
+    a026:	f8 23       	jnz	$-14     	;abs 0xa018
+
+0000a028 <__do_clear_bss>:
+    a028:	3f 40 0c 14 	mov	#5132,	r15	;#0x140c
+    a02c:	0f 93       	tst	r15		
+    a02e:	07 24       	jz	$+16     	;abs 0xa03e
+    a030:	92 42 c2 17 	mov	&0x17c2,&0x0120	
+    a034:	20 01 
+    a036:	1f 83       	dec	r15		
+    a038:	cf 43 b6 03 	mov.b	#0,	950(r15);r3 As==00, 0x03b6(r15)
+    a03c:	f9 23       	jnz	$-12     	;abs 0xa030
+
+0000a03e <main>:
+}
+
+int main ()
+/*****/
+
+{
+    a03e:	04 41       	mov	r1,	r4	
+    a040:	24 53       	incd	r4		
+    a042:	21 83       	decd	r1		
+  STOP_WATCHDOG;
+    a044:	3f 40 20 01 	mov	#288,	r15	;#0x0120
+    a048:	bf 40 80 5a 	mov	#23168,	0(r15)	;#0x5a80, 0x0000(r15)
+    a04c:	00 00 
+  //printf ("Execution starts" );
+  START_TIME;  // Set P3[0]
+    a04e:	3f 40 19 00 	mov	#25,	r15	;#0x0019
+    a052:	df 43 00 00 	mov.b	#1,	0(r15)	;r3 As==01, 0x0000(r15)
+
+  int avg = run_bm();
+    a056:	b0 12 74 a0 	call	#0xa074	
+    a05a:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+
+  END_TIME;  // Clear P3[0]
+    a05e:	3f 40 19 00 	mov	#25,	r15	;#0x0019
+    a062:	cf 43 00 00 	mov.b	#0,	0(r15)	;r3 As==00, 0x0000(r15)
+  //printf ("Execution ends\n");
+  DHRYSTONE_DONE;
+    a066:	3f 40 1d 00 	mov	#29,	r15	;#0x001d
+    a06a:	df 43 00 00 	mov.b	#1,	0(r15)	;r3 As==01, 0x0000(r15)
+
+}
+    a06e:	21 53       	incd	r1		
+
+0000a070 <__ctors_end>:
+    a070:	30 40 a4 a1 	br	#0xa1a4	
+
+0000a074 <run_bm>:
+int size1 = 200;
+int size2 = 17;
+
+/// CHECK IF YOU CAN IMPLEMENT THE HORNER's METHOD IN TI's DOCS
+int run_bm()
+{
+    a074:	04 12       	push	r4		
+    a076:	04 41       	mov	r1,	r4	
+    a078:	24 53       	incd	r4		
+    a07a:	31 50 f4 ff 	add	#-12,	r1	;#0xfff4
+  int i = 0;
+    a07e:	84 43 f2 ff 	mov	#0,	-14(r4)	;r3 As==00, 0xfff2(r4)
+  int sum1 = 0;
+    a082:	84 43 f4 ff 	mov	#0,	-12(r4)	;r3 As==00, 0xfff4(r4)
+  int sum2 = 0;
+    a086:	84 43 f6 ff 	mov	#0,	-10(r4)	;r3 As==00, 0xfff6(r4)
+
+  for (i = 0; i < size1; i++)
+    a08a:	84 43 f2 ff 	mov	#0,	-14(r4)	;r3 As==00, 0xfff2(r4)
+    a08e:	0a 3c       	jmp	$+22     	;abs 0xa0a4
+  {
+    sum1 += input_buf1[i];
+    a090:	1f 44 f2 ff 	mov	-14(r4),r15	;0xfff2(r4)
+    a094:	0f 5f       	rla	r15		
+    a096:	3f 50 00 02 	add	#512,	r15	;#0x0200
+    a09a:	2f 4f       	mov	@r15,	r15	
+    a09c:	84 5f f4 ff 	add	r15,	-12(r4)	;0xfff4(r4)
+{
+  int i = 0;
+  int sum1 = 0;
+  int sum2 = 0;
+
+  for (i = 0; i < size1; i++)
+    a0a0:	94 53 f2 ff 	inc	-14(r4)	;0xfff2(r4)
+    a0a4:	1f 42 b2 03 	mov	&0x03b2,r15	
+    a0a8:	84 9f f2 ff 	cmp	r15,	-14(r4)	;0xfff2(r4)
+    a0ac:	f1 3b       	jl	$-28     	;abs 0xa090
+  {
+    sum1 += input_buf1[i];
+  }
+  int avg1 = sum1/size1;
+    a0ae:	1f 42 b2 03 	mov	&0x03b2,r15	
+    a0b2:	0e 4f       	mov	r15,	r14	
+    a0b4:	1f 44 f4 ff 	mov	-12(r4),r15	;0xfff4(r4)
+    a0b8:	b0 12 48 a1 	call	#0xa148	
+    a0bc:	84 4f f8 ff 	mov	r15,	-8(r4)	;0xfff8(r4)
+
+
+  for (i = 0; i < size2; i++)
+    a0c0:	84 43 f2 ff 	mov	#0,	-14(r4)	;r3 As==00, 0xfff2(r4)
+    a0c4:	0a 3c       	jmp	$+22     	;abs 0xa0da
+  {
+    sum2 += input_buf2[i];
+    a0c6:	1f 44 f2 ff 	mov	-14(r4),r15	;0xfff2(r4)
+    a0ca:	0f 5f       	rla	r15		
+    a0cc:	3f 50 90 03 	add	#912,	r15	;#0x0390
+    a0d0:	2f 4f       	mov	@r15,	r15	
+    a0d2:	84 5f f6 ff 	add	r15,	-10(r4)	;0xfff6(r4)
+    sum1 += input_buf1[i];
+  }
+  int avg1 = sum1/size1;
+
+
+  for (i = 0; i < size2; i++)
+    a0d6:	94 53 f2 ff 	inc	-14(r4)	;0xfff2(r4)
+    a0da:	1f 42 b4 03 	mov	&0x03b4,r15	
+    a0de:	84 9f f2 ff 	cmp	r15,	-14(r4)	;0xfff2(r4)
+    a0e2:	f1 3b       	jl	$-28     	;abs 0xa0c6
+  {
+    sum2 += input_buf2[i];
+  }
+  int avg2 = sum2/size2;
+    a0e4:	1f 42 b4 03 	mov	&0x03b4,r15	
+    a0e8:	0e 4f       	mov	r15,	r14	
+    a0ea:	1f 44 f6 ff 	mov	-10(r4),r15	;0xfff6(r4)
+    a0ee:	b0 12 48 a1 	call	#0xa148	
+    a0f2:	84 4f fa ff 	mov	r15,	-6(r4)	;0xfffa(r4)
+
+  int avg = (avg1 + avg2) /2;
+    a0f6:	1f 44 f8 ff 	mov	-8(r4),	r15	;0xfff8(r4)
+    a0fa:	1f 54 fa ff 	add	-6(r4),	r15	;0xfffa(r4)
+    a0fe:	0f 93       	tst	r15		
+    a100:	01 34       	jge	$+4      	;abs 0xa104
+    a102:	1f 53       	inc	r15		
+    a104:	0f 11       	rra	r15		
+    a106:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+  return avg;
+    a10a:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+}
+    a10e:	31 50 0c 00 	add	#12,	r1	;#0x000c
+    a112:	34 41       	pop	r4		
+    a114:	30 41       	ret			
+
+0000a116 <putchar>:
+
+//--------------------------------------------------//
+//                 putChar function                 //
+//            (Send a byte to the Port-1)           //
+//--------------------------------------------------//
+int putchar (int txdata) {
+    a116:	04 12       	push	r4		
+    a118:	04 41       	mov	r1,	r4	
+    a11a:	24 53       	incd	r4		
+    a11c:	21 83       	decd	r1		
+    a11e:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+
+  // Write the output character to the Port-1
+  P1OUT  = txdata;
+    a122:	3f 40 21 00 	mov	#33,	r15	;#0x0021
+    a126:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    a12a:	4e 4e       	mov.b	r14,	r14	
+    a12c:	cf 4e 00 00 	mov.b	r14,	0(r15)	;0x0000(r15)
+
+  // Toggle Port-2[0] to signal new byte
+  P2OUT ^= 0x01;
+    a130:	3f 40 29 00 	mov	#41,	r15	;#0x0029
+    a134:	3e 40 29 00 	mov	#41,	r14	;#0x0029
+    a138:	6e 4e       	mov.b	@r14,	r14	
+    a13a:	5e e3       	xor.b	#1,	r14	;r3 As==01
+    a13c:	cf 4e 00 00 	mov.b	r14,	0(r15)	;0x0000(r15)
+
+  return 0;
+    a140:	0f 43       	clr	r15		
+}
+    a142:	21 53       	incd	r1		
+    a144:	34 41       	pop	r4		
+    a146:	30 41       	ret			
+
+0000a148 <__divhi3>:
+    a148:	0d 43       	clr	r13		
+    a14a:	0f 93       	tst	r15		
+    a14c:	04 34       	jge	$+10     	;abs 0xa156
+    a14e:	3d 40 03 00 	mov	#3,	r13	;#0x0003
+    a152:	3f e3       	inv	r15		
+    a154:	1f 53       	inc	r15		
+    a156:	0e 93       	tst	r14		
+    a158:	03 34       	jge	$+8      	;abs 0xa160
+    a15a:	5d e3       	xor.b	#1,	r13	;r3 As==01
+    a15c:	3e e3       	inv	r14		
+    a15e:	1e 53       	inc	r14		
+    a160:	0d 12       	push	r13		
+    a162:	b0 12 82 a1 	call	#0xa182	
+    a166:	3d 41       	pop	r13		
+    a168:	6d b3       	bit.b	#2,	r13	;r3 As==10
+    a16a:	02 24       	jz	$+6      	;abs 0xa170
+    a16c:	3e e3       	inv	r14		
+    a16e:	1e 53       	inc	r14		
+    a170:	5d b3       	bit.b	#1,	r13	;r3 As==01
+    a172:	02 24       	jz	$+6      	;abs 0xa178
+    a174:	3f e3       	inv	r15		
+    a176:	1f 53       	inc	r15		
+    a178:	30 41       	ret			
+
+0000a17a <__modhi3>:
+    a17a:	b0 12 48 a1 	call	#0xa148	
+    a17e:	0f 4e       	mov	r14,	r15	
+    a180:	30 41       	ret			
+
+0000a182 <__udivhi3>:
+    a182:	7c 40 10 00 	mov.b	#16,	r12	;#0x0010
+    a186:	0d 4e       	mov	r14,	r13	
+    a188:	0e 43       	clr	r14		
+    a18a:	0f 5f       	rla	r15		
+    a18c:	0e 6e       	rlc	r14		
+    a18e:	0e 9d       	cmp	r13,	r14	
+    a190:	02 28       	jnc	$+6      	;abs 0xa196
+    a192:	0e 8d       	sub	r13,	r14	
+    a194:	1f d3       	bis	#1,	r15	;r3 As==01
+    a196:	1c 83       	dec	r12		
+    a198:	f8 23       	jnz	$-14     	;abs 0xa18a
+    a19a:	30 41       	ret			
+
+0000a19c <__umodhi3>:
+    a19c:	b0 12 82 a1 	call	#0xa182	
+    a1a0:	0f 4e       	mov	r14,	r15	
+    a1a2:	30 41       	ret			
+
+0000a1a4 <_unexpected_>:
+    a1a4:	00 13       	reti			
+
+0000a1a6 <__stop_progExec__>:
+    a1a6:	32 d0 f0 00 	bis	#240,	r2	;#0x00f0
+    a1aa:	fd 3f       	jmp	$-4      	;abs 0xa1a6
+
+Disassembly of section .vectors:
+
+0000ffe0 <__ivtbl_16>:
+    ffe0:	70 a0 70 a0 70 a0 70 a0 70 a0 70 a0 70 a0 70 a0     p.p.p.p.p.p.p.p.
+    fff0:	70 a0 70 a0 70 a0 70 a0 70 a0 70 a0 70 a0 00 a0     p.p.p.p.p.p.p...

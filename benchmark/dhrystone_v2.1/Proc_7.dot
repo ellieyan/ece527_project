@@ -1,0 +1,66 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t19" [label="  %t19 = alloca i32, align 4"]
+"t20" [label="  %t20 = alloca i32, align 4"]
+"t21" [label="  %t21 = alloca i32, align 4"]
+"t22" [label="  %t22 = alloca i32*, align 8"]
+"Int_Loc" [label="  %Int_Loc = alloca i32, align 4"]
+"_1" [label="  store i32 %Int_1_Par_Val, i32* %t20, align 4"]
+"_2" [label="  store i32 %Int_2_Par_Val, i32* %t21, align 4"]
+"_3" [label="  store i32* %Int_Par_Ref, i32** %t22, align 8"]
+"t23" [label="  %t23 = load i32* %t20, align 4"]
+"t24" [label="  %t24 = add nsw i32 %t23, 2"]
+"_4" [label="  store i32 %t24, i32* %Int_Loc, align 4"]
+"t25" [label="  %t25 = load i32* %t21, align 4"]
+"t26" [label="  %t26 = load i32* %Int_Loc, align 4"]
+"t27" [label="  %t27 = add nsw i32 %t25, %t26"]
+"t28" [label="  %t28 = load i32** %t22, align 8"]
+"_5" [label="  store i32 %t27, i32* %t28, align 4"]
+"t29" [label="  %t29 = load i32* %t19"]
+"_6" [label="  ret i32 %t29"]
+"unk_block_1" -> "t19"[color=red]
+"i32 1" -> "t19"
+"t19" -> "t20"[color=red weight=2]
+"i32 1" -> "t20"
+"t20" -> "t21"[color=red weight=2]
+"i32 1" -> "t21"
+"t21" -> "t22"[color=red weight=2]
+"i32 1" -> "t22"
+"t22" -> "Int_Loc"[color=red weight=2]
+"i32 1" -> "Int_Loc"
+"Int_Loc" -> "_1"[color=red weight=2]
+"Int_1_Par_Val" -> "_1"
+"t20" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"Int_2_Par_Val" -> "_2"
+"t21" -> "_2"
+"_2" -> "_3"[color=red weight=2]
+"Int_Par_Ref" -> "_3"
+"t22" -> "_3"
+"_3" -> "t23"[color=red weight=2]
+"t20" -> "t23"
+"t23" -> "t24"[color=red weight=2]
+"t23" -> "t24"
+"i32 2" -> "t24"
+"t24" -> "_4"[color=red weight=2]
+"t24" -> "_4"
+"Int_Loc" -> "_4"
+"_4" -> "t25"[color=red weight=2]
+"t21" -> "t25"
+"t25" -> "t26"[color=red weight=2]
+"Int_Loc" -> "t26"
+"t26" -> "t27"[color=red weight=2]
+"t25" -> "t27"
+"t26" -> "t27"
+"t27" -> "t28"[color=red weight=2]
+"t22" -> "t28"
+"t28" -> "_5"[color=red weight=2]
+"t27" -> "_5"
+"t28" -> "_5"
+"_5" -> "t29"[color=red weight=2]
+"t19" -> "t29"
+"t29" -> "_6"[color=red weight=2]
+"t29" -> "_6"
+
+}

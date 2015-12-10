@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for f in *.c
+do
+	base1=${f%.c}
+	clang-3.5 -S -emit-llvm $f
+	/home/ludao822/research/527_project/graph-llvm-ir/graph-llvm-ir ${base1}.ll
+done
+
+/home/ludao822/research/527_project/benchmark/PDFgen

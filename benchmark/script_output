@@ -1,0 +1,18 @@
+div :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/div/modified_9_hier/new_vcd.vcd -t { 2825500 2850950 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+binSearch :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/binSearch/modified_9_hier/new_vcd.vcd -t { 2955800 3070250 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+inSort :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/inSort/modified_9_hier/new_vcd.vcd -t { 2944750 3643100 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+intFilt :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/intFilt/modified_9_hier/new_vcd.vcd -t { 3157400 8550150 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+intAVG :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/intAVG/modified_9_hier/new_vcd.vcd -t { 2967800 3266100 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+mult :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/mult/modified_9_hier/new_vcd.vcd -t { 3338850 3342400 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+rle :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/rle/modified_9_hier/new_vcd.vcd -t { 2827150 3088750 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+tHold :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/tHold/modified_9_hier/new_vcd.vcd -t { 3151100 3850800 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c
+tea8 :
+read_vcd /scratch/cheru007/msp430/core/sim/rtl_sim/src-c/tea8/modified_9_hier/new_vcd.vcd -t { 2826500 2928050 } -strip_path tb_openMSP430/dut /scratch/cheru007/msp430/core/sim/rtl_sim/src-c

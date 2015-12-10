@@ -1,0 +1,35 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"_1" [label="  store volatile i32 23168, i32* inttoptr (i64 288 to i32*), align 4"]
+"t83" [label="  %t83 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([17 x i8]* @.str1, i32 0, i32 0))"]
+"_2" [label="  store volatile i8 1, i8* inttoptr (i64 25 to i8*), align 1"]
+"_3" [label="  call void @run_bm()"]
+"_4" [label="  store volatile i8 0, i8* inttoptr (i64 25 to i8*), align 1"]
+"t84" [label="  %t84 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([16 x i8]* @.str2, i32 0, i32 0))"]
+"_5" [label="  store volatile i8 1, i8* inttoptr (i64 29 to i8*), align 1"]
+"_6" [label="  ret i32 0"]
+"unk_block_1" -> "_1"[color=red]
+"i32 23168" -> "_1"
+"i32* inttoptr (i64 288 to i32*)" -> "_1"
+"_1" -> "t83"[color=red weight=2]
+"i8* getelementptr inbounds ([17 x i8]* @.str1, i32 0, i32 0)" -> "t83"
+"printf" -> "t83"
+"t83" -> "_2"[color=red weight=2]
+"i8 1" -> "_2"
+"i8* inttoptr (i64 25 to i8*)" -> "_2"
+"_2" -> "_3"[color=red weight=2]
+"run_bm" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+"i8 0" -> "_4"
+"i8* inttoptr (i64 25 to i8*)" -> "_4"
+"_4" -> "t84"[color=red weight=2]
+"i8* getelementptr inbounds ([16 x i8]* @.str2, i32 0, i32 0)" -> "t84"
+"printf" -> "t84"
+"t84" -> "_5"[color=red weight=2]
+"i8 1" -> "_5"
+"i8* inttoptr (i64 29 to i8*)" -> "_5"
+"_5" -> "_6"[color=red weight=2]
+"i32 0" -> "_6"
+
+}

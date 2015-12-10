@@ -1,0 +1,42 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t1" [label="  %t1 = alloca i32, align 4"]
+"_1" [label="  store i32 %txdata, i32* %t1, align 4"]
+"t2" [label="  %t2 = load i32* %t1, align 4"]
+"t3" [label="  %t3 = trunc i32 %t2 to i8"]
+"_2" [label="  store volatile i8 %t3, i8* inttoptr (i64 33 to i8*), align 1"]
+"t4" [label="  %t4 = load volatile i8* inttoptr (i64 41 to i8*), align 1"]
+"t5" [label="  %t5 = zext i8 %t4 to i32"]
+"t6" [label="  %t6 = xor i32 %t5, 1"]
+"t7" [label="  %t7 = trunc i32 %t6 to i8"]
+"_3" [label="  store volatile i8 %t7, i8* inttoptr (i64 41 to i8*), align 1"]
+"_4" [label="  ret i32 0"]
+"unk_block_1" -> "t1"[color=red]
+"i32 1" -> "t1"
+"t1" -> "_1"[color=red weight=2]
+"txdata" -> "_1"
+"t1" -> "_1"
+"_1" -> "t2"[color=red weight=2]
+"t1" -> "t2"
+"t2" -> "t3"[color=red weight=2]
+"t2" -> "t3"
+"t3" -> "_2"[color=red weight=2]
+"t3" -> "_2"
+"i8* inttoptr (i64 33 to i8*)" -> "_2"
+"_2" -> "t4"[color=red weight=2]
+"i8* inttoptr (i64 41 to i8*)" -> "t4"
+"t4" -> "t5"[color=red weight=2]
+"t4" -> "t5"
+"t5" -> "t6"[color=red weight=2]
+"t5" -> "t6"
+"i32 1" -> "t6"
+"t6" -> "t7"[color=red weight=2]
+"t6" -> "t7"
+"t7" -> "_3"[color=red weight=2]
+"t7" -> "_3"
+"i8* inttoptr (i64 41 to i8*)" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+"i32 0" -> "_4"
+
+}

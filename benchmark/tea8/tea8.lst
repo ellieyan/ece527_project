@@ -1,0 +1,603 @@
+
+tea8.elf:     file format elf32-msp430
+
+SYMBOL TABLE:
+0000a000 l    d  .text	00000000 .text
+00000200 l    d  .bss	00000000 .bss
+0000ffe0 l    d  .vectors	00000000 .vectors
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+0000160e l    d  .noinit.crt0	00000000 .noinit.crt0
+00000000 l    df *ABS*	00000000 tea8.c
+0000a068 l       .text	00000000 __br_unexpected_
+00000000 l    df *ABS*	00000000 omsp_func.c
+00000000 l    df *ABS*	00000000 malloc.c
+00000202 l     O .bss	00000001 once.1402
+00000204 g     O .bss	00000004 Microseconds
+0000a2d8 g     F .text	00000032 putchar
+00000000 g       *ABS*	00000000 __data_size
+0000a068  w      .text	00000000 __isr_14
+00000208 g     O .bss	00000004 Dhrystones_Per_Second
+0000a168 g     F .text	000000f2 decrypt
+0000a068  w      .text	00000000 __isr_4
+00000138 g       *ABS*	00000000 __OP2
+0000020c g     O .bss	00000004 User_Time
+00000210 g     O .bss	00000004 Begin_Time
+00000130 g       *ABS*	00000000 __MPY
+0000013a g       *ABS*	00000000 __RESLO
+00000136 g       *ABS*	00000000 __MACS
+0000a426 g       *ABS*	00000000 _etext
+0000140e g       *ABS*	00000000 __bss_size
+0000a000  w      .text	00000000 __watchdog_support
+0000a420  w      .text	00000000 __stop_progExec__
+0000a068  w      .text	00000000 __isr_11
+0000a30a g     F .text	0000010c malloc
+00000214 g     O .bss	00001388 Arr_2_Glob
+0000a068  w      .text	00000000 __isr_5
+0000a426 g       *ABS*	00000000 __data_load_start
+0000a068 g       .text	00000000 __dtors_end
+0000160e g       .bss	00000000 __bss_end
+0000a068  w      .text	00000000 __isr_2
+0000159c g     O .bss	00000004 End_Time
+0000a068  w      .text	00000000 __isr_10
+000015a0 g     O .bss	00000002 Next_Ptr_Glob
+0000013c g       *ABS*	00000000 __RESHI
+0000160e g     O .noinit.crt0	00000002 __wdt_clear_value
+0000a068  w      .text	00000000 __isr_7
+0000ffe0 g     O .vectors	00000020 __ivtbl_16
+0000a068  w      .text	00000000 __isr_0
+0000a028  w      .text	00000000 __do_clear_bss
+00000200 g     O .bss	00000002 Reg
+0000a25a g     F .text	0000007e run_bm
+000015a2 g     O .bss	00000002 Int_Glob
+000015a4 g     O .bss	00000001 Ch_1_Glob
+0000a41e  w      .text	00000000 _unexpected_
+0000a068  w      .text	00000000 __isr_8
+000015a5 g     O .bss	00000001 Ch_2_Glob
+0000a068  w      .text	00000000 __isr_3
+000015a6 g     O .bss	00000002 Ptr_Glob
+0000a06c g     F .text	000000fc encrypt
+0000a000  w      .text	00000000 _reset_vector__
+0000a068 g       .text	00000000 __ctors_start
+0000a068  w      .text	00000000 __isr_12
+0000a010  w      .text	00000000 __do_copy_data
+00000200 g       .bss	00000000 __bss_start
+0000a03e g     F .text	0000002a main
+0000a068  w      .text	00000000 __isr_13
+00010000 g       .vectors	00000000 _vectors_end
+0000a068  w      .text	00000000 __isr_9
+0000a00c  w      .text	00000000 __init_stack
+0000a068 g       .text	00000000 __dtors_start
+0000a068  w      .text	00000000 __isr_6
+0000a068 g       .text	00000000 __ctors_end
+00000132 g       *ABS*	00000000 __MPYS
+00004200 g       *ABS*	00000000 __stack
+0000a068  w      .text	00000000 __isr_1
+00000200 g       .text	00000000 _edata
+0000160e g       .bss	00000000 _end
+000015a8 g     O .bss	00000064 Arr_1_Glob
+00000134 g       *ABS*	00000000 __MAC
+0000a420  w      .text	00000000 _endless_loop__
+0000a010  w      .text	00000000 __low_level_init
+0000160c g     O .bss	00000002 Bool_Glob
+00000200 g       .text	00000000 __data_start
+00000120 g       *ABS*	00000000 __WDTCTL
+0000013e g       *ABS*	00000000 __SUMEXT
+0000a416 g     F .text	00000008 free
+
+
+
+Disassembly of section .text:
+
+0000a000 <__watchdog_support>:
+    a000:	55 42 20 01 	mov.b	&0x0120,r5	
+    a004:	35 d0 08 5a 	bis	#23048,	r5	;#0x5a08
+    a008:	82 45 0e 16 	mov	r5,	&0x160e	
+
+0000a00c <__init_stack>:
+    a00c:	31 40 00 42 	mov	#16896,	r1	;#0x4200
+
+0000a010 <__do_copy_data>:
+    a010:	3f 40 00 00 	mov	#0,	r15	;#0x0000
+    a014:	0f 93       	tst	r15		
+    a016:	08 24       	jz	$+18     	;abs 0xa028
+    a018:	92 42 0e 16 	mov	&0x160e,&0x0120	
+    a01c:	20 01 
+    a01e:	2f 83       	decd	r15		
+    a020:	9f 4f 26 a4 	mov	-23514(r15),512(r15);0xa426(r15), 0x0200(r15)
+    a024:	00 02 
+    a026:	f8 23       	jnz	$-14     	;abs 0xa018
+
+0000a028 <__do_clear_bss>:
+    a028:	3f 40 0e 14 	mov	#5134,	r15	;#0x140e
+    a02c:	0f 93       	tst	r15		
+    a02e:	07 24       	jz	$+16     	;abs 0xa03e
+    a030:	92 42 0e 16 	mov	&0x160e,&0x0120	
+    a034:	20 01 
+    a036:	1f 83       	dec	r15		
+    a038:	cf 43 00 02 	mov.b	#0,	512(r15);r3 As==00, 0x0200(r15)
+    a03c:	f9 23       	jnz	$-12     	;abs 0xa030
+
+0000a03e <main>:
+}
+
+int main ()
+/*****/
+
+{
+    a03e:	04 41       	mov	r1,	r4	
+    a040:	24 53       	incd	r4		
+  STOP_WATCHDOG;
+    a042:	3f 40 20 01 	mov	#288,	r15	;#0x0120
+    a046:	bf 40 80 5a 	mov	#23168,	0(r15)	;#0x5a80, 0x0000(r15)
+    a04a:	00 00 
+  //printf ("Execution starts \n");
+  START_TIME;  // Set P3[0]
+    a04c:	3f 40 19 00 	mov	#25,	r15	;#0x0019
+    a050:	df 43 00 00 	mov.b	#1,	0(r15)	;r3 As==01, 0x0000(r15)
+
+  run_bm();
+    a054:	b0 12 5a a2 	call	#0xa25a	
+
+  END_TIME;  // Clear P3[0]
+    a058:	3f 40 19 00 	mov	#25,	r15	;#0x0019
+    a05c:	cf 43 00 00 	mov.b	#0,	0(r15)	;r3 As==00, 0x0000(r15)
+  //printf ("Execution ends\n");
+  DHRYSTONE_DONE;
+    a060:	3f 40 1d 00 	mov	#29,	r15	;#0x001d
+    a064:	df 43 00 00 	mov.b	#1,	0(r15)	;r3 As==01, 0x0000(r15)
+
+0000a068 <__ctors_end>:
+    a068:	30 40 1e a4 	br	#0xa41e	
+
+0000a06c <encrypt>:
+                User_Time;
+float           Microseconds,
+                Dhrystones_Per_Second;
+
+
+void encrypt (short* v, short* k) {
+    a06c:	04 12       	push	r4		
+    a06e:	04 41       	mov	r1,	r4	
+    a070:	24 53       	incd	r4		
+    a072:	31 50 ea ff 	add	#-22,	r1	;#0xffea
+    a076:	84 4f fa ff 	mov	r15,	-6(r4)	;0xfffa(r4)
+    a07a:	84 4e fc ff 	mov	r14,	-4(r4)	;0xfffc(r4)
+    short v0=v[0], v1=v[1],  i;           /* set up */
+    a07e:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a082:	a4 4f e8 ff 	mov	@r15,	-24(r4)	;0xffe8(r4)
+    a086:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a08a:	94 4f 02 00 	mov	2(r15),	-22(r4)	;0x0002(r15), 0xffea(r4)
+    a08e:	ea ff 
+    uint16_t delta=0x0A00, sum = 0;                     /* a key schedule constant */
+    a090:	b4 40 00 0a 	mov	#2560,	-16(r4)	;#0x0a00, 0xfff0(r4)
+    a094:	f0 ff 
+    a096:	84 43 ee ff 	mov	#0,	-18(r4)	;r3 As==00, 0xffee(r4)
+    short k0=k[0], k1=k[1], k2=k[2], k3=k[3];   /* cache key */
+    a09a:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a09e:	a4 4f f2 ff 	mov	@r15,	-14(r4)	;0xfff2(r4)
+    a0a2:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a0a6:	94 4f 02 00 	mov	2(r15),	-12(r4)	;0x0002(r15), 0xfff4(r4)
+    a0aa:	f4 ff 
+    a0ac:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a0b0:	94 4f 04 00 	mov	4(r15),	-10(r4)	;0x0004(r15), 0xfff6(r4)
+    a0b4:	f6 ff 
+    a0b6:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a0ba:	94 4f 06 00 	mov	6(r15),	-8(r4)	;0x0006(r15), 0xfff8(r4)
+    a0be:	f8 ff 
+    for (i=0; i < 8; i++) {                       /* basic cycle start */
+    a0c0:	84 43 ec ff 	mov	#0,	-20(r4)	;r3 As==00, 0xffec(r4)
+    a0c4:	3f 3c       	jmp	$+128    	;abs 0xa144
+        sum += delta;
+    a0c6:	94 54 f0 ff 	add	-16(r4),-18(r4)	;0xfff0(r4), 0xffee(r4)
+    a0ca:	ee ff 
+        v0 += ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
+    a0cc:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a0d0:	0f 5f       	rla	r15		
+    a0d2:	0f 5f       	rla	r15		
+    a0d4:	0f 5f       	rla	r15		
+    a0d6:	0f 5f       	rla	r15		
+    a0d8:	1f 54 f2 ff 	add	-14(r4),r15	;0xfff2(r4)
+    a0dc:	0e 4f       	mov	r15,	r14	
+    a0de:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a0e2:	1f 54 ee ff 	add	-18(r4),r15	;0xffee(r4)
+    a0e6:	0e ef       	xor	r15,	r14	
+    a0e8:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a0ec:	0f 11       	rra	r15		
+    a0ee:	0f 11       	rra	r15		
+    a0f0:	0f 11       	rra	r15		
+    a0f2:	0f 11       	rra	r15		
+    a0f4:	0f 11       	rra	r15		
+    a0f6:	1f 54 f4 ff 	add	-12(r4),r15	;0xfff4(r4)
+    a0fa:	0e ef       	xor	r15,	r14	
+    a0fc:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a100:	0f 5e       	add	r14,	r15	
+    a102:	84 4f e8 ff 	mov	r15,	-24(r4)	;0xffe8(r4)
+        v1 += ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
+    a106:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a10a:	0f 5f       	rla	r15		
+    a10c:	0f 5f       	rla	r15		
+    a10e:	0f 5f       	rla	r15		
+    a110:	0f 5f       	rla	r15		
+    a112:	1f 54 f6 ff 	add	-10(r4),r15	;0xfff6(r4)
+    a116:	0e 4f       	mov	r15,	r14	
+    a118:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a11c:	1f 54 ee ff 	add	-18(r4),r15	;0xffee(r4)
+    a120:	0e ef       	xor	r15,	r14	
+    a122:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a126:	0f 11       	rra	r15		
+    a128:	0f 11       	rra	r15		
+    a12a:	0f 11       	rra	r15		
+    a12c:	0f 11       	rra	r15		
+    a12e:	0f 11       	rra	r15		
+    a130:	1f 54 f8 ff 	add	-8(r4),	r15	;0xfff8(r4)
+    a134:	0e ef       	xor	r15,	r14	
+    a136:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a13a:	0f 5e       	add	r14,	r15	
+    a13c:	84 4f ea ff 	mov	r15,	-22(r4)	;0xffea(r4)
+
+void encrypt (short* v, short* k) {
+    short v0=v[0], v1=v[1],  i;           /* set up */
+    uint16_t delta=0x0A00, sum = 0;                     /* a key schedule constant */
+    short k0=k[0], k1=k[1], k2=k[2], k3=k[3];   /* cache key */
+    for (i=0; i < 8; i++) {                       /* basic cycle start */
+    a140:	94 53 ec ff 	inc	-20(r4)	;0xffec(r4)
+    a144:	b4 92 ec ff 	cmp	#8,	-20(r4)	;r2 As==11, 0xffec(r4)
+    a148:	be 3b       	jl	$-130    	;abs 0xa0c6
+        sum += delta;
+        v0 += ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
+        v1 += ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
+    }                                              /* end cycle */
+    v[0]=v0; v[1]=v1;
+    a14a:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a14e:	9f 44 e8 ff 	mov	-24(r4),0(r15)	;0xffe8(r4), 0x0000(r15)
+    a152:	00 00 
+    a154:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a158:	2f 53       	incd	r15		
+    a15a:	9f 44 ea ff 	mov	-22(r4),0(r15)	;0xffea(r4), 0x0000(r15)
+    a15e:	00 00 
+}
+    a160:	31 50 16 00 	add	#22,	r1	;#0x0016
+    a164:	34 41       	pop	r4		
+    a166:	30 41       	ret			
+
+0000a168 <decrypt>:
+
+void decrypt (short* v, short* k) {
+    a168:	04 12       	push	r4		
+    a16a:	04 41       	mov	r1,	r4	
+    a16c:	24 53       	incd	r4		
+    a16e:	31 50 ea ff 	add	#-22,	r1	;#0xffea
+    a172:	84 4f fa ff 	mov	r15,	-6(r4)	;0xfffa(r4)
+    a176:	84 4e fc ff 	mov	r14,	-4(r4)	;0xfffc(r4)
+    short v0=v[0], v1=v[1], sum=0x5000, i;    /* set up                  */
+    a17a:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a17e:	a4 4f e8 ff 	mov	@r15,	-24(r4)	;0xffe8(r4)
+    a182:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a186:	94 4f 02 00 	mov	2(r15),	-22(r4)	;0x0002(r15), 0xffea(r4)
+    a18a:	ea ff 
+    a18c:	b4 40 00 50 	mov	#20480,	-20(r4)	;#0x5000, 0xffec(r4)
+    a190:	ec ff 
+    short delta=0x0A00;                       /* a key schedule constant */
+    a192:	b4 40 00 0a 	mov	#2560,	-16(r4)	;#0x0a00, 0xfff0(r4)
+    a196:	f0 ff 
+    short k0=k[0], k1=k[1], k2=k[2], k3=k[3]; /* cache key               */
+    a198:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a19c:	a4 4f f2 ff 	mov	@r15,	-14(r4)	;0xfff2(r4)
+    a1a0:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a1a4:	94 4f 02 00 	mov	2(r15),	-12(r4)	;0x0002(r15), 0xfff4(r4)
+    a1a8:	f4 ff 
+    a1aa:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a1ae:	94 4f 04 00 	mov	4(r15),	-10(r4)	;0x0004(r15), 0xfff6(r4)
+    a1b2:	f6 ff 
+    a1b4:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a1b8:	94 4f 06 00 	mov	6(r15),	-8(r4)	;0x0006(r15), 0xfff8(r4)
+    a1bc:	f8 ff 
+    for (i=0; i<8; i++) {                     /* basic cycle start       */
+    a1be:	84 43 ee ff 	mov	#0,	-18(r4)	;r3 As==00, 0xffee(r4)
+    a1c2:	39 3c       	jmp	$+116    	;abs 0xa236
+        v1 -= ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
+    a1c4:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a1c8:	0f 5f       	rla	r15		
+    a1ca:	0f 5f       	rla	r15		
+    a1cc:	0f 5f       	rla	r15		
+    a1ce:	0f 5f       	rla	r15		
+    a1d0:	0e 4f       	mov	r15,	r14	
+    a1d2:	1e 54 f6 ff 	add	-10(r4),r14	;0xfff6(r4)
+    a1d6:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a1da:	1f 54 ec ff 	add	-20(r4),r15	;0xffec(r4)
+    a1de:	0e ef       	xor	r15,	r14	
+    a1e0:	1f 44 e8 ff 	mov	-24(r4),r15	;0xffe8(r4)
+    a1e4:	0f 11       	rra	r15		
+    a1e6:	0f 11       	rra	r15		
+    a1e8:	0f 11       	rra	r15		
+    a1ea:	0f 11       	rra	r15		
+    a1ec:	0f 11       	rra	r15		
+    a1ee:	1f 54 f8 ff 	add	-8(r4),	r15	;0xfff8(r4)
+    a1f2:	0f ee       	xor	r14,	r15	
+    a1f4:	84 8f ea ff 	sub	r15,	-22(r4)	;0xffea(r4)
+        v0 -= ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
+    a1f8:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a1fc:	0f 5f       	rla	r15		
+    a1fe:	0f 5f       	rla	r15		
+    a200:	0f 5f       	rla	r15		
+    a202:	0f 5f       	rla	r15		
+    a204:	0e 4f       	mov	r15,	r14	
+    a206:	1e 54 f2 ff 	add	-14(r4),r14	;0xfff2(r4)
+    a20a:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a20e:	1f 54 ec ff 	add	-20(r4),r15	;0xffec(r4)
+    a212:	0e ef       	xor	r15,	r14	
+    a214:	1f 44 ea ff 	mov	-22(r4),r15	;0xffea(r4)
+    a218:	0f 11       	rra	r15		
+    a21a:	0f 11       	rra	r15		
+    a21c:	0f 11       	rra	r15		
+    a21e:	0f 11       	rra	r15		
+    a220:	0f 11       	rra	r15		
+    a222:	1f 54 f4 ff 	add	-12(r4),r15	;0xfff4(r4)
+    a226:	0f ee       	xor	r14,	r15	
+    a228:	84 8f e8 ff 	sub	r15,	-24(r4)	;0xffe8(r4)
+        sum -= delta;
+    a22c:	94 84 f0 ff 	sub	-16(r4),-20(r4)	;0xfff0(r4), 0xffec(r4)
+    a230:	ec ff 
+
+void decrypt (short* v, short* k) {
+    short v0=v[0], v1=v[1], sum=0x5000, i;    /* set up                  */
+    short delta=0x0A00;                       /* a key schedule constant */
+    short k0=k[0], k1=k[1], k2=k[2], k3=k[3]; /* cache key               */
+    for (i=0; i<8; i++) {                     /* basic cycle start       */
+    a232:	94 53 ee ff 	inc	-18(r4)	;0xffee(r4)
+    a236:	b4 92 ee ff 	cmp	#8,	-18(r4)	;r2 As==11, 0xffee(r4)
+    a23a:	c4 3b       	jl	$-118    	;abs 0xa1c4
+        v1 -= ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
+        v0 -= ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
+        sum -= delta;
+    }                                          /* end cycle */
+    v[0]=v0; v[1]=v1;
+    a23c:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a240:	9f 44 e8 ff 	mov	-24(r4),0(r15)	;0xffe8(r4), 0x0000(r15)
+    a244:	00 00 
+    a246:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a24a:	2f 53       	incd	r15		
+    a24c:	9f 44 ea ff 	mov	-22(r4),0(r15)	;0xffea(r4), 0x0000(r15)
+    a250:	00 00 
+}
+    a252:	31 50 16 00 	add	#22,	r1	;#0x0016
+    a256:	34 41       	pop	r4		
+    a258:	30 41       	ret			
+
+0000a25a <run_bm>:
+
+void run_bm()
+{
+    a25a:	04 12       	push	r4		
+    a25c:	04 41       	mov	r1,	r4	
+    a25e:	24 53       	incd	r4		
+    a260:	21 82       	sub	#4,	r1	;r2 As==10
+  short *v, *k;
+  v = (short *) malloc (2* sizeof(short));
+    a262:	2f 42       	mov	#4,	r15	;r2 As==10
+    a264:	b0 12 0a a3 	call	#0xa30a	
+    a268:	84 4f fa ff 	mov	r15,	-6(r4)	;0xfffa(r4)
+  k = (short *) malloc (4* sizeof(short));
+    a26c:	3f 42       	mov	#8,	r15	;r2 As==11
+    a26e:	b0 12 0a a3 	call	#0xa30a	
+    a272:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+  v[0] = 0x00; v[1] = 0xff;
+    a276:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a27a:	8f 43 00 00 	mov	#0,	0(r15)	;r3 As==00, 0x0000(r15)
+    a27e:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a282:	2f 53       	incd	r15		
+    a284:	bf 40 ff 00 	mov	#255,	0(r15)	;#0x00ff, 0x0000(r15)
+    a288:	00 00 
+  k[0] = 0x77; k[1] = 0x8c;
+    a28a:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a28e:	bf 40 77 00 	mov	#119,	0(r15)	;#0x0077, 0x0000(r15)
+    a292:	00 00 
+    a294:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a298:	2f 53       	incd	r15		
+    a29a:	bf 40 8c 00 	mov	#140,	0(r15)	;#0x008c, 0x0000(r15)
+    a29e:	00 00 
+  k[2] = 0xae; k[3] = 0x38;
+    a2a0:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a2a4:	2f 52       	add	#4,	r15	;r2 As==10
+    a2a6:	bf 40 ae 00 	mov	#174,	0(r15)	;#0x00ae, 0x0000(r15)
+    a2aa:	00 00 
+    a2ac:	1f 44 fc ff 	mov	-4(r4),	r15	;0xfffc(r4)
+    a2b0:	3f 50 06 00 	add	#6,	r15	;#0x0006
+    a2b4:	bf 40 38 00 	mov	#56,	0(r15)	;#0x0038, 0x0000(r15)
+    a2b8:	00 00 
+  //printf("v0 is %x and v1 is %x \n", v[0], v[1]);
+  encrypt(v,k);
+    a2ba:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    a2be:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a2c2:	b0 12 6c a0 	call	#0xa06c	
+  //printf("v0 is %x and v1 is %x \n", v[0], v[1]);
+  decrypt(v,k);
+    a2c6:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    a2ca:	1f 44 fa ff 	mov	-6(r4),	r15	;0xfffa(r4)
+    a2ce:	b0 12 68 a1 	call	#0xa168	
+  //printf("v0 is %x and v1 is %x \n", v[0], v[1]);
+}
+    a2d2:	21 52       	add	#4,	r1	;r2 As==10
+    a2d4:	34 41       	pop	r4		
+    a2d6:	30 41       	ret			
+
+0000a2d8 <putchar>:
+
+//--------------------------------------------------//
+//                 putChar function                 //
+//            (Send a byte to the Port-1)           //
+//--------------------------------------------------//
+int putchar (int txdata) {
+    a2d8:	04 12       	push	r4		
+    a2da:	04 41       	mov	r1,	r4	
+    a2dc:	24 53       	incd	r4		
+    a2de:	21 83       	decd	r1		
+    a2e0:	84 4f fc ff 	mov	r15,	-4(r4)	;0xfffc(r4)
+
+  // Write the output character to the Port-1
+  P1OUT  = txdata;
+    a2e4:	3f 40 21 00 	mov	#33,	r15	;#0x0021
+    a2e8:	1e 44 fc ff 	mov	-4(r4),	r14	;0xfffc(r4)
+    a2ec:	4e 4e       	mov.b	r14,	r14	
+    a2ee:	cf 4e 00 00 	mov.b	r14,	0(r15)	;0x0000(r15)
+
+  // Toggle Port-2[0] to signal new byte
+  P2OUT ^= 0x01;
+    a2f2:	3f 40 29 00 	mov	#41,	r15	;#0x0029
+    a2f6:	3e 40 29 00 	mov	#41,	r14	;#0x0029
+    a2fa:	6e 4e       	mov.b	@r14,	r14	
+    a2fc:	5e e3       	xor.b	#1,	r14	;r3 As==01
+    a2fe:	cf 4e 00 00 	mov.b	r14,	0(r15)	;0x0000(r15)
+
+  return 0;
+    a302:	0f 43       	clr	r15		
+}
+    a304:	21 53       	incd	r1		
+    a306:	34 41       	pop	r4		
+    a308:	30 41       	ret			
+
+0000a30a <malloc>:
+    a30a:	0b 12       	push	r11		
+    a30c:	0a 12       	push	r10		
+    a30e:	09 12       	push	r9		
+    a310:	08 12       	push	r8		
+    a312:	07 12       	push	r7		
+    a314:	06 12       	push	r6		
+    a316:	05 12       	push	r5		
+    a318:	04 12       	push	r4		
+    a31a:	3d 40 0f 16 	mov	#5647,	r13	;#0x160f
+    a31e:	3d f0 fe ff 	and	#-2,	r13	;#0xfffe
+    a322:	c2 93 02 02 	tst.b	&0x0202	
+    a326:	05 20       	jnz	$+12     	;abs 0xa332
+    a328:	d2 43 02 02 	mov.b	#1,	&0x0202	;r3 As==01
+    a32c:	bd 40 fe ff 	mov	#-2,	0(r13)	;#0xfffe, 0x0000(r13)
+    a330:	00 00 
+    a332:	0a 41       	mov	r1,	r10	
+    a334:	3a 50 d8 ff 	add	#-40,	r10	;#0xffd8
+    a338:	0c 4f       	mov	r15,	r12	
+    a33a:	1c 53       	inc	r12		
+    a33c:	12 c3       	clrc			
+    a33e:	0c 10       	rrc	r12		
+    a340:	03 3c       	jmp	$+8      	;abs 0xa348
+    a342:	1e 53       	inc	r14		
+    a344:	0e 5e       	rla	r14		
+    a346:	0d 5e       	add	r14,	r13	
+    a348:	2f 4d       	mov	@r13,	r15	
+    a34a:	0e 4f       	mov	r15,	r14	
+    a34c:	12 c3       	clrc			
+    a34e:	0e 10       	rrc	r14		
+    a350:	55 43       	mov.b	#1,	r5	;r3 As==01
+    a352:	3e 90 ff 7f 	cmp	#32767,	r14	;#0x7fff
+    a356:	01 24       	jz	$+4      	;abs 0xa35a
+    a358:	45 43       	clr.b	r5		
+    a35a:	1f f3       	and	#1,	r15	;r3 As==01
+    a35c:	50 20       	jnz	$+162    	;abs 0xa3fe
+    a35e:	45 93       	tst.b	r5		
+    a360:	16 24       	jz	$+46     	;abs 0xa38e
+    a362:	08 4a       	mov	r10,	r8	
+    a364:	0e 4a       	mov	r10,	r14	
+    a366:	8e 10       	swpb	r14		
+    a368:	8e 11       	sxt	r14		
+    a36a:	8e 10       	swpb	r14		
+    a36c:	8e 11       	sxt	r14		
+    a36e:	09 4e       	mov	r14,	r9	
+    a370:	06 4d       	mov	r13,	r6	
+    a372:	0e 4d       	mov	r13,	r14	
+    a374:	8e 10       	swpb	r14		
+    a376:	8e 11       	sxt	r14		
+    a378:	8e 10       	swpb	r14		
+    a37a:	8e 11       	sxt	r14		
+    a37c:	07 4e       	mov	r14,	r7	
+    a37e:	0e 48       	mov	r8,	r14	
+    a380:	0f 49       	mov	r9,	r15	
+    a382:	0e 86       	sub	r6,	r14	
+    a384:	0f 77       	subc	r7,	r15	
+    a386:	0f 11       	rra	r15		
+    a388:	0e 10       	rrc	r14		
+    a38a:	3e 53       	add	#-1,	r14	;r3 As==11
+    a38c:	18 3c       	jmp	$+50     	;abs 0xa3be
+    a38e:	04 4e       	mov	r14,	r4	
+    a390:	14 53       	inc	r4		
+    a392:	0b 44       	mov	r4,	r11	
+    a394:	0b 5b       	rla	r11		
+    a396:	0b 5d       	add	r13,	r11	
+    a398:	2f 4b       	mov	@r11,	r15	
+    a39a:	1f b3       	bit	#1,	r15	;r3 As==01
+    a39c:	10 20       	jnz	$+34     	;abs 0xa3be
+    a39e:	0e 4f       	mov	r15,	r14	
+    a3a0:	3e f0 fe ff 	and	#-2,	r14	;#0xfffe
+    a3a4:	3e 90 fe ff 	cmp	#-2,	r14	;#0xfffe
+    a3a8:	05 24       	jz	$+12     	;abs 0xa3b4
+    a3aa:	12 c3       	clrc			
+    a3ac:	0f 10       	rrc	r15		
+    a3ae:	0f 54       	add	r4,	r15	
+    a3b0:	0f 5f       	rla	r15		
+    a3b2:	02 3c       	jmp	$+6      	;abs 0xa3b8
+    a3b4:	3f 40 fe ff 	mov	#-2,	r15	;#0xfffe
+    a3b8:	8d 4f 00 00 	mov	r15,	0(r13)	;0x0000(r13)
+    a3bc:	c5 3f       	jmp	$-116    	;abs 0xa348
+    a3be:	0e 9c       	cmp	r12,	r14	
+    a3c0:	1e 28       	jnc	$+62     	;abs 0xa3fe
+    a3c2:	45 93       	tst.b	r5		
+    a3c4:	08 24       	jz	$+18     	;abs 0xa3d6
+    a3c6:	0f 4c       	mov	r12,	r15	
+    a3c8:	1f 53       	inc	r15		
+    a3ca:	0f 5f       	rla	r15		
+    a3cc:	0f 5d       	add	r13,	r15	
+    a3ce:	bf 40 fe ff 	mov	#-2,	0(r15)	;#0xfffe, 0x0000(r15)
+    a3d2:	00 00 
+    a3d4:	0d 3c       	jmp	$+28     	;abs 0xa3f0
+    a3d6:	0e 9c       	cmp	r12,	r14	
+    a3d8:	0b 24       	jz	$+24     	;abs 0xa3f0
+    a3da:	0f 4c       	mov	r12,	r15	
+    a3dc:	1f 53       	inc	r15		
+    a3de:	0f 5f       	rla	r15		
+    a3e0:	0f 5d       	add	r13,	r15	
+    a3e2:	0b 4c       	mov	r12,	r11	
+    a3e4:	3b e3       	inv	r11		
+    a3e6:	0b 5e       	add	r14,	r11	
+    a3e8:	8f 4b 00 00 	mov	r11,	0(r15)	;0x0000(r15)
+    a3ec:	af 5f 00 00 	add	@r15,	0(r15)	;0x0000(r15)
+    a3f0:	0c 5c       	rla	r12		
+    a3f2:	1c d3       	bis	#1,	r12	;r3 As==01
+    a3f4:	8d 4c 00 00 	mov	r12,	0(r13)	;0x0000(r13)
+    a3f8:	0f 4d       	mov	r13,	r15	
+    a3fa:	2f 53       	incd	r15		
+    a3fc:	03 3c       	jmp	$+8      	;abs 0xa404
+    a3fe:	45 93       	tst.b	r5		
+    a400:	a0 27       	jz	$-190    	;abs 0xa342
+    a402:	0f 43       	clr	r15		
+    a404:	34 41       	pop	r4		
+    a406:	35 41       	pop	r5		
+    a408:	36 41       	pop	r6		
+    a40a:	37 41       	pop	r7		
+    a40c:	38 41       	pop	r8		
+    a40e:	39 41       	pop	r9		
+    a410:	3a 41       	pop	r10		
+    a412:	3b 41       	pop	r11		
+    a414:	30 41       	ret			
+
+0000a416 <free>:
+    a416:	bf f0 fe ff 	and	#-2,	-2(r15)	;#0xfffe, 0xfffe(r15)
+    a41a:	fe ff 
+    a41c:	30 41       	ret			
+
+0000a41e <_unexpected_>:
+    a41e:	00 13       	reti			
+
+0000a420 <__stop_progExec__>:
+    a420:	32 d0 f0 00 	bis	#240,	r2	;#0x00f0
+    a424:	fd 3f       	jmp	$-4      	;abs 0xa420
+
+Disassembly of section .vectors:
+
+0000ffe0 <__ivtbl_16>:
+    ffe0:	68 a0 68 a0 68 a0 68 a0 68 a0 68 a0 68 a0 68 a0     h.h.h.h.h.h.h.h.
+    fff0:	68 a0 68 a0 68 a0 68 a0 68 a0 68 a0 68 a0 00 a0     h.h.h.h.h.h.h...

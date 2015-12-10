@@ -1,0 +1,56 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"a" [label="  %a = alloca i32, align 4"]
+"b" [label="  %b = alloca i32, align 4"]
+"c" [label="  %c = alloca i32, align 4"]
+"_1" [label="  store volatile i32 23168, i32* inttoptr (i64 288 to i32*), align 4"]
+"_2" [label="  store volatile i8 1, i8* inttoptr (i64 25 to i8*), align 1"]
+"_3" [label="  store i32 109901, i32* %a, align 4"]
+"_4" [label="  store i32 19300, i32* %b, align 4"]
+"t13" [label="  %t13 = load i32* %a, align 4"]
+"t14" [label="  %t14 = load i32* %b, align 4"]
+"t15" [label="  %t15 = call i32 @domult_int(i32 %t13, i32 %t14)"]
+"_5" [label="  store i32 %t15, i32* %c, align 4"]
+"_6" [label="  store volatile i8 0, i8* inttoptr (i64 25 to i8*), align 1"]
+"_7" [label="  store volatile i8 1, i8* inttoptr (i64 29 to i8*), align 1"]
+"_8" [label="  ret i32 0"]
+"unk_block_1" -> "a"[color=red]
+"i32 1" -> "a"
+"a" -> "b"[color=red weight=2]
+"i32 1" -> "b"
+"b" -> "c"[color=red weight=2]
+"i32 1" -> "c"
+"c" -> "_1"[color=red weight=2]
+"i32 23168" -> "_1"
+"i32* inttoptr (i64 288 to i32*)" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"i8 1" -> "_2"
+"i8* inttoptr (i64 25 to i8*)" -> "_2"
+"_2" -> "_3"[color=red weight=2]
+"i32 109901" -> "_3"
+"a" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+"i32 19300" -> "_4"
+"b" -> "_4"
+"_4" -> "t13"[color=red weight=2]
+"a" -> "t13"
+"t13" -> "t14"[color=red weight=2]
+"b" -> "t14"
+"t14" -> "t15"[color=red weight=2]
+"t13" -> "t15"
+"t14" -> "t15"
+"domult_int" -> "t15"
+"t15" -> "_5"[color=red weight=2]
+"t15" -> "_5"
+"c" -> "_5"
+"_5" -> "_6"[color=red weight=2]
+"i8 0" -> "_6"
+"i8* inttoptr (i64 25 to i8*)" -> "_6"
+"_6" -> "_7"[color=red weight=2]
+"i8 1" -> "_7"
+"i8* inttoptr (i64 29 to i8*)" -> "_7"
+"_7" -> "_8"[color=red weight=2]
+"i32 0" -> "_8"
+
+}

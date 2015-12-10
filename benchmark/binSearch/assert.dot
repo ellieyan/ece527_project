@@ -1,0 +1,38 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t1" [label="  %t1 = alloca i32, align 4"]
+"_1" [label="  store i32 %value, i32* %t1, align 4"]
+"t2" [label="  %t2 = load i32* %t1, align 4"]
+"t3" [label="  %t3 = icmp ne i32 %t2, 0"]
+"_2" [label="  br i1 %t3, label %2, label %1"]
+"unk_block_1" -> "t1"[color=red]
+"i32 1" -> "t1"
+"t1" -> "_1"[color=red weight=2]
+"value" -> "_1"
+"t1" -> "_1"
+"_1" -> "t2"[color=red weight=2]
+"t1" -> "t2"
+"t2" -> "t3"[color=red weight=2]
+"t2" -> "t3"
+"i32 0" -> "t3"
+"t3" -> "_2"[color=red weight=2]
+"t3" -> "_2"
+"_2" -> ""[color=red]
+"_2" -> ""[color=red]
+
+"t4" [label="  %t4 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([19 x i8]* @.str, i32 0, i32 0))"]
+"_3" [label="  call void @exit(i32 0) #3"]
+"_4" [label="  unreachable"]
+"unk_block_2" -> "t4"[color=red]
+"i8* getelementptr inbounds ([19 x i8]* @.str, i32 0, i32 0)" -> "t4"
+"printf" -> "t4"
+"t4" -> "_3"[color=red weight=2]
+"i32 0" -> "_3"
+"exit" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+
+"_5" [label="  ret void"]
+"unk_block_3" -> "_5"[color=red]
+
+}

@@ -1,0 +1,123 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"v" [label="  %v = alloca i16*, align 8"]
+"k" [label="  %k = alloca i16*, align 8"]
+"t167" [label="  %t167 = call i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)(i64 4)"]
+"t168" [label="  %t168 = bitcast i8* %t167 to i16*"]
+"_1" [label="  store i16* %t168, i16** %v, align 8"]
+"t169" [label="  %t169 = call i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)(i64 8)"]
+"t170" [label="  %t170 = bitcast i8* %t169 to i16*"]
+"_2" [label="  store i16* %t170, i16** %k, align 8"]
+"t171" [label="  %t171 = load i16** %v, align 8"]
+"t172" [label="  %t172 = getelementptr inbounds i16* %t171, i64 0"]
+"_3" [label="  store i16 0, i16* %t172, align 2"]
+"t173" [label="  %t173 = load i16** %v, align 8"]
+"t174" [label="  %t174 = getelementptr inbounds i16* %t173, i64 1"]
+"_4" [label="  store i16 255, i16* %t174, align 2"]
+"t175" [label="  %t175 = load i16** %k, align 8"]
+"t176" [label="  %t176 = getelementptr inbounds i16* %t175, i64 0"]
+"_5" [label="  store i16 119, i16* %t176, align 2"]
+"t177" [label="  %t177 = load i16** %k, align 8"]
+"t178" [label="  %t178 = getelementptr inbounds i16* %t177, i64 1"]
+"_6" [label="  store i16 140, i16* %t178, align 2"]
+"t179" [label="  %t179 = load i16** %k, align 8"]
+"t180" [label="  %t180 = getelementptr inbounds i16* %t179, i64 2"]
+"_7" [label="  store i16 174, i16* %t180, align 2"]
+"t181" [label="  %t181 = load i16** %k, align 8"]
+"t182" [label="  %t182 = getelementptr inbounds i16* %t181, i64 3"]
+"_8" [label="  store i16 56, i16* %t182, align 2"]
+"t183" [label="  %t183 = load i16** %v, align 8"]
+"t184" [label="  %t184 = load i16** %k, align 8"]
+"_9" [label="  call void @encrypt(i16* %t183, i16* %t184)"]
+"t185" [label="  %t185 = load i16** %v, align 8"]
+"t186" [label="  %t186 = load i16** %k, align 8"]
+"_10" [label="  call void @decrypt(i16* %t185, i16* %t186)"]
+"_11" [label="  ret void"]
+"unk_block_1" -> "v"[color=red]
+"i32 1" -> "v"
+"v" -> "k"[color=red weight=2]
+"i32 1" -> "k"
+"k" -> "t167"[color=red weight=2]
+"i64 4" -> "t167"
+"i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)" -> "t167"
+"t167" -> "t168"[color=red weight=2]
+"t167" -> "t168"
+"t168" -> "_1"[color=red weight=2]
+"t168" -> "_1"
+"v" -> "_1"
+"_1" -> "t169"[color=red weight=2]
+"i64 8" -> "t169"
+"i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)" -> "t169"
+"t169" -> "t170"[color=red weight=2]
+"t169" -> "t170"
+"t170" -> "_2"[color=red weight=2]
+"t170" -> "_2"
+"k" -> "_2"
+"_2" -> "t171"[color=red weight=2]
+"v" -> "t171"
+"t171" -> "t172"[color=red weight=2]
+"t171" -> "t172"
+"i64 0" -> "t172"
+"t172" -> "_3"[color=red weight=2]
+"i16 0" -> "_3"
+"t172" -> "_3"
+"_3" -> "t173"[color=red weight=2]
+"v" -> "t173"
+"t173" -> "t174"[color=red weight=2]
+"t173" -> "t174"
+"i64 1" -> "t174"
+"t174" -> "_4"[color=red weight=2]
+"i16 255" -> "_4"
+"t174" -> "_4"
+"_4" -> "t175"[color=red weight=2]
+"k" -> "t175"
+"t175" -> "t176"[color=red weight=2]
+"t175" -> "t176"
+"i64 0" -> "t176"
+"t176" -> "_5"[color=red weight=2]
+"i16 119" -> "_5"
+"t176" -> "_5"
+"_5" -> "t177"[color=red weight=2]
+"k" -> "t177"
+"t177" -> "t178"[color=red weight=2]
+"t177" -> "t178"
+"i64 1" -> "t178"
+"t178" -> "_6"[color=red weight=2]
+"i16 140" -> "_6"
+"t178" -> "_6"
+"_6" -> "t179"[color=red weight=2]
+"k" -> "t179"
+"t179" -> "t180"[color=red weight=2]
+"t179" -> "t180"
+"i64 2" -> "t180"
+"t180" -> "_7"[color=red weight=2]
+"i16 174" -> "_7"
+"t180" -> "_7"
+"_7" -> "t181"[color=red weight=2]
+"k" -> "t181"
+"t181" -> "t182"[color=red weight=2]
+"t181" -> "t182"
+"i64 3" -> "t182"
+"t182" -> "_8"[color=red weight=2]
+"i16 56" -> "_8"
+"t182" -> "_8"
+"_8" -> "t183"[color=red weight=2]
+"v" -> "t183"
+"t183" -> "t184"[color=red weight=2]
+"k" -> "t184"
+"t184" -> "_9"[color=red weight=2]
+"t183" -> "_9"
+"t184" -> "_9"
+"encrypt" -> "_9"
+"_9" -> "t185"[color=red weight=2]
+"v" -> "t185"
+"t185" -> "t186"[color=red weight=2]
+"k" -> "t186"
+"t186" -> "_10"[color=red weight=2]
+"t185" -> "_10"
+"t186" -> "_10"
+"decrypt" -> "_10"
+"_10" -> "_11"[color=red weight=2]
+
+}

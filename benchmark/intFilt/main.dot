@@ -1,0 +1,62 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"output" [label="  %output = alloca i32*, align 8"]
+"i" [label="  %i = alloca i32, align 4"]
+"_1" [label="  store volatile i32 23168, i32* inttoptr (i64 288 to i32*), align 4"]
+"_2" [label="  store volatile i8 1, i8* inttoptr (i64 25 to i8*), align 1"]
+"t54" [label="  %t54 = load i32* @size, align 4"]
+"t55" [label="  %t55 = sext i32 %t54 to i64"]
+"t56" [label="  %t56 = mul i64 %t55, 4"]
+"t57" [label="  %t57 = call i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)(i64 %t56)"]
+"t58" [label="  %t58 = bitcast i8* %t57 to i32*"]
+"_3" [label="  store i32* %t58, i32** %output, align 8"]
+"_4" [label="  store i32 0, i32* %i, align 4"]
+"t59" [label="  %t59 = load i32** %output, align 8"]
+"_5" [label="  call void @doFilt(i32* %t59)"]
+"_6" [label="  store volatile i8 0, i8* inttoptr (i64 25 to i8*), align 1"]
+"_7" [label="  store volatile i8 1, i8* inttoptr (i64 29 to i8*), align 1"]
+"_8" [label="  ret i32 0"]
+"unk_block_1" -> "output"[color=red]
+"i32 1" -> "output"
+"output" -> "i"[color=red weight=2]
+"i32 1" -> "i"
+"i" -> "_1"[color=red weight=2]
+"i32 23168" -> "_1"
+"i32* inttoptr (i64 288 to i32*)" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"i8 1" -> "_2"
+"i8* inttoptr (i64 25 to i8*)" -> "_2"
+"_2" -> "t54"[color=red weight=2]
+"size" -> "t54"
+"t54" -> "t55"[color=red weight=2]
+"t54" -> "t55"
+"t55" -> "t56"[color=red weight=2]
+"t55" -> "t56"
+"i64 4" -> "t56"
+"t56" -> "t57"[color=red weight=2]
+"t56" -> "t57"
+"i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)" -> "t57"
+"t57" -> "t58"[color=red weight=2]
+"t57" -> "t58"
+"t58" -> "_3"[color=red weight=2]
+"t58" -> "_3"
+"output" -> "_3"
+"_3" -> "_4"[color=red weight=2]
+"i32 0" -> "_4"
+"i" -> "_4"
+"_4" -> "t59"[color=red weight=2]
+"output" -> "t59"
+"t59" -> "_5"[color=red weight=2]
+"t59" -> "_5"
+"doFilt" -> "_5"
+"_5" -> "_6"[color=red weight=2]
+"i8 0" -> "_6"
+"i8* inttoptr (i64 25 to i8*)" -> "_6"
+"_6" -> "_7"[color=red weight=2]
+"i8 1" -> "_7"
+"i8* inttoptr (i64 29 to i8*)" -> "_7"
+"_7" -> "_8"[color=red weight=2]
+"i32 0" -> "_8"
+
+}

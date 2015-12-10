@@ -1,0 +1,680 @@
+
+sandbox.elf:     file format elf32-msp430
+
+SYMBOL TABLE:
+0000ffe4 l    d  __interrupt_vector_3	00000000 __interrupt_vector_3
+0000fffe l    d  __reset_vector	00000000 __reset_vector
+0000a000 l    d  .rodata	00000000 .rodata
+0000a016 l    d  .text	00000000 .text
+00000200 l    d  .data	00000000 .data
+00000208 l    d  .bss	00000000 .bss
+00000000 l    d  .MP430.attributes	00000000 .MP430.attributes
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_line.text.memcpy	00000000 .debug_line.text.memcpy
+00000000 l    d  .debug_line.text.memmove	00000000 .debug_line.text.memmove
+00000000 l    d  .debug_line.text.memset	00000000 .debug_line.text.memset
+00000000 l    df *ABS*	00000000 main.c
+000000ff l       .debug_line	00000000 L0
+0000a1a4 l       .text	00000000 L0
+00000000 l    df *ABS*	00000000 /home/matthew/ti/gcc/bin/../lib/gcc/msp430-elf/4.9.1/../../../../msp430-elf/lib/430/crt0.o
+0000fffe l       __reset_vector	00000000 __msp430_resetvec_hook
+0000a078 l       .text	00000000 _msp430_run_array
+0000a086 l       .text	00000000 _msp430_run_done
+00000000 l       .debug_line	00000000 L0
+0000a020 l       .text	00000000 L0
+0000a088 l       .text	00000000 L0
+0000a31c l       .text	00000000 L0
+0000a016 l       .text	00000000 L0
+0000a020 l       .text	00000000 L0
+0000a04c l       .text	00000000 L0
+0000a088 l       .text	00000000 L0
+0000a318 l       .text	00000000 L0
+0000a31c l       .text	00000000 L0
+00000000 l       .debug_aranges	00000000 L0
+0000a016 l       .text	00000000 L0
+0000a020 l       .text	00000000 L0
+0000a04c l       .text	00000000 L0
+0000a088 l       .text	00000000 L0
+0000a318 l       .text	00000000 L0
+0000a31c l       .text	00000000 L0
+00000000 l       .debug_info	00000000 L0
+00000000 l    df *ABS*	00000000 copydata.c
+0000a000 l     O .rodata	00000002 romdatacopysize
+000001a6 l       .debug_line	00000000 L0
+0000a1bc l       .text	00000000 L0
+00000000 l    df *ABS*	00000000 crtstuff.c
+0000a00c l     O .rodata	00000000 __CTOR_LIST__
+0000a012 l     O .rodata	00000000 __DTOR_LIST__
+0000a004 l     O .rodata	00000000 __EH_FRAME_BEGIN__
+00000200 l     O .data	00000000 __JCR_LIST__
+0000a322 l     O .text	00000000 __TMC_LIST__
+0000a088 l       .text	00000000 deregister_tm_clones
+0000a09e l       .text	00000000 register_tm_clones
+0000a0c8 l       .text	00000000 __do_global_dtors_aux
+00000208 l     O .bss	00000001 completed.2763
+00000204 l     O .data	00000000 p.2764
+0000a0fc l       .text	00000000 call___do_global_dtors_aux
+0000a0fe l       .text	00000000 frame_dummy
+0000020a l     O .bss	0000000e object.2775
+0000a12e l       .text	00000000 call_frame_dummy
+00000000 l    df *ABS*	00000000 crtstuff.c
+0000a010 l     O .rodata	00000000 __CTOR_END__
+0000a014 l     O .rodata	00000000 __DTOR_END__
+0000a004 l     O .rodata	00000000 __FRAME_END__
+00000200 l     O .data	00000000 __JCR_END__
+0000a322 l     O .text	00000000 __TMC_END__
+0000a2e6 l       .text	00000000 __do_global_ctors_aux
+0000a304 l       .text	00000000 call___do_global_ctors_aux
+00000000 l    df *ABS*	00000000 crt_bss.o
+00000380 l       .debug_line	00000000 L0
+0000a02e l       .text	00000000 L0
+00000058 l       .debug_aranges	00000000 L0
+0000a020 l       .text	00000000 L0
+0000a02e l       .text	00000000 L0
+00000350 l       .debug_info	00000000 L0
+00000000 l    df *ABS*	00000000 crt_movedata.o
+00000402 l       .debug_line	00000000 L0
+0000a042 l       .text	00000000 L0
+0000006c l       .debug_aranges	00000000 L0
+0000a02e l       .text	00000000 L0
+0000a042 l       .text	00000000 L0
+00000422 l       .debug_info	00000000 L0
+00000000 l    df *ABS*	00000000 crt_main.o
+00000490 l       .debug_line	00000000 L0
+0000a04c l       .text	00000000 L0
+00000080 l       .debug_aranges	00000000 L0
+0000a042 l       .text	00000000 L0
+0000a04c l       .text	00000000 L0
+000004f4 l       .debug_info	00000000 L0
+00000000 l    df *ABS*	00000000 srli.o
+00000000 l    df *ABS*	00000000 memcpy.c
+0000a28e l       .text	00000000 L0
+00000000 l    df *ABS*	00000000 memmove.c
+0000a2d2 l       .text	00000000 L0
+00000000 l    df *ABS*	00000000 memset.c
+0000a2e6 l       .text	00000000 L0
+00000000 l    df *ABS*	00000000 /home/matthew/ti/gcc/bin/../lib/gcc/msp430-elf/4.9.1/../../../../msp430-elf/lib/430/crtn.o
+0000073b l       .debug_line	00000000 L0
+0000a318 l       .text	00000000 L0
+0000a322 l       .text	00000000 L0
+0000a30e l       .text	00000000 L0
+0000a318 l       .text	00000000 L0
+0000a320 l       .text	00000000 L0
+0000a322 l       .text	00000000 L0
+000000bc l       .debug_aranges	00000000 L0
+0000a30e l       .text	00000000 L0
+0000a318 l       .text	00000000 L0
+0000a320 l       .text	00000000 L0
+0000a322 l       .text	00000000 L0
+00000787 l       .debug_info	00000000 L0
+0000a1d4 g       .text	00000000 __mspabi_srli_9
+0000a224 g       .text	00000000 __mspabi_srll_10
+0000a1d0 g       .text	00000000 __mspabi_srli_10
+0000a1bc g       .text	00000000 __mspabi_srli_15
+0000a28e g       .text	00000044 memmove
+0000a1e8 g       .text	00000000 __mspabi_srli_4
+0000a1dc g       .text	00000000 __mspabi_srli_7
+0000a236 g       .text	00000000 __mspabi_srll_7
+0000a24e g       .text	00000000 __mspabi_srll_3
+00000206 g     O .data	00000001 shift_direction
+0000a270 g       .text	0000001e memcpy
+0000a212 g       .text	00000000 __mspabi_srll_13
+0000a008 g       .rodata	00000000 __fini_array_end
+0000a1c8 g       .text	00000000 __mspabi_srli_12
+0000a016 g     F .text	0000000a __crt0_start
+00000202 g     O .data	00000000 __dso_handle
+0000a020 g     F .text	0000000e __crt0_init_bss
+00000010 g       *ABS*	00000000 __bsssize
+0000a042 g     F .text	0000000a __crt0_call_init_then_main
+0000a192 g       .text	00000012 port1_isr
+0000a242 g       .text	00000000 __mspabi_srll_5
+0000a200 g       .text	00000000 __mspabi_srli
+0000a21e g       .text	00000000 __mspabi_srll_11
+0000a1e4 g       .text	00000000 __mspabi_srli_5
+0000a1a4 g       .text	00000018 __data_move
+00000000  w      *UND*	00000000 __deregister_frame_info
+00000218 g       .MP430.attributes	00000000 end
+00000000  w      *UND*	00000000 _ITM_registerTMCloneTable
+0000a23c g       .text	00000000 __mspabi_srll_6
+0000a016 g       .text	00000000 _start
+0000a068 g     F .text	00000000 _msp430_run_fini_array
+0000a1f4 g       .text	00000000 __mspabi_srli_1
+0000a20c g       .text	00000000 __mspabi_srll_14
+0000a1c0 g       .text	00000000 __mspabi_srli_14
+00000008 g       *ABS*	00000000 __romdatacopysize
+0000a1cc g       .text	00000000 __mspabi_srli_11
+00000000  w      *UND*	00000000 _ITM_deregisterTMCloneTable
+0000a008 g       .rodata	00000000 __fini_array_start
+00000000  w      *ABS*	00000000 __rom_highdatacopysize
+0000a306 g       .text	00000000 __msp430_init
+0000a2d2 g       .text	00000014 memset
+0000a130 g       .text	00000062 main
+0000a248 g       .text	00000000 __mspabi_srll_4
+0000a008 g       .rodata	00000000 __init_array_end
+0000a1f0 g       .text	00000000 __mspabi_srli_2
+00000000  w      *ABS*	00000000 __high_bsssize
+00000000  w      *ABS*	00000000 __rom_highdatastart
+0000a322 g       .text	00000000 __msp430_fini_end
+0000a218 g       .text	00000000 __mspabi_srll_12
+0000a326 g       *ABS*	00000000 __romdatastart
+0000a04c g     F .text	00000000 _msp430_run_init_array
+0000a1e0 g       .text	00000000 __mspabi_srli_6
+0000a008 g       .rodata	00000000 __preinit_array_end
+0000a1ec g       .text	00000000 __mspabi_srli_3
+00000000  w      *ABS*	00000000 __high_datastart
+00000000  w      *ABS*	00000000 __upper_data_init
+00000208 g       .bss	00000000 __bssstart
+00004200 g       .MP430.attributes	00000000 __stack
+0000a22a g       .text	00000000 __mspabi_srll_9
+00000208 g       .data	00000000 _edata
+0000a318 g       .text	00000000 __msp430_init_end
+0000a26a g       .text	00000000 __mspabi_srll
+00000000  w      *ABS*	00000000 __high_bssstart
+0000a206 g       .text	00000000 __mspabi_srll_15
+0000a008 g       .rodata	00000000 __init_array_start
+0000a1c4 g       .text	00000000 __mspabi_srli_13
+00000200 g       .data	00000000 __datastart
+0000a230 g       .text	00000000 __mspabi_srll_8
+0000a25a g       .text	00000000 __mspabi_srll_1
+00000000  w      *UND*	00000000 _Jv_RegisterClasses
+0000a008 g       .rodata	00000000 __preinit_array_start
+0000a02e g     F .text	00000014 __crt0_movedata
+00000000  w      *UND*	00000000 __register_frame_info
+0000a05a g     F .text	00000000 _msp430_run_preinit_array
+0000a254 g       .text	00000000 __mspabi_srll_2
+0000a318 g       .text	00000000 __msp430_fini
+0000a1d8 g       .text	00000000 __mspabi_srli_8
+
+
+
+Disassembly of section __interrupt_vector_3:
+
+0000ffe4 <__interrupt_vector_3>:
+    ffe4:	92 a1       	interrupt service routine at 0xa192
+
+Disassembly of section .text:
+
+0000a016 <__crt0_start>:
+    a016:	31 40 00 42 	mov	#16896,	r1	;#0x4200
+    a01a:	b2 40 80 5a 	mov	#23168,	&0x015c	;#0x5a80
+    a01e:	5c 01 
+
+0000a020 <__crt0_init_bss>:
+    a020:	3c 40 08 02 	mov	#520,	r12	;#0x0208
+    a024:	0d 43       	clr	r13		;
+    a026:	3e 40 10 00 	mov	#16,	r14	;#0x0010
+    a02a:	b0 12 d2 a2 	call	#41682		;#0xa2d2
+
+0000a02e <__crt0_movedata>:
+    a02e:	3c 40 00 02 	mov	#512,	r12	;#0x0200
+    a032:	3d 40 26 a3 	mov	#41766,	r13	;#0xa326
+    a036:	0d 9c       	cmp	r12,	r13	;
+    a038:	04 24       	jz	$+10     	;abs 0xa042
+    a03a:	3e 40 08 00 	mov	#8,	r14	;
+    a03e:	b0 12 8e a2 	call	#41614		;#0xa28e
+
+0000a042 <__crt0_call_init_then_main>:
+    a042:	b0 12 06 a3 	call	#41734		;#0xa306
+    a046:	0c 43       	clr	r12		;
+    a048:	b0 12 30 a1 	call	#41264		;#0xa130
+
+0000a04c <_msp430_run_init_array>:
+    a04c:	34 40 08 a0 	mov	#40968,	r4	;#0xa008
+    a050:	35 40 08 a0 	mov	#40968,	r5	;#0xa008
+    a054:	26 43       	mov	#2,	r6	;r3 As==10
+    a056:	30 40 78 a0 	br	#0xa078		;
+
+0000a05a <_msp430_run_preinit_array>:
+    a05a:	34 40 08 a0 	mov	#40968,	r4	;#0xa008
+    a05e:	35 40 08 a0 	mov	#40968,	r5	;#0xa008
+    a062:	26 43       	mov	#2,	r6	;r3 As==10
+    a064:	30 40 78 a0 	br	#0xa078		;
+
+0000a068 <_msp430_run_fini_array>:
+    a068:	34 40 08 a0 	mov	#40968,	r4	;#0xa008
+    a06c:	35 40 08 a0 	mov	#40968,	r5	;#0xa008
+    a070:	36 40 fe ff 	mov	#65534,	r6	;#0xfffe
+    a074:	30 40 78 a0 	br	#0xa078		;
+
+0000a078 <_msp430_run_array>:
+    a078:	05 94       	cmp	r4,	r5	;
+    a07a:	05 24       	jz	$+12     	;abs 0xa086
+    a07c:	27 44       	mov	@r4,	r7	;
+    a07e:	04 56       	add	r6,	r4	;
+    a080:	a7 12       	call	@r7		;
+    a082:	10 40 f4 ff 	br	0xfff4		;PC rel. 0xa078
+
+0000a086 <_msp430_run_done>:
+    a086:	30 41       	ret			
+
+0000a088 <deregister_tm_clones>:
+    a088:	82 93 22 a3 	cmp	#0,	&0xa322	;r3 As==00
+    a08c:	07 24       	jz	$+16     	;abs 0xa09c
+    a08e:	3d 40 00 00 	mov	#0,	r13	;
+    a092:	0d 93       	cmp	#0,	r13	;r3 As==00
+    a094:	03 24       	jz	$+8      	;abs 0xa09c
+    a096:	3c 40 22 a3 	mov	#41762,	r12	;#0xa322
+    a09a:	8d 12       	call	r13		;
+    a09c:	30 41       	ret			
+
+0000a09e <register_tm_clones>:
+    a09e:	82 93 22 a3 	cmp	#0,	&0xa322	;r3 As==00
+    a0a2:	11 24       	jz	$+36     	;abs 0xa0c6
+    a0a4:	3c 40 26 a3 	mov	#41766,	r12	;#0xa326
+    a0a8:	0d 43       	clr	r13		;
+    a0aa:	1d 53       	inc	r13		;
+    a0ac:	2c 52       	add	#4,	r12	;r2 As==10
+    a0ae:	8c 93 fc ff 	cmp	#0,	-4(r12)	;r3 As==00, 0xfffc
+    a0b2:	fb 23       	jnz	$-8      	;abs 0xa0aa
+    a0b4:	0d 93       	cmp	#0,	r13	;r3 As==00
+    a0b6:	07 24       	jz	$+16     	;abs 0xa0c6
+    a0b8:	3e 40 00 00 	mov	#0,	r14	;
+    a0bc:	0e 93       	cmp	#0,	r14	;r3 As==00
+    a0be:	03 24       	jz	$+8      	;abs 0xa0c6
+    a0c0:	3c 40 22 a3 	mov	#41762,	r12	;#0xa322
+    a0c4:	8e 12       	call	r14		;
+    a0c6:	30 41       	ret			
+
+0000a0c8 <__do_global_dtors_aux>:
+    a0c8:	c2 93 08 02 	cmp.b	#0,	&0x0208	;r3 As==00
+    a0cc:	06 24       	jz	$+14     	;abs 0xa0da
+    a0ce:	30 40 fa a0 	br	#0xa0fa		;
+    a0d2:	2d 53       	incd	r13		;
+    a0d4:	82 4d 04 02 	mov	r13,	&0x0204	;
+    a0d8:	8c 12       	call	r12		;
+    a0da:	1d 42 04 02 	mov	&0x0204,r13	;0x0204
+    a0de:	2c 4d       	mov	@r13,	r12	;
+    a0e0:	0c 93       	cmp	#0,	r12	;r3 As==00
+    a0e2:	f7 23       	jnz	$-16     	;abs 0xa0d2
+    a0e4:	b0 12 88 a0 	call	#41096		;#0xa088
+    a0e8:	3d 40 00 00 	mov	#0,	r13	;
+    a0ec:	0d 93       	cmp	#0,	r13	;r3 As==00
+    a0ee:	03 24       	jz	$+8      	;abs 0xa0f6
+    a0f0:	3c 40 04 a0 	mov	#40964,	r12	;#0xa004
+    a0f4:	8d 12       	call	r13		;
+    a0f6:	d2 43 08 02 	mov.b	#1,	&0x0208	;r3 As==01
+    a0fa:	30 41       	ret			
+
+0000a0fc <call___do_global_dtors_aux>:
+    a0fc:	30 41       	ret			
+
+0000a0fe <frame_dummy>:
+    a0fe:	3e 40 00 00 	mov	#0,	r14	;
+    a102:	0e 93       	cmp	#0,	r14	;r3 As==00
+    a104:	05 24       	jz	$+12     	;abs 0xa110
+    a106:	3c 40 04 a0 	mov	#40964,	r12	;#0xa004
+    a10a:	3d 40 0a 02 	mov	#522,	r13	;#0x020a
+    a10e:	8e 12       	call	r14		;
+    a110:	3c 40 00 02 	mov	#512,	r12	;#0x0200
+    a114:	8c 93 00 00 	cmp	#0,	0(r12)	;r3 As==00
+    a118:	03 20       	jnz	$+8      	;abs 0xa120
+    a11a:	b0 12 9e a0 	call	#41118		;#0xa09e
+    a11e:	30 41       	ret			
+    a120:	3d 40 00 00 	mov	#0,	r13	;
+    a124:	0d 93       	cmp	#0,	r13	;r3 As==00
+    a126:	f9 27       	jz	$-12     	;abs 0xa11a
+    a128:	8d 12       	call	r13		;
+    a12a:	30 40 1a a1 	br	#0xa11a		;
+
+0000a12e <call_frame_dummy>:
+    a12e:	30 41       	ret			
+
+0000a130 <main>:
+
+volatile char shift_direction = 0x01;  // Global variable
+ 
+int main(void) {
+
+    WDTCTL = WDTPW | WDTHOLD;          // Disable watchdog timer
+    a130:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    a134:	20 01 
+
+    P2DIR  = 0xff;                     // Port 2.0-2.7 = output
+    a136:	f2 43 2a 00 	mov.b	#-1,	&0x002a	;r3 As==11
+    P2OUT  = shift_direction;          // Initialize Port 2
+    a13a:	d2 42 06 02 	mov.b	&0x0206,&0x0029	;0x0206
+    a13e:	29 00 
+
+    P1DIR  = 0x00;                     // Port 1.0-1.7 = input
+    a140:	c2 43 22 00 	mov.b	#0,	&0x0022	;r3 As==00
+    P1IE   = 0x01;                     // Port 1.0 interrupt enabled
+    a144:	d2 43 25 00 	mov.b	#1,	&0x0025	;r3 As==01
+    P1IES  = 0x00;                     // Port 1.0 interrupt edge selection (0=pos 1=neg)
+    a148:	c2 43 24 00 	mov.b	#0,	&0x0024	;r3 As==00
+    P1IFG  = 0x00;                     // Clear all Port 1 interrupt flags (just in case)
+    a14c:	c2 43 23 00 	mov.b	#0,	&0x0023	;r3 As==00
+   
+    eint();                            // Enable interrupts
+    a150:	32 d2       	eint			
+    a152:	03 43       	nop			
+ 
+    while (1) {
+      if (P2OUT == 0x00) {
+    a154:	5c 42 29 00 	mov.b	&0x0029,r12	;0x0029
+    a158:	0c 93       	cmp	#0,	r12	;r3 As==00
+    a15a:	07 20       	jnz	$+16     	;abs 0xa16a
+	P2OUT = shift_direction;
+    a15c:	d2 42 06 02 	mov.b	&0x0206,&0x0029	;0x0206
+    a160:	29 00 
+    P1IFG  = 0x00;                     // Clear all Port 1 interrupt flags (just in case)
+   
+    eint();                            // Enable interrupts
+ 
+    while (1) {
+      if (P2OUT == 0x00) {
+    a162:	5c 42 29 00 	mov.b	&0x0029,r12	;0x0029
+    a166:	0c 93       	cmp	#0,	r12	;r3 As==00
+    a168:	f9 27       	jz	$-12     	;abs 0xa15c
+	P2OUT = shift_direction;
+
+      } else if (shift_direction == 0x01) {
+    a16a:	5c 42 06 02 	mov.b	&0x0206,r12	;0x0206
+    a16e:	5c 93       	cmp.b	#1,	r12	;r3 As==01
+    a170:	08 24       	jz	$+18     	;abs 0xa182
+	P2OUT = (P2OUT << 1);
+
+      } else {
+	P2OUT = (P2OUT >> 1);
+    a172:	5c 42 29 00 	mov.b	&0x0029,r12	;0x0029
+    a176:	b0 12 f4 a1 	call	#41460		;#0xa1f4
+    a17a:	c2 4c 29 00 	mov.b	r12,	&0x0029	;
+    a17e:	30 40 54 a1 	br	#0xa154		;
+    while (1) {
+      if (P2OUT == 0x00) {
+	P2OUT = shift_direction;
+
+      } else if (shift_direction == 0x01) {
+	P2OUT = (P2OUT << 1);
+    a182:	5c 42 29 00 	mov.b	&0x0029,r12	;0x0029
+    a186:	4d 4c       	mov.b	r12,	r13	;
+    a188:	4d 5c       	add.b	r12,	r13	;
+    a18a:	c2 4d 29 00 	mov.b	r13,	&0x0029	;
+    a18e:	30 40 54 a1 	br	#0xa154		;
+
+0000a192 <port1_isr>:
+    }
+}
+ 
+ // Port1 Interrupt Service Routine using msp430-gcc
+interrupt(PORT1_VECTOR) port1_isr(void) {
+   if (P1IFG & 0x01) {
+    a192:	d2 b3 23 00 	bit.b	#1,	&0x0023	;r3 As==01
+    a196:	05 24       	jz	$+12     	;abs 0xa1a2
+     shift_direction ^=  0x81;
+    a198:	f2 e0 81 ff 	xor.b	#65409,	&0x0206	;#0xff81
+    a19c:	06 02 
+     P1IFG           &= ~0x01;         // Clear Port 1.0 interrupt flag
+    a19e:	d2 c3 23 00 	bic.b	#1,	&0x0023	;r3 As==01
+   }
+} 
+    a1a2:	00 13       	reti			
+
+0000a1a4 <__data_move>:
+static void* const datastart=&__datastart;
+static void* const romdatastart=&__romdatastart;
+static uint16_t const romdatacopysize=(uint16_t)&__romdatacopysize;
+
+__attribute__((constructor)) void __data_move() {
+        if (datastart!=romdatastart) {
+    a1a4:	3c 40 00 02 	mov	#512,	r12	;#0x0200
+    a1a8:	3c 90 26 a3 	cmp	#41766,	r12	;#0xa326
+    a1ac:	06 24       	jz	$+14     	;abs 0xa1ba
+                memmove(datastart,romdatastart,romdatacopysize);
+    a1ae:	3d 40 26 a3 	mov	#41766,	r13	;#0xa326
+    a1b2:	1e 42 00 a0 	mov	&0xa000,r14	;0xa000
+    a1b6:	b0 12 70 a2 	call	#41584		;#0xa270
+        }
+}
+    a1ba:	30 41       	ret			
+
+0000a1bc <__mspabi_srli_15>:
+    a1bc:	12 c3       	clrc			
+    a1be:	0c 10       	rrc	r12		;
+
+0000a1c0 <__mspabi_srli_14>:
+    a1c0:	12 c3       	clrc			
+    a1c2:	0c 10       	rrc	r12		;
+
+0000a1c4 <__mspabi_srli_13>:
+    a1c4:	12 c3       	clrc			
+    a1c6:	0c 10       	rrc	r12		;
+
+0000a1c8 <__mspabi_srli_12>:
+    a1c8:	12 c3       	clrc			
+    a1ca:	0c 10       	rrc	r12		;
+
+0000a1cc <__mspabi_srli_11>:
+    a1cc:	12 c3       	clrc			
+    a1ce:	0c 10       	rrc	r12		;
+
+0000a1d0 <__mspabi_srli_10>:
+    a1d0:	12 c3       	clrc			
+    a1d2:	0c 10       	rrc	r12		;
+
+0000a1d4 <__mspabi_srli_9>:
+    a1d4:	12 c3       	clrc			
+    a1d6:	0c 10       	rrc	r12		;
+
+0000a1d8 <__mspabi_srli_8>:
+    a1d8:	12 c3       	clrc			
+    a1da:	0c 10       	rrc	r12		;
+
+0000a1dc <__mspabi_srli_7>:
+    a1dc:	12 c3       	clrc			
+    a1de:	0c 10       	rrc	r12		;
+
+0000a1e0 <__mspabi_srli_6>:
+    a1e0:	12 c3       	clrc			
+    a1e2:	0c 10       	rrc	r12		;
+
+0000a1e4 <__mspabi_srli_5>:
+    a1e4:	12 c3       	clrc			
+    a1e6:	0c 10       	rrc	r12		;
+
+0000a1e8 <__mspabi_srli_4>:
+    a1e8:	12 c3       	clrc			
+    a1ea:	0c 10       	rrc	r12		;
+
+0000a1ec <__mspabi_srli_3>:
+    a1ec:	12 c3       	clrc			
+    a1ee:	0c 10       	rrc	r12		;
+
+0000a1f0 <__mspabi_srli_2>:
+    a1f0:	12 c3       	clrc			
+    a1f2:	0c 10       	rrc	r12		;
+
+0000a1f4 <__mspabi_srli_1>:
+    a1f4:	12 c3       	clrc			
+    a1f6:	0c 10       	rrc	r12		;
+    a1f8:	30 41       	ret			
+    a1fa:	3d 53       	add	#-1,	r13	;r3 As==11
+    a1fc:	12 c3       	clrc			
+    a1fe:	0c 10       	rrc	r12		;
+
+0000a200 <__mspabi_srli>:
+    a200:	0d 93       	cmp	#0,	r13	;r3 As==00
+    a202:	fb 23       	jnz	$-8      	;abs 0xa1fa
+    a204:	30 41       	ret			
+
+0000a206 <__mspabi_srll_15>:
+    a206:	12 c3       	clrc			
+    a208:	0d 10       	rrc	r13		;
+    a20a:	0c 10       	rrc	r12		;
+
+0000a20c <__mspabi_srll_14>:
+    a20c:	12 c3       	clrc			
+    a20e:	0d 10       	rrc	r13		;
+    a210:	0c 10       	rrc	r12		;
+
+0000a212 <__mspabi_srll_13>:
+    a212:	12 c3       	clrc			
+    a214:	0d 10       	rrc	r13		;
+    a216:	0c 10       	rrc	r12		;
+
+0000a218 <__mspabi_srll_12>:
+    a218:	12 c3       	clrc			
+    a21a:	0d 10       	rrc	r13		;
+    a21c:	0c 10       	rrc	r12		;
+
+0000a21e <__mspabi_srll_11>:
+    a21e:	12 c3       	clrc			
+    a220:	0d 10       	rrc	r13		;
+    a222:	0c 10       	rrc	r12		;
+
+0000a224 <__mspabi_srll_10>:
+    a224:	12 c3       	clrc			
+    a226:	0d 10       	rrc	r13		;
+    a228:	0c 10       	rrc	r12		;
+
+0000a22a <__mspabi_srll_9>:
+    a22a:	12 c3       	clrc			
+    a22c:	0d 10       	rrc	r13		;
+    a22e:	0c 10       	rrc	r12		;
+
+0000a230 <__mspabi_srll_8>:
+    a230:	12 c3       	clrc			
+    a232:	0d 10       	rrc	r13		;
+    a234:	0c 10       	rrc	r12		;
+
+0000a236 <__mspabi_srll_7>:
+    a236:	12 c3       	clrc			
+    a238:	0d 10       	rrc	r13		;
+    a23a:	0c 10       	rrc	r12		;
+
+0000a23c <__mspabi_srll_6>:
+    a23c:	12 c3       	clrc			
+    a23e:	0d 10       	rrc	r13		;
+    a240:	0c 10       	rrc	r12		;
+
+0000a242 <__mspabi_srll_5>:
+    a242:	12 c3       	clrc			
+    a244:	0d 10       	rrc	r13		;
+    a246:	0c 10       	rrc	r12		;
+
+0000a248 <__mspabi_srll_4>:
+    a248:	12 c3       	clrc			
+    a24a:	0d 10       	rrc	r13		;
+    a24c:	0c 10       	rrc	r12		;
+
+0000a24e <__mspabi_srll_3>:
+    a24e:	12 c3       	clrc			
+    a250:	0d 10       	rrc	r13		;
+    a252:	0c 10       	rrc	r12		;
+
+0000a254 <__mspabi_srll_2>:
+    a254:	12 c3       	clrc			
+    a256:	0d 10       	rrc	r13		;
+    a258:	0c 10       	rrc	r12		;
+
+0000a25a <__mspabi_srll_1>:
+    a25a:	12 c3       	clrc			
+    a25c:	0d 10       	rrc	r13		;
+    a25e:	0c 10       	rrc	r12		;
+    a260:	30 41       	ret			
+    a262:	3e 53       	add	#-1,	r14	;r3 As==11
+    a264:	12 c3       	clrc			
+    a266:	0d 10       	rrc	r13		;
+    a268:	0c 10       	rrc	r12		;
+
+0000a26a <__mspabi_srll>:
+    a26a:	0e 93       	cmp	#0,	r14	;r3 As==00
+    a26c:	fa 23       	jnz	$-10     	;abs 0xa262
+    a26e:	30 41       	ret			
+
+0000a270 <memcpy>:
+    a270:	0a 12       	push	r10		;
+    a272:	0f 43       	clr	r15		;
+    a274:	0f 9e       	cmp	r14,	r15	;
+    a276:	09 24       	jz	$+20     	;abs 0xa28a
+    a278:	0a 4d       	mov	r13,	r10	;
+    a27a:	0a 5f       	add	r15,	r10	;
+    a27c:	0b 4c       	mov	r12,	r11	;
+    a27e:	0b 5f       	add	r15,	r11	;
+    a280:	eb 4a 00 00 	mov.b	@r10,	0(r11)	;
+    a284:	1f 53       	inc	r15		;
+    a286:	30 40 74 a2 	br	#0xa274		;
+    a28a:	3a 41       	pop	r10		;
+    a28c:	30 41       	ret			
+
+0000a28e <memmove>:
+    a28e:	0a 12       	push	r10		;
+    a290:	0d 9c       	cmp	r12,	r13	;
+    a292:	11 2c       	jc	$+36     	;abs 0xa2b6
+    a294:	0b 4d       	mov	r13,	r11	;
+    a296:	0b 5e       	add	r14,	r11	;
+    a298:	0c 9b       	cmp	r11,	r12	;
+    a29a:	0d 2c       	jc	$+28     	;abs 0xa2b6
+    a29c:	0d 4e       	mov	r14,	r13	;
+    a29e:	3d 53       	add	#-1,	r13	;r3 As==11
+    a2a0:	3d 93       	cmp	#-1,	r13	;r3 As==11
+    a2a2:	15 24       	jz	$+44     	;abs 0xa2ce
+    a2a4:	0f 4d       	mov	r13,	r15	;
+    a2a6:	0f 8e       	sub	r14,	r15	;
+    a2a8:	0f 5b       	add	r11,	r15	;
+    a2aa:	0a 4c       	mov	r12,	r10	;
+    a2ac:	0a 5d       	add	r13,	r10	;
+    a2ae:	ea 4f 00 00 	mov.b	@r15,	0(r10)	;
+    a2b2:	30 40 9e a2 	br	#0xa29e		;
+    a2b6:	0f 43       	clr	r15		;
+    a2b8:	0f 9e       	cmp	r14,	r15	;
+    a2ba:	09 24       	jz	$+20     	;abs 0xa2ce
+    a2bc:	0a 4d       	mov	r13,	r10	;
+    a2be:	0a 5f       	add	r15,	r10	;
+    a2c0:	0b 4c       	mov	r12,	r11	;
+    a2c2:	0b 5f       	add	r15,	r11	;
+    a2c4:	eb 4a 00 00 	mov.b	@r10,	0(r11)	;
+    a2c8:	1f 53       	inc	r15		;
+    a2ca:	30 40 b8 a2 	br	#0xa2b8		;
+    a2ce:	3a 41       	pop	r10		;
+    a2d0:	30 41       	ret			
+
+0000a2d2 <memset>:
+    a2d2:	0f 4c       	mov	r12,	r15	;
+    a2d4:	0e 5c       	add	r12,	r14	;
+    a2d6:	0f 9e       	cmp	r14,	r15	;
+    a2d8:	05 24       	jz	$+12     	;abs 0xa2e4
+    a2da:	cf 4d 00 00 	mov.b	r13,	0(r15)	;
+    a2de:	1f 53       	inc	r15		;
+    a2e0:	30 40 d6 a2 	br	#0xa2d6		;
+    a2e4:	30 41       	ret			
+
+0000a2e6 <__do_global_ctors_aux>:
+    a2e6:	0a 12       	push	r10		;
+    a2e8:	1c 42 0e a0 	mov	&0xa00e,r12	;0xa00e
+    a2ec:	3c 93       	cmp	#-1,	r12	;r3 As==11
+    a2ee:	08 24       	jz	$+18     	;abs 0xa300
+    a2f0:	3a 40 0e a0 	mov	#40974,	r10	;#0xa00e
+    a2f4:	8c 12       	call	r12		;
+    a2f6:	3a 50 fe ff 	add	#65534,	r10	;#0xfffe
+    a2fa:	2c 4a       	mov	@r10,	r12	;
+    a2fc:	3c 93       	cmp	#-1,	r12	;r3 As==11
+    a2fe:	fa 23       	jnz	$-10     	;abs 0xa2f4
+    a300:	3a 41       	pop	r10		;
+    a302:	30 41       	ret			
+
+0000a304 <call___do_global_ctors_aux>:
+    a304:	30 41       	ret			
+
+0000a306 <__msp430_init>:
+    a306:	b0 12 fe a0 	call	#41214		;#0xa0fe
+    a30a:	b0 12 e6 a2 	call	#41702		;#0xa2e6
+    a30e:	b0 12 5a a0 	call	#41050		;#0xa05a
+    a312:	b0 12 4c a0 	call	#41036		;#0xa04c
+    a316:	30 41       	ret			
+
+0000a318 <__msp430_fini>:
+    a318:	b0 12 68 a0 	call	#41064		;#0xa068
+    a31c:	b0 12 c8 a0 	call	#41160		;#0xa0c8
+    a320:	30 41       	ret			
+
+0000a322 <__msp430_fini_end>:
+    a322:	00 00       	beq			
+	...

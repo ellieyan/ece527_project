@@ -1,0 +1,32 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"t8" [label="  %t8 = alloca i32, align 4"]
+"t9" [label="  %t9 = alloca i32, align 4"]
+"_1" [label="  store i32 %a, i32* %t8, align 4"]
+"_2" [label="  store i32 %b, i32* %t9, align 4"]
+"t10" [label="  %t10 = load i32* %t8, align 4"]
+"t11" [label="  %t11 = load i32* %t9, align 4"]
+"t12" [label="  %t12 = mul nsw i32 %t10, %t11"]
+"_3" [label="  ret i32 %t12"]
+"unk_block_1" -> "t8"[color=red]
+"i32 1" -> "t8"
+"t8" -> "t9"[color=red weight=2]
+"i32 1" -> "t9"
+"t9" -> "_1"[color=red weight=2]
+"a" -> "_1"
+"t8" -> "_1"
+"_1" -> "_2"[color=red weight=2]
+"b" -> "_2"
+"t9" -> "_2"
+"_2" -> "t10"[color=red weight=2]
+"t8" -> "t10"
+"t10" -> "t11"[color=red weight=2]
+"t9" -> "t11"
+"t11" -> "t12"[color=red weight=2]
+"t10" -> "t12"
+"t11" -> "t12"
+"t12" -> "_3"[color=red weight=2]
+"t12" -> "_3"
+
+}

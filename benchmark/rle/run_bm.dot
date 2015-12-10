@@ -1,0 +1,90 @@
+digraph G {
+compound=true
+label="Black edges - dataflow, red edges - control flow"
+"d" [label="  %d = alloca i8*, align 8"]
+"oc" [label="  %oc = alloca i8*, align 8"]
+"rl" [label="  %rl = alloca i32, align 4"]
+"t74" [label="  %t74 = load i8** @o, align 8"]
+"t75" [label="  %t75 = call i64 @strlen(i8* %t74) #3"]
+"t76" [label="  %t76 = mul i64 2, %t75"]
+"t77" [label="  %t77 = call i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)(i64 %t76)"]
+"_1" [label="  store i8* %t77, i8** %d, align 8"]
+"t78" [label="  %t78 = load i8** @o, align 8"]
+"t79" [label="  %t79 = call i64 @strlen(i8* %t78) #3"]
+"t80" [label="  %t80 = call i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)(i64 %t79)"]
+"_2" [label="  store i8* %t80, i8** %oc, align 8"]
+"t81" [label="  %t81 = load i8** %d, align 8"]
+"t82" [label="  %t82 = load i8** @o, align 8"]
+"t83" [label="  %t83 = load i8** @o, align 8"]
+"t84" [label="  %t84 = call i64 @strlen(i8* %t83) #3"]
+"t85" [label="  %t85 = trunc i64 %t84 to i32"]
+"t86" [label="  %t86 = call i32 @rle_encode(i8* %t81, i8* %t82, i32 %t85)"]
+"_3" [label="  store i32 %t86, i32* %rl, align 4"]
+"t87" [label="  %t87 = load i8** %d, align 8"]
+"t88" [label="  %t88 = call i32 (i8*, ...)* bitcast (i32 (...)* @free to i32 (i8*, ...)*)(i8* %t87)"]
+"t89" [label="  %t89 = load i8** %oc, align 8"]
+"t90" [label="  %t90 = call i32 (i8*, ...)* bitcast (i32 (...)* @free to i32 (i8*, ...)*)(i8* %t89)"]
+"_4" [label="  ret void"]
+"unk_block_1" -> "d"[color=red]
+"i32 1" -> "d"
+"d" -> "oc"[color=red weight=2]
+"i32 1" -> "oc"
+"oc" -> "rl"[color=red weight=2]
+"i32 1" -> "rl"
+"rl" -> "t74"[color=red weight=2]
+"o" -> "t74"
+"t74" -> "t75"[color=red weight=2]
+"t74" -> "t75"
+"strlen" -> "t75"
+"t75" -> "t76"[color=red weight=2]
+"i64 2" -> "t76"
+"t75" -> "t76"
+"t76" -> "t77"[color=red weight=2]
+"t76" -> "t77"
+"i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)" -> "t77"
+"t77" -> "_1"[color=red weight=2]
+"t77" -> "_1"
+"d" -> "_1"
+"_1" -> "t78"[color=red weight=2]
+"o" -> "t78"
+"t78" -> "t79"[color=red weight=2]
+"t78" -> "t79"
+"strlen" -> "t79"
+"t79" -> "t80"[color=red weight=2]
+"t79" -> "t80"
+"i8* (i64, ...)* bitcast (i8* (...)* @malloc to i8* (i64, ...)*)" -> "t80"
+"t80" -> "_2"[color=red weight=2]
+"t80" -> "_2"
+"oc" -> "_2"
+"_2" -> "t81"[color=red weight=2]
+"d" -> "t81"
+"t81" -> "t82"[color=red weight=2]
+"o" -> "t82"
+"t82" -> "t83"[color=red weight=2]
+"o" -> "t83"
+"t83" -> "t84"[color=red weight=2]
+"t83" -> "t84"
+"strlen" -> "t84"
+"t84" -> "t85"[color=red weight=2]
+"t84" -> "t85"
+"t85" -> "t86"[color=red weight=2]
+"t81" -> "t86"
+"t82" -> "t86"
+"t85" -> "t86"
+"rle_encode" -> "t86"
+"t86" -> "_3"[color=red weight=2]
+"t86" -> "_3"
+"rl" -> "_3"
+"_3" -> "t87"[color=red weight=2]
+"d" -> "t87"
+"t87" -> "t88"[color=red weight=2]
+"t87" -> "t88"
+"i32 (i8*, ...)* bitcast (i32 (...)* @free to i32 (i8*, ...)*)" -> "t88"
+"t88" -> "t89"[color=red weight=2]
+"oc" -> "t89"
+"t89" -> "t90"[color=red weight=2]
+"t89" -> "t90"
+"i32 (i8*, ...)* bitcast (i32 (...)* @free to i32 (i8*, ...)*)" -> "t90"
+"t90" -> "_4"[color=red weight=2]
+
+}

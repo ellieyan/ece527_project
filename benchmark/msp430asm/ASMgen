@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for d in ../*/ 
+do
+    for c in $d/*.c
+    do
+        msp430-gcc -S $c
+    done
+done
+
