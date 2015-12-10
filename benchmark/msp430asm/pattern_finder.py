@@ -127,6 +127,15 @@ class DAG:
 			return False
 		return True
 
+	def generate_dot(self, filename):
+		f = open(filename, 'w')
+		f.write("digraph G {\ncompound=true\nlabel=\"Black edges - dataflow, red edges - control flow\"")
+		for n in self.nodes:
+			f.write("\"" + str(n.index) + "\" [label = \"" + n.instruction + "\"]\n")
+		for e in self.edges:
+			f.write("\"" + str(e.source.index) + "\" -> \"" + str(e.target.index) + "\"\n")
+		f.write("}\n")
+
 def get_input_size(p):
 	inputs = Set([])
 	for n in p.nodes:

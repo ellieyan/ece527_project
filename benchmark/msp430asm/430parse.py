@@ -178,6 +178,7 @@ for index in range(len(a)):
 				print("Something is wrong...Did not return but reached end")
 				break
 
+yan.generate_dot(sys.argv[1][:-2] + ".dot")
 	
 
 
