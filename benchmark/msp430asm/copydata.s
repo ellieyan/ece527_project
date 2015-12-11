@@ -2,7 +2,7 @@
 	.cpu 430
 	.mpy none
 
-	.text
+	.section	.text.startup,"ax",@progbits
 	.p2align 1,0
 .global	__data_move
 	.type	__data_move,@function

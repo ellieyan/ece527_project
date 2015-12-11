@@ -30,24 +30,19 @@ do_div:
  ***********************/
 main:
 	mov	#23168, &288
-	mov	#25, r11
-	mov.b	#1, @r11
-	mov	#17, r14
-	mov	#llo(-2), r15
-	call	#do_div
-	mov	r15, r9
-	mov	#0, r14
-	mov	#10000, r15
-	call	#do_div
-	mov	r15, r10
-	mov.b	#0, @r11
-	push	r9
+	mov	#25, r15
+	mov.b	#1, @r15
+	mov.b	#0, @r15
+	push	#3854
 	push	#17
 	push	#llo(-2)
 	push	#.LC0
 	call	#printf
 	add	#8, r1
-	push	r10
+	mov	#0, r14
+	mov	#10000, r15
+	call	#__udivhi3
+	push	r15
 	push	#0
 	push	#10000
 	push	#.LC1

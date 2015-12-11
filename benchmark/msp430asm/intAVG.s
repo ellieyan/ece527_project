@@ -23,9 +23,6 @@ run_bm:
 	add	@r13+, r15
 	cmp	r12, r13
 	jne	.L3
-	jmp	.L2
-.L7:
-	mov	#0, r15
 .L2:
 	call	#__divhi3
 	mov	r15, r11
@@ -41,19 +38,28 @@ run_bm:
 	add	@r13+, r15
 	cmp	r12, r13
 	jne	.L5
-	jmp	.L4
-.L8:
-	mov	#0, r15
 .L4:
 	call	#__divhi3
-	add	r11, r15
-	cmp	#0, r15
-	jge	.L6
-	add	#1, r15
-.L6:
+	mov	r11, r14
+	add	r15, r14
+	cmp	#0, r14
+	jl	.L12
+	mov	r14, r15
 	rra	r15
 	pop	r11
 	ret
+.L12:
+	add	#1, r14
+	mov	r14, r15
+	rra	r15
+	pop	r11
+	ret
+.L8:
+	mov	#0, r15
+	jmp	.L4
+.L7:
+	mov	#0, r15
+	jmp	.L2
 .Lfe1:
 	.size	run_bm,.Lfe1-run_bm
 ;; End of function 

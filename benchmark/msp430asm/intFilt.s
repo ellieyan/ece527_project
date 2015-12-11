@@ -34,58 +34,49 @@ doFilt:
 	push	r6
 	push	r5
 	push	r4
+	mov	r15, r9
 	cmp	#1, &size
 	jl	.L2
-	mov	#input, r7
-	mov	r15, r6
-	mov	#0, r5
-	mov	#coeff, r4
+	mov	&coeff, r14
+	mov	&coeff+2, r15
+	call	#__fixunssfsi
+	mov	r14, r4
+	mov	&coeff+4, r14
+	mov	&coeff+4+2, r15
+	call	#__fixunssfsi
+	mov	r14, r5
+	mov	&coeff+8, r14
+	mov	&coeff+8+2, r15
+	call	#__fixunssfsi
+	mov	r14, r6
+	mov	&coeff+12, r14
+	mov	&coeff+12+2, r15
+	call	#__fixunssfsi
+	mov	r14, r7
+	mov	#input, r11
+	mov	#0, r8
 .L4:
-	mov	@r4, r14
-	mov	2(r4), r15
-	call	#__fixunssfsi
-	mov	r14, r15
-	mov	@r7, r14
-	call	#domult
-	mov	r15, r9
-	add	#1, r5
-	mov	2(r7), r11
-	mov	#coeff+4, r13
-	mov	@r13, r14
-	mov	2(r13), r15
-	call	#__fixunssfsi
-	mov	r14, r13
-	mov	r11, r14
-	mov	r13, r15
-	call	#domult
+	add	#1, r8
+	mov	@r11, r14
+	mov	r4, r15
+	call	#__mulhi3
 	mov	r15, r10
-	mov	4(r7), r11
-	mov	#coeff+8, r13
-	mov	@r13, r14
-	mov	2(r13), r15
-	call	#__fixunssfsi
-	mov	r14, r13
-	mov	r11, r14
-	mov	r13, r15
-	call	#domult
-	mov	r15, r11
-	mov	6(r7), r8
-	mov	#coeff+12, r13
-	mov	@r13, r14
-	mov	2(r13), r15
-	call	#__fixunssfsi
-	mov	r14, r13
-	mov	r8, r14
-	mov	r13, r15
-	call	#domult
-	mov	r9, r14
-	add	r10, r14
-	add	r11, r14
-	add	r15, r14
-	mov	r14, @r6
-	add	#2, r7
-	add	#2, r6
-	cmp	&size, r5
+	mov	2(r11), r14
+	mov	r5, r15
+	call	#__mulhi3
+	add	r15, r10
+	mov	4(r11), r14
+	mov	r6, r15
+	call	#__mulhi3
+	add	r15, r10
+	mov	6(r11), r14
+	mov	r7, r15
+	call	#__mulhi3
+	add	r15, r10
+	mov	r10, @r9
+	add	#2, r11
+	add	#2, r9
+	cmp	&size, r8
 	jl	.L4
 .L2:
 	pop	r4

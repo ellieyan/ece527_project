@@ -12,8 +12,7 @@
 main:
 	mov	#23168, &288
 	mov.b	#llo(-1), &42
-	mov.b	&shift_direction, r15
-	mov.b	r15, &41
+	mov.b	&shift_direction, &41
 	mov.b	#0, &34
 	mov.b	#1, &37
 	mov.b	#0, &36
@@ -27,24 +26,21 @@ main:
 	mov.b	&41, r15
 	cmp.b	#0, r15
 	jne	.L3
-	mov.b	&shift_direction, r15
-	mov.b	r15, &41
+	mov.b	&shift_direction, &41
 	jmp	.L6
 .L3:
 	mov.b	&shift_direction, r15
 	cmp.b	#1, r15
 	jne	.L5
-	mov	#41, r14
-	mov.b	@r14, r15
+	mov.b	&41, r15
 	rla.b	r15
-	mov.b	r15, @r14
+	mov.b	r15, &41
 	jmp	.L6
 .L5:
-	mov	#41, r14
-	mov.b	@r14, r15
+	mov.b	&41, r15
 	clrc
 	rrc.b	r15
-	mov.b	r15, @r14
+	mov.b	r15, &41
 	jmp	.L6
 .LIRD0:
 .Lfe1:
@@ -62,19 +58,12 @@ port1_isr:
 .global	__isr_2
 __isr_2:
 	push	r15
-	push	r14
 	mov.b	&35, r15
 	and	#1, r15
 	jeq	.L7
-	mov.b	&shift_direction, r15
-	xor.b	#llo(-127), r15
-	mov.b	r15, &shift_direction
-	mov	#35, r15
-	mov.b	@r15, r14
-	and.b	#llo(-2), r14
-	mov.b	r14, @r15
+	xor.b	#llo(-127), &shift_direction
+	and.b	#llo(-2), &35
 .L7:
-	pop	r14
 	pop	r15
 	reti
 .Lfe2:

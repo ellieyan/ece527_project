@@ -11,10 +11,7 @@
  ***********************/
 putchar:
 	mov.b	r15, &33
-	mov	#41, r15
-	mov.b	@r15, r14
-	xor.b	#1, r14
-	mov.b	r14, @r15
+	xor.b	#1, &41
 	mov	#0, r15
 	ret
 .Lfe1:
