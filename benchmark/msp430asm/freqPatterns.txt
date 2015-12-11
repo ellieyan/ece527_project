@@ -1,0 +1,329 @@
+pattern 0 (count = 102):
+	mov_0 -> add_0
+
+pattern 1 (count = 43):
+	2 -> add_0
+
+pattern 2 (count = 35):
+	mov_0 -> add_0
+	2 -> add_0
+
+pattern 3 (count = 27):
+	mov_0 -> cmp_0
+
+pattern 7 (count = 30):
+	0 -> mov_0
+
+pattern 8 (count = 60):
+	add_0 -> mov_0
+
+pattern 9 (count = 107):
+	mov_0 -> add_0
+	add_0 -> mov_1
+
+pattern 10 (count = 98):
+	2 -> add_0
+	add_0 -> mov_0
+
+pattern 11 (count = 96):
+	mov_0 -> add_0
+	2 -> add_0
+	add_0 -> mov_1
+
+pattern 12 (count = 14):
+	sub_0 -> add_0
+
+pattern 16 (count = 12):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> cmp_0
+
+pattern 17 (count = 12):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> cmp_0
+
+pattern 18 (count = 31):
+	mov_0 -> add_0
+	2 -> add_0
+	add_0 -> mov_1
+	mov_1 -> cmp_0
+
+pattern 19 (count = 17):
+	0 -> cmp_0
+
+pattern 20 (count = 11):
+	0 -> cmp_0
+	mov_0 -> cmp_0
+
+pattern 25 (count = 19):
+	pop_0 -> mov_0
+
+pattern 26 (count = 13):
+	1 -> mov_0
+
+pattern 31 (count = 11):
+	add_0 -> add_1
+
+pattern 36 (count = 309):
+	mov_0 -> mov_1
+
+pattern 46 (count = 140):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 47 (count = 133):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> mov_1
+
+pattern 48 (count = 143):
+	2 -> add_0
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 53 (count = 75):
+	add_0 -> mov_0
+	mov_0 -> mov_1
+
+pattern 65 (count = 28):
+	2 -> add_0
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> add_1
+
+pattern 66 (count = 21):
+	mov_0 -> mov_1
+	mov_1 -> add_0
+
+pattern 71 (count = 127):
+	mov_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 82 (count = 43):
+	mov_0 -> rla_0
+
+pattern 83 (count = 31):
+	mov_0 -> mov_1
+	mov_1 -> rla_0
+
+pattern 84 (count = 14):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> rla_0
+
+pattern 85 (count = 12):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> mov_1
+	mov_1 -> rla_0
+
+pattern 86 (count = 11):
+	mov_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> rla_0
+
+pattern 93 (count = 44):
+	rla_0 -> add_0
+
+pattern 94 (count = 18):
+	mov_0 -> rla_0
+	rla_0 -> add_0
+
+pattern 96 (count = 23):
+	rla_0 -> add_0
+	mov_0 -> add_0
+
+pattern 99 (count = 14):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> add_1
+
+pattern 101 (count = 13):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> add_1
+
+pattern 119 (count = 33):
+	1 -> add_0
+
+pattern 120 (count = 11):
+	mov_0 -> add_0
+	1 -> add_0
+
+pattern 126 (count = 15):
+	1 -> add_0
+	add_0 -> mov_0
+
+pattern 152 (count = 14):
+	mov_0 -> add_0
+	mov_1 -> mov_2
+	add_0 -> mov_2
+
+pattern 153 (count = 23):
+	mov_0 -> mov_1
+	2 -> add_0
+	add_0 -> mov_1
+
+pattern 154 (count = 13):
+	mov_0 -> add_0
+	mov_1 -> mov_2
+	2 -> add_0
+	add_0 -> mov_2
+
+pattern 155 (count = 16):
+	add_0 -> mov_0
+	add_0 -> mov_1
+	mov_0 -> mov_2
+	mov_2 -> mov_1
+
+pattern 156 (count = 18):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	add_0 -> mov_2
+	mov_1 -> mov_3
+	mov_3 -> mov_2
+
+pattern 157 (count = 18):
+	2 -> add_0
+	add_0 -> mov_0
+	add_0 -> mov_1
+	mov_0 -> mov_2
+	mov_2 -> mov_1
+
+pattern 202 (count = 32):
+	pop_0 -> add_0
+
+pattern 204 (count = 20):
+	1 -> add_0
+	pop_0 -> add_0
+
+pattern 219 (count = 16):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> add_1
+
+pattern 220 (count = 16):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> mov_1
+	mov_1 -> add_1
+
+pattern 227 (count = 33):
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> mov_3
+
+pattern 228 (count = 32):
+	2 -> add_0
+	add_0 -> mov_0
+	mov_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 232 (count = 43):
+	mov_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> mov_3
+
+pattern 235 (count = 28):
+	mov_0 -> mov_1
+	2 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 236 (count = 17):
+	add_0 -> mov_0
+	add_0 -> mov_1
+	mov_0 -> mov_2
+	mov_2 -> mov_1
+	mov_1 -> mov_3
+
+pattern 250 (count = 33):
+	rla_0 -> rla_1
+
+pattern 251 (count = 25):
+	mov_0 -> rla_0
+	rla_0 -> rla_1
+
+pattern 252 (count = 17):
+	mov_0 -> mov_1
+	mov_1 -> rla_0
+	rla_0 -> rla_1
+
+pattern 254 (count = 16):
+	rra_0 -> rra_1
+
+pattern 261 (count = 12):
+	rra_0 -> rra_1
+	rra_1 -> rra_2
+
+pattern 276 (count = 12):
+	mov_0 -> mov_1
+	mov_1 -> mov_2
+	mov_2 -> add_0
+
+pattern 292 (count = 17):
+	4 -> add_0
+
+pattern 318 (count = 11):
+	0 -> mov_0
+	mov_0 -> mov_1
+
+pattern 322 (count = 20):
+	pop_0 -> mov_0
+	mov_0 -> mov_1
+
+pattern 380 (count = 14):
+	rla_0 -> add_0
+	add_0 -> mov_0
+
+pattern 438 (count = 20):
+	mov_0 -> add_0
+	mov_1 -> mov_2
+	add_0 -> mov_2
+	mov_2 -> mov_3
+
+pattern 439 (count = 16):
+	rla_0 -> rla_1
+	rla_1 -> add_0
+
+pattern 532 (count = 16):
+	pop_0 -> add_0
+	add_0 -> mov_0
+
+pattern 588 (count = 13):
+	llo(-1) -> add_0
+
+pattern 852 (count = 22):
+	mov_0 -> mov_1
+	mov_1 -> add_0
+	add_0 -> mov_2
+	mov_2 -> mov_3
+
+pattern 853 (count = 22):
+	5 -> add_0
+	add_0 -> mov_0
+	mov_0 -> mov_1
+
+pattern 854 (count = 22):
+	5 -> add_0
+	mov_0 -> add_0
+	add_0 -> mov_1
+	mov_1 -> mov_2
+
+pattern 888 (count = 14):
+	mov_0 -> rla_0
+	rla_0 -> rla_1
+	rla_1 -> add_0
+
+pattern 906 (count = 14):
+	mov_0 -> rla_0
+	rla_0 -> rla_1
+	rla_1 -> add_0
+	add_0 -> add_1
+

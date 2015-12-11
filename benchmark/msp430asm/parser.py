@@ -27,7 +27,7 @@ top_dir = "../"
 dirs = os.listdir(top_dir)
 for d in dirs:
 	dirname = top_dir + d
-	if os.path.isdir(dirname):
+	if os.path.isdir(dirname) and "msp430asm" in dirname:
 		files = os.listdir(dirname)
 		#files = [f for f in os.listdir('.') if os.path.isfile(f) and ".txt" in f]
 		for local_filename in files:
@@ -41,12 +41,14 @@ for d in dirs:
 						if "pattern" in curr_line:
 							pattern = []
 						elif curr_line == "\n":
+							if len(pattern) > 8:
+								print "hahhahahahhaha"
 							add_pattern(pattern, patterns, count)
 						else:
 							pattern.append(curr_line)
 
-out = open("all_patterns.txt", 'w')
-highFreq = open("frequent_patterns.txt", 'w')
+out = open("allPatterns.txt", 'w')
+highFreq = open("freqPatterns.txt", 'w')
 for i in range(0, len(patterns)):
 	out.write("pattern " + str(i) + " (count = " + str(count[i]) + "):\n")
 	for line in patterns[i]:

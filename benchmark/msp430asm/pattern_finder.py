@@ -4,6 +4,7 @@ from sets import Set
 
 MAX_INPUT_SIZE = 2
 MIN_PATTERN_SIZE = 2
+MAX_PATTERN_SIZE = 5
 
 
 
@@ -133,6 +134,8 @@ class DAG:
 		f = open(filename, 'w')
 		f.write("digraph G {\ncompound=true\nlabel=\"Black edges - dataflow, red edges - control flow\"")
 		for n in self.nodes:
+			if len(n.inNodes) == 0 and len(n.outNodes) == 0:
+				continue
 			f.write("\"" + str(n.index) + "\" [label = \"" + n.instruction + "\"]\n")
 		for e in self.edges:
 			f.write("\"" + str(e.source.index) + "\" -> \"" + str(e.target.index) + "\"\n")
@@ -162,6 +165,8 @@ def find_patterns(dag):
 					for pC in parentC.patterns:
 						p = Pattern()
 						p.nodes = list(set(pA.nodes) | set(pB.nodes) | set(pC.nodes) | set([curr]))
+						if len(p.nodes) > MAX_PATTERN_SIZE:
+							continue
 						p.size = get_input_size(p)
 						if all(not dag.same_pattern(p, i) for i in curr.patterns):
 							curr.patterns.append(p)
@@ -175,6 +180,8 @@ def find_patterns(dag):
 				for pB in parentB.patterns:
 					p = Pattern()
 					p.nodes = list(set(pA.nodes) | set(pB.nodes) | set([curr]))
+					if len(p.nodes) > MAX_PATTERN_SIZE:
+						continue
 					p.size = get_input_size(p)
 					if all(not dag.same_pattern(p, i) for i in curr.patterns):
 						curr.patterns.append(p)
@@ -186,6 +193,8 @@ def find_patterns(dag):
 			for pA in parentA.patterns:
 				p = Pattern()
 				p.nodes = pA.nodes + [curr]
+				if len(p.nodes) > MAX_PATTERN_SIZE:
+					continue
 				p.size = get_input_size(p)
 				if all(not dag.same_pattern(p, i) for i in curr.patterns):
 					curr.patterns.append(p)
