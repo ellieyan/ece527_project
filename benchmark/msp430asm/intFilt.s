@@ -2,14 +2,152 @@
 	.cpu 430
 	.mpy none
 
-	.comm Ptr_Glob,2,2
-	.comm Next_Ptr_Glob,2,2
-	.comm Int_Glob,2,2
-	.comm Bool_Glob,2,2
-	.comm Ch_1_Glob,1
-	.comm Ch_2_Glob,1
-	.comm Arr_1_Glob,100,2
-	.comm Arr_2_Glob,5000,2
+	.text
+	.p2align 1,0
+.global	domult
+	.type	domult,@function
+/***********************
+ * Function `domult' 
+ ***********************/
+domult:
+	mov	r14, r13
+	mov	r15, r14
+	mov	r13, r15
+	call	#__mulhi3
+	ret
+.Lfe1:
+	.size	domult,.Lfe1-domult
+;; End of function 
+
+	.p2align 1,0
+.global	doFilt
+	.type	doFilt,@function
+/***********************
+ * Function `doFilt' 
+ ***********************/
+doFilt:
+	push	r11
+	push	r10
+	push	r9
+	push	r8
+	push	r7
+	push	r6
+	push	r5
+	push	r4
+	cmp	#1, &size
+	jl	.L2
+	mov	#input, r7
+	mov	r15, r6
+	mov	#0, r5
+	mov	#coeff, r4
+.L4:
+	mov	@r4, r14
+	mov	2(r4), r15
+	call	#__fixunssfsi
+	mov	r14, r15
+	mov	@r7, r14
+	call	#domult
+	mov	r15, r9
+	add	#1, r5
+	mov	2(r7), r11
+	mov	#coeff+4, r13
+	mov	@r13, r14
+	mov	2(r13), r15
+	call	#__fixunssfsi
+	mov	r14, r13
+	mov	r11, r14
+	mov	r13, r15
+	call	#domult
+	mov	r15, r10
+	mov	4(r7), r11
+	mov	#coeff+8, r13
+	mov	@r13, r14
+	mov	2(r13), r15
+	call	#__fixunssfsi
+	mov	r14, r13
+	mov	r11, r14
+	mov	r13, r15
+	call	#domult
+	mov	r15, r11
+	mov	6(r7), r8
+	mov	#coeff+12, r13
+	mov	@r13, r14
+	mov	2(r13), r15
+	call	#__fixunssfsi
+	mov	r14, r13
+	mov	r8, r14
+	mov	r13, r15
+	call	#domult
+	mov	r9, r14
+	add	r10, r14
+	add	r11, r14
+	add	r15, r14
+	mov	r14, @r6
+	add	#2, r7
+	add	#2, r6
+	cmp	&size, r5
+	jl	.L4
+.L2:
+	pop	r4
+	pop	r5
+	pop	r6
+	pop	r7
+	pop	r8
+	pop	r9
+	pop	r10
+	pop	r11
+	ret
+.Lfe2:
+	.size	doFilt,.Lfe2-doFilt
+;; End of function 
+
+	.section	.init9,"ax",@progbits
+	.p2align 1,0
+.global	main
+	.type	main,@function
+/***********************
+ * Function `main' 
+ ***********************/
+main:
+	mov	#23168, &288
+	mov	#25, r11
+	mov.b	#1, @r11
+	mov	&size, r15
+	rla	r15
+	call	#malloc
+	call	#doFilt
+	mov.b	#0, @r11
+	mov.b	#1, &29
+.LIRD0:
+.Lfe3:
+	.size	main,.Lfe3-main
+;; End of function 
+
+.global	size
+	.data
+	.p2align 1,0
+	.type	size,@object
+	.size	size,2
+size:
+	.word	7
+.global	coeff
+	.p2align 1,0
+	.type	coeff,@object
+	.size	coeff,16
+coeff:
+	.word	0
+	.word	0
+	.word	-4299
+	.word	16056
+	.word	0
+	.word	16128
+	.word	-4299
+	.word	16056
+	.comm Dhrystones_Per_Second,4,2
+	.comm Microseconds,4,2
+	.comm User_Time,4,2
+	.comm End_Time,4,2
+	.comm Begin_Time,4,2
 .global	Reg
 .global	Reg
 	.section	.bss
@@ -17,12 +155,15 @@
 	.size	Reg,2
 Reg:
 	.skip 2,0
-	.comm Begin_Time,4,2
-	.comm End_Time,4,2
-	.comm User_Time,4,2
-	.comm Microseconds,4,2
-	.comm Dhrystones_Per_Second,4,2
-	.data
+	.comm Arr_2_Glob,5000,2
+	.comm Arr_1_Glob,100,2
+	.comm Ch_2_Glob,1
+	.comm Ch_1_Glob,1
+	.comm Bool_Glob,2,2
+	.comm Int_Glob,2,2
+	.comm Next_Ptr_Glob,2,2
+	.comm Ptr_Glob,2,2
+	.section	.rodata
 	.p2align 1,0
 	.type	input,@object
 	.size	input,98
@@ -76,167 +217,3 @@ input:
 	.word	18394
 	.word	-6294
 	.word	-14598
-.global	coeff
-	.p2align 1,0
-	.type	coeff,@object
-	.size	coeff,16
-coeff:
-	.word	0
-	.word	0
-	.word	-4299
-	.word	16056
-	.word	0
-	.word	16128
-	.word	-4299
-	.word	16056
-.global	size
-	.p2align 1,0
-	.type	size,@object
-	.size	size,2
-size:
-	.word	7
-	.text
-	.p2align 1,0
-.global	domult
-	.type	domult,@function
-/***********************
- * Function `domult' 
- ***********************/
-domult:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#4, r1
-	mov	r15, -6(r4)
-	mov	r14, -4(r4)
-	mov	-4(r4), r14
-	mov	-6(r4), r15
-	call	#__mulhi3
-	add	#4, r1
-	pop	r4
-	ret
-.Lfe1:
-	.size	domult,.Lfe1-domult
-;; End of function 
-
-	.p2align 1,0
-.global	doFilt
-	.type	doFilt,@function
-/***********************
- * Function `doFilt' 
- ***********************/
-doFilt:
-	push	r11
-	push	r4
-	mov	r1, r4
-	add	#4, r4
-	add	#llo(-12), r1
-	mov	r15, -6(r4)
-	mov	#0, -16(r4)
-	mov	#0, -16(r4)
-	jmp	.L3
-.L4:
-	mov	-16(r4), r15
-	rla	r15
-	add	#input, r15
-	mov	@r15, r15
-	mov	r15, r11
-	mov	&coeff, r14
-	mov	&coeff+2, r15
-	call	#__fixunssfsi
-	mov	r14, r15
-	mov	r11, r14
-	call	#domult
-	mov	r15, -14(r4)
-	mov	-16(r4), r15
-	add	#1, r15
-	rla	r15
-	add	#input, r15
-	mov	@r15, r15
-	mov	r15, r11
-	mov	&coeff+4, r14
-	mov	&coeff+4+2, r15
-	call	#__fixunssfsi
-	mov	r14, r15
-	mov	r11, r14
-	call	#domult
-	mov	r15, -12(r4)
-	mov	-16(r4), r15
-	add	#2, r15
-	rla	r15
-	add	#input, r15
-	mov	@r15, r15
-	mov	r15, r11
-	mov	&coeff+8, r14
-	mov	&coeff+8+2, r15
-	call	#__fixunssfsi
-	mov	r14, r15
-	mov	r11, r14
-	call	#domult
-	mov	r15, -10(r4)
-	mov	-16(r4), r15
-	add	#3, r15
-	rla	r15
-	add	#input, r15
-	mov	@r15, r15
-	mov	r15, r11
-	mov	&coeff+12, r14
-	mov	&coeff+12+2, r15
-	call	#__fixunssfsi
-	mov	r14, r15
-	mov	r11, r14
-	call	#domult
-	mov	r15, -8(r4)
-	mov	-16(r4), r15
-	rla	r15
-	add	-6(r4), r15
-	mov	-14(r4), r14
-	add	-12(r4), r14
-	add	-10(r4), r14
-	add	-8(r4), r14
-	mov	r14, @r15
-	add	#1, -16(r4)
-.L3:
-	mov	&size, r15
-	cmp	r15, -16(r4)
-	jl	.L4
-	add	#12, r1
-	pop	r4
-	pop	r11
-	ret
-.Lfe2:
-	.size	doFilt,.Lfe2-doFilt
-;; End of function 
-
-	.section	.init9,"ax",@progbits
-	.p2align 1,0
-.global	main
-	.type	main,@function
-/***********************
- * Function `main' 
- ***********************/
-main:
-	mov	r1, r4
-	add	#2, r4
-	sub	#4, r1
-	mov	#288, r15
-	mov	#23168, @r15
-	mov	#25, r15
-	mov.b	#1, @r15
-	mov	&size, r15
-	rla	r15
-	call	#malloc
-	mov	r15, -6(r4)
-	mov	#0, -4(r4)
-	mov	-6(r4), r15
-	call	#doFilt
-	mov	#25, r15
-	mov.b	#0, @r15
-	mov	#29, r15
-	mov.b	#1, @r15
-	add	#4, r1
-.LIRD0:
-.Lfe3:
-	.size	main,.Lfe3-main
-;; End of function 
-

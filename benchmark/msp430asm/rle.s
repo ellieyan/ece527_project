@@ -2,37 +2,6 @@
 	.cpu 430
 	.mpy none
 
-	.comm Ptr_Glob,2,2
-	.comm Next_Ptr_Glob,2,2
-	.comm Int_Glob,2,2
-	.comm Bool_Glob,2,2
-	.comm Ch_1_Glob,1
-	.comm Ch_2_Glob,1
-	.comm Arr_1_Glob,100,2
-	.comm Arr_2_Glob,5000,2
-.global	Reg
-.global	Reg
-	.section	.bss
-	.type	Reg,@object
-	.size	Reg,2
-Reg:
-	.skip 2,0
-	.comm Begin_Time,4,2
-	.comm End_Time,4,2
-	.comm User_Time,4,2
-	.comm Microseconds,4,2
-	.comm Dhrystones_Per_Second,4,2
-.global	o
-	.section	.rodata
-.LC0:
-	.ascii	"WWW"
-	.string	"WWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
-	.data
-	.p2align 1,0
-	.type	o,@object
-	.size	o,2
-o:
-	.word	.LC0
 	.text
 	.p2align 1,0
 .global	rle_encode
@@ -41,67 +10,57 @@ o:
  * Function `rle_encode' 
  ***********************/
 rle_encode:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-12), r1
-	mov	r15, -8(r4)
-	mov	r14, -6(r4)
-	mov	r13, -4(r4)
-	mov	-6(r4), r15
-	mov.b	@r15, -9(r4)
-	mov.b	-9(r4), -10(r4)
-	add	#1, -6(r4)
-	mov	#0, -12(r4)
-	mov	#0, -14(r4)
-	jmp	.L2
+	push	r11
+	push	r10
+	push	r9
+	push	r8
+	mov.b	@r14, r11
+	cmp	#1, r13
+	jl	.L6
+	add	#1, r14
+	add	r14, r13
+	mov.b	r11, r10
+	mov	#0, r12
+	mov	#0, r9
+	jmp	.L5
+.L7:
+	mov.b	r11, r10
+	mov.b	r8, r11
 .L5:
-	cmp.b	-10(r4), -9(r4)
+	cmp.b	r10, r11
 	jne	.L3
-	add	#1, -12(r4)
-	cmp	#256, -12(r4)
+	add	#1, r12
+	cmp	#256, r12
 	jl	.L4
-	mov	-8(r4), r15
 	mov.b	#llo(-1), @r15
-	add	#1, -8(r4)
-	mov	-8(r4), r15
-	mov.b	-9(r4), @r15
-	add	#1, -8(r4)
-	add	#2, -14(r4)
-	mov	#1, -12(r4)
+	mov.b	r11, 1(r15)
+	add	#2, r15
+	add	#2, r9
+	mov	#1, r12
 	jmp	.L4
 .L3:
-	mov	-12(r4), r15
-	mov.b	r15, r14
-	mov	-8(r4), r15
-	mov.b	r14, @r15
-	add	#1, -8(r4)
-	mov	-8(r4), r15
-	mov.b	-10(r4), @r15
-	add	#1, -8(r4)
-	add	#2, -14(r4)
-	mov	#1, -12(r4)
+	mov.b	r12, @r15
+	mov.b	r10, 1(r15)
+	add	#2, r15
+	add	#2, r9
+	mov	#1, r12
 .L4:
-	mov.b	-9(r4), -10(r4)
-	mov	-6(r4), r15
-	mov.b	@r15, -9(r4)
-	add	#1, -6(r4)
-	add	#llo(-1), -4(r4)
+	mov.b	@r14+, r8
+	cmp	r13, r14
+	jne	.L7
+	jmp	.L2
+.L6:
+	mov	#0, r12
+	mov	#0, r9
 .L2:
-	cmp	#1, -4(r4)
-	jge	.L5
-	mov	-12(r4), r15
-	mov.b	r15, r14
-	mov	-8(r4), r15
-	mov.b	r14, @r15
-	add	#1, -8(r4)
-	mov	-8(r4), r15
-	mov.b	-10(r4), @r15
-	add	#1, -8(r4)
-	add	#2, -14(r4)
-	mov	-14(r4), r15
-	add	#12, r1
-	pop	r4
+	mov.b	r12, @r15
+	mov.b	r11, 1(r15)
+	mov	r9, r15
+	add	#2, r15
+	pop	r8
+	pop	r9
+	pop	r10
+	pop	r11
 	ret
 .Lfe1:
 	.size	rle_encode,.Lfe1-rle_encode
@@ -114,46 +73,45 @@ rle_encode:
  * Function `rle_decode' 
  ***********************/
 rle_decode:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-12), r1
-	mov	r15, -8(r4)
-	mov	r14, -6(r4)
-	mov	r13, -4(r4)
-	mov	#0, -12(r4)
-	jmp	.L7
+	push	r11
+	push	r10
+	push	r9
+	push	r8
+	cmp	#1, r13
+	jl	.L13
+	mov	#0, r8
+.L12:
+	mov.b	@r14, r11
+	mov.b	r11, r12
+	sxt	r12
+	mov.b	1(r14), r10
+	add	#2, r14
+	add	r12, r8
+	cmp	#1, r12
+	jl	.L10
+	sxt	r11
+	mov	r15, r9
+	add	r11, r9
+	mov	r15, r12
 .L11:
-	mov	-6(r4), r15
-	mov.b	@r15, r15
-	mov.b	r15, -14(r4)
-	sxt	-14(r4)
-	add	#1, -6(r4)
-	mov	-6(r4), r15
-	mov.b	@r15, -10(r4)
-	add	#1, -6(r4)
-	add	-14(r4), -12(r4)
-	jmp	.L8
+	mov.b	r10, @r12
+	add	#1, r12
+	cmp	r9, r12
+	jne	.L11
+	add	r11, r15
 .L10:
-	mov	-8(r4), r15
-	mov.b	-10(r4), @r15
-	add	#1, -8(r4)
-.L8:
-	mov.b	#1, r15
-	cmp	#1, -14(r4)
-	jge	.L9
-	mov.b	#0, r15
+	sub	#2, r13
+	cmp	#1, r13
+	jge	.L12
+	jmp	.L9
+.L13:
+	mov	#0, r8
 .L9:
-	add	#llo(-1), -14(r4)
-	cmp.b	#0, r15
-	jne	.L10
-	sub	#2, -4(r4)
-.L7:
-	cmp	#1, -4(r4)
-	jge	.L11
-	mov	-12(r4), r15
-	add	#12, r1
-	pop	r4
+	mov	r8, r15
+	pop	r8
+	pop	r9
+	pop	r10
+	pop	r11
 	ret
 .Lfe2:
 	.size	rle_decode,.Lfe2-rle_decode
@@ -166,62 +124,53 @@ rle_decode:
  * Function `run_bm' 
  ***********************/
 run_bm:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-6), r1
-	mov	&o, r15
-	mov	r15, r14
+	push	r11
+	push	r10
+	mov	&o, r14
 	mov	r14, r15
-	sub	#1, r15
-.L13:
+	add	#llo(-1), r15
+.L17:
 	add	#1, r15
 	cmp.b	#0, @r15
-	jne	.L13
+	jne	.L17
 	sub	r14, r15
 	rla	r15
 	call	#malloc
-	mov	r15, -8(r4)
-	mov	&o, r15
-	mov	r15, r14
+	mov	r15, r11
+	mov	&o, r13
+	mov	r13, r14
+	add	#llo(-1), r14
+.L18:
+	add	#1, r14
+	cmp.b	#0, @r14
+	jne	.L18
 	mov	r14, r15
-	sub	#1, r15
-.L14:
-	add	#1, r15
-	cmp.b	#0, @r15
-	jne	.L14
-	sub	r14, r15
+	sub	r13, r15
 	call	#malloc
-	mov	r15, -6(r4)
-	mov	&o, r15
-	mov	r15, r14
-	mov	r14, r15
-	sub	#1, r15
-.L15:
-	add	#1, r15
-	cmp.b	#0, @r15
-	jne	.L15
-	sub	r14, r15
-	mov	r15, r14
-	mov	&o, r15
+	mov	r15, r10
+	mov	&o, r14
 	mov	r14, r13
-	mov	r15, r14
-	mov	-8(r4), r15
+	add	#llo(-1), r13
+.L19:
+	add	#1, r13
+	cmp.b	#0, @r13
+	jne	.L19
+	sub	r14, r13
+	mov	r11, r15
 	call	#rle_encode
-	mov	r15, -4(r4)
-	mov	-8(r4), r15
+	mov	r11, r15
 	call	#free
-	mov	-6(r4), r15
+	mov	r10, r15
 	call	#free
-	add	#6, r1
-	pop	r4
+	pop	r10
+	pop	r11
 	ret
 .Lfe3:
 	.size	run_bm,.Lfe3-run_bm
 ;; End of function 
 
 	.section	.rodata
-.LC1:
+.LC0:
 	.string	"RLE DONE "
 	.section	.init9,"ax",@progbits
 	.p2align 1,0
@@ -231,21 +180,47 @@ run_bm:
  * Function `main' 
  ***********************/
 main:
-	mov	r1, r4
-	add	#2, r4
-	mov	#288, r15
-	mov	#23168, @r15
-	mov	#25, r15
-	mov.b	#1, @r15
+	mov	#23168, &288
+	mov	#25, r11
+	mov.b	#1, @r11
 	call	#run_bm
-	mov	#25, r15
-	mov.b	#0, @r15
-	mov	#.LC1, r15
+	mov.b	#0, @r11
+	mov	#.LC0, r15
 	call	#puts
-	mov	#29, r15
-	mov.b	#1, @r15
+	mov.b	#1, &29
 .LIRD0:
 .Lfe4:
 	.size	main,.Lfe4-main
 ;; End of function 
 
+.global	o
+	.section	.rodata
+.LC1:
+	.ascii	"WWW"
+	.string	"WWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
+	.data
+	.p2align 1,0
+	.type	o,@object
+	.size	o,2
+o:
+	.word	.LC1
+	.comm Dhrystones_Per_Second,4,2
+	.comm Microseconds,4,2
+	.comm User_Time,4,2
+	.comm End_Time,4,2
+	.comm Begin_Time,4,2
+.global	Reg
+.global	Reg
+	.section	.bss
+	.type	Reg,@object
+	.size	Reg,2
+Reg:
+	.skip 2,0
+	.comm Arr_2_Glob,5000,2
+	.comm Arr_1_Glob,100,2
+	.comm Ch_2_Glob,1
+	.comm Ch_1_Glob,1
+	.comm Bool_Glob,2,2
+	.comm Int_Glob,2,2
+	.comm Next_Ptr_Glob,2,2
+	.comm Ptr_Glob,2,2

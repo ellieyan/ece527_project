@@ -2,26 +2,6 @@
 	.cpu 430
 	.mpy none
 
-	.comm Ptr_Glob,2,2
-	.comm Next_Ptr_Glob,2,2
-	.comm Int_Glob,2,2
-	.comm Bool_Glob,2,2
-	.comm Ch_1_Glob,1
-	.comm Ch_2_Glob,1
-	.comm Arr_1_Glob,100,2
-	.comm Arr_2_Glob,5000,2
-.global	Reg
-.global	Reg
-	.section	.bss
-	.type	Reg,@object
-	.size	Reg,2
-Reg:
-	.skip 2,0
-	.comm Begin_Time,4,2
-	.comm End_Time,4,2
-	.comm User_Time,4,2
-	.comm Microseconds,4,2
-	.comm Dhrystones_Per_Second,4,2
 	.text
 	.p2align 1,0
 .global	encrypt
@@ -30,83 +10,75 @@ Reg:
  * Function `encrypt' 
  ***********************/
 encrypt:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-22), r1
-	mov	r15, -6(r4)
-	mov	r14, -4(r4)
-	mov	-6(r4), r15
-	mov	@r15, -24(r4)
-	mov	-6(r4), r15
-	mov	2(r15), -22(r4)
-	mov	#2560, -16(r4)
-	mov	#0, -18(r4)
-	mov	-4(r4), r15
-	mov	@r15, -14(r4)
-	mov	-4(r4), r15
-	mov	2(r15), -12(r4)
-	mov	-4(r4), r15
-	mov	4(r15), -10(r4)
-	mov	-4(r4), r15
-	mov	6(r15), -8(r4)
-	mov	#0, -20(r4)
-	jmp	.L2
-.L3:
-	add	-16(r4), -18(r4)
-	mov	-22(r4), r15
-	rla	r15
-	rla	r15
-	rla	r15
-	rla	r15
-	add	-14(r4), r15
-	mov	r15, r14
-	mov	-22(r4), r15
-	add	-18(r4), r15
-	xor	r15, r14
-	mov	-22(r4), r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	add	-12(r4), r15
-	xor	r15, r14
-	mov	-24(r4), r15
-	add	r14, r15
-	mov	r15, -24(r4)
-	mov	-24(r4), r15
-	rla	r15
-	rla	r15
-	rla	r15
-	rla	r15
-	add	-10(r4), r15
-	mov	r15, r14
-	mov	-24(r4), r15
-	add	-18(r4), r15
-	xor	r15, r14
-	mov	-24(r4), r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	add	-8(r4), r15
-	xor	r15, r14
-	mov	-22(r4), r15
-	add	r14, r15
-	mov	r15, -22(r4)
-	add	#1, -20(r4)
+	push	r11
+	push	r10
+	push	r9
+	push	r8
+	push	r7
+	push	r6
+	push	r5
+	mov	@r15, r12
+	mov	2(r15), r13
+	mov	@r14, r5
+	mov	2(r14), r6
+	mov	4(r14), r7
+	mov	6(r14), r8
+	mov	#0, r11
 .L2:
-	cmp	#8, -20(r4)
-	jl	.L3
-	mov	-6(r4), r15
-	mov	-24(r4), @r15
-	mov	-6(r4), r15
-	add	#2, r15
-	mov	-22(r4), @r15
-	add	#22, r1
-	pop	r4
+	add	#2560, r11
+	mov	r13, r14
+	rla	r14
+	rla	r14
+	rla	r14
+	rla	r14
+	mov	r14, r9
+	add	r5, r9
+	mov	r13, r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	mov	r14, r10
+	add	r6, r10
+	mov	r9, r14
+	xor	r10, r14
+	mov	r13, r10
+	add	r11, r10
+	xor	r10, r14
+	add	r14, r12
+	mov	r12, r14
+	rla	r14
+	rla	r14
+	rla	r14
+	rla	r14
+	mov	r14, r9
+	add	r7, r9
+	mov	r12, r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	mov	r14, r10
+	add	r8, r10
+	mov	r9, r14
+	xor	r10, r14
+	mov	r12, r10
+	add	r11, r10
+	xor	r10, r14
+	add	r14, r13
+	cmp	#20480, r11
+	jne	.L2
+	mov	r12, @r15
+	mov	r13, 2(r15)
+	pop	r5
+	pop	r6
+	pop	r7
+	pop	r8
+	pop	r9
+	pop	r10
+	pop	r11
 	ret
 .Lfe1:
 	.size	encrypt,.Lfe1-encrypt
@@ -119,79 +91,74 @@ encrypt:
  * Function `decrypt' 
  ***********************/
 decrypt:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-22), r1
-	mov	r15, -6(r4)
-	mov	r14, -4(r4)
-	mov	-6(r4), r15
-	mov	@r15, -24(r4)
-	mov	-6(r4), r15
-	mov	2(r15), -22(r4)
-	mov	#20480, -20(r4)
-	mov	#2560, -16(r4)
-	mov	-4(r4), r15
-	mov	@r15, -14(r4)
-	mov	-4(r4), r15
-	mov	2(r15), -12(r4)
-	mov	-4(r4), r15
-	mov	4(r15), -10(r4)
-	mov	-4(r4), r15
-	mov	6(r15), -8(r4)
-	mov	#0, -18(r4)
-	jmp	.L5
-.L6:
-	mov	-24(r4), r15
-	rla	r15
-	rla	r15
-	rla	r15
-	rla	r15
-	mov	r15, r14
-	add	-10(r4), r14
-	mov	-24(r4), r15
-	add	-20(r4), r15
-	xor	r15, r14
-	mov	-24(r4), r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	add	-8(r4), r15
-	xor	r14, r15
-	sub	r15, -22(r4)
-	mov	-22(r4), r15
-	rla	r15
-	rla	r15
-	rla	r15
-	rla	r15
-	mov	r15, r14
-	add	-14(r4), r14
-	mov	-22(r4), r15
-	add	-20(r4), r15
-	xor	r15, r14
-	mov	-22(r4), r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	rra	r15
-	add	-12(r4), r15
-	xor	r14, r15
-	sub	r15, -24(r4)
-	sub	-16(r4), -20(r4)
-	add	#1, -18(r4)
+	push	r11
+	push	r10
+	push	r9
+	push	r8
+	push	r7
+	push	r6
+	push	r5
+	mov	@r15, r12
+	mov	2(r15), r13
+	mov	@r14, r5
+	mov	2(r14), r6
+	mov	4(r14), r7
+	mov	6(r14), r8
+	mov	#20480, r11
 .L5:
-	cmp	#8, -18(r4)
-	jl	.L6
-	mov	-6(r4), r15
-	mov	-24(r4), @r15
-	mov	-6(r4), r15
-	add	#2, r15
-	mov	-22(r4), @r15
-	add	#22, r1
-	pop	r4
+	mov	r12, r14
+	rla	r14
+	rla	r14
+	rla	r14
+	rla	r14
+	mov	r14, r9
+	add	r7, r9
+	mov	r12, r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	mov	r14, r10
+	add	r8, r10
+	mov	r9, r14
+	xor	r10, r14
+	mov	r12, r10
+	add	r11, r10
+	xor	r10, r14
+	sub	r14, r13
+	mov	r13, r14
+	rla	r14
+	rla	r14
+	rla	r14
+	rla	r14
+	mov	r14, r9
+	add	r5, r9
+	mov	r13, r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	rra	r14
+	mov	r14, r10
+	add	r6, r10
+	mov	r9, r14
+	xor	r10, r14
+	mov	r13, r10
+	add	r11, r10
+	xor	r10, r14
+	sub	r14, r12
+	add	#llo(-2560), r11
+	jne	.L5
+	mov	r12, @r15
+	mov	r13, 2(r15)
+	pop	r5
+	pop	r6
+	pop	r7
+	pop	r8
+	pop	r9
+	pop	r10
+	pop	r11
 	ret
 .Lfe2:
 	.size	decrypt,.Lfe2-decrypt
@@ -204,40 +171,28 @@ decrypt:
  * Function `run_bm' 
  ***********************/
 run_bm:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#4, r1
+	push	r11
+	push	r10
 	mov	#4, r15
 	call	#malloc
-	mov	r15, -6(r4)
+	mov	r15, r10
 	mov	#8, r15
 	call	#malloc
-	mov	r15, -4(r4)
-	mov	-6(r4), r15
-	mov	#0, @r15
-	mov	-6(r4), r15
-	add	#2, r15
-	mov	#255, @r15
-	mov	-4(r4), r15
+	mov	r15, r11
+	mov	#0, @r10
+	mov	#255, 2(r10)
 	mov	#119, @r15
-	mov	-4(r4), r15
-	add	#2, r15
-	mov	#140, @r15
-	mov	-4(r4), r15
-	add	#4, r15
-	mov	#174, @r15
-	mov	-4(r4), r15
-	add	#6, r15
-	mov	#56, @r15
-	mov	-4(r4), r14
-	mov	-6(r4), r15
+	mov	#140, 2(r15)
+	mov	#174, 4(r15)
+	mov	#56, 6(r15)
+	mov	r15, r14
+	mov	r10, r15
 	call	#encrypt
-	mov	-4(r4), r14
-	mov	-6(r4), r15
+	mov	r11, r14
+	mov	r10, r15
 	call	#decrypt
-	add	#4, r1
-	pop	r4
+	pop	r10
+	pop	r11
 	ret
 .Lfe3:
 	.size	run_bm,.Lfe3-run_bm
@@ -251,19 +206,34 @@ run_bm:
  * Function `main' 
  ***********************/
 main:
-	mov	r1, r4
-	add	#2, r4
-	mov	#288, r15
-	mov	#23168, @r15
-	mov	#25, r15
-	mov.b	#1, @r15
+	mov	#23168, &288
+	mov	#25, r11
+	mov.b	#1, @r11
 	call	#run_bm
-	mov	#25, r15
-	mov.b	#0, @r15
-	mov	#29, r15
-	mov.b	#1, @r15
+	mov.b	#0, @r11
+	mov.b	#1, &29
 .LIRD0:
 .Lfe4:
 	.size	main,.Lfe4-main
 ;; End of function 
 
+	.comm Dhrystones_Per_Second,4,2
+	.comm Microseconds,4,2
+	.comm User_Time,4,2
+	.comm End_Time,4,2
+	.comm Begin_Time,4,2
+.global	Reg
+.global	Reg
+	.section	.bss
+	.type	Reg,@object
+	.size	Reg,2
+Reg:
+	.skip 2,0
+	.comm Arr_2_Glob,5000,2
+	.comm Arr_1_Glob,100,2
+	.comm Ch_2_Glob,1
+	.comm Ch_1_Glob,1
+	.comm Bool_Glob,2,2
+	.comm Int_Glob,2,2
+	.comm Next_Ptr_Glob,2,2
+	.comm Ptr_Glob,2,2
