@@ -102,6 +102,8 @@ class DAG:
 	def add_edge(self, idxs, idxt):
 		s = self.mapping[idxs]
 		t = self.mapping[idxt]
+		if t in s.outNodes:
+			return
 		e = Edge(s, t)
 		self.edges.append(e)
 		s.outEdges.append(e)
@@ -151,7 +153,22 @@ def find_patterns(dag):
 	all_patterns = []
 	dag.topological_sort()
 	for curr in dag.topo:
-		if len(curr.inNodes) == 2:
+		if len(curr.inNodes) == 3:
+			parentA = curr.inNodes[0]
+			parentB = curr.inNodes[1]
+			parentC = curr.inNodes[2]
+			for pA in parentA.patterns:
+				for pB in parentB.patterns:
+					for pC in parentC.patterns:
+						p = Pattern()
+						p.nodes = list(set(pA.nodes) | set(pB.nodes) | set(pC.nodes) | set([curr]))
+						p.size = get_input_size(p)
+						if all(not dag.same_pattern(p, i) for i in curr.patterns):
+							curr.patterns.append(p)
+							if len(p.nodes) >= MIN_PATTERN_SIZE and p.size <= MAX_INPUT_SIZE \
+							and all(not dag.same_pattern(p, i) for i in all_patterns):
+								all_patterns.append(p)
+		elif len(curr.inNodes) == 2:
 			parentA = curr.inNodes[0]
 			parentB = curr.inNodes[1]
 			for pA in parentA.patterns:
