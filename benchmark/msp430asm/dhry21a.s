@@ -2,26 +2,129 @@
 	.cpu 430
 	.mpy none
 
-	.comm Ptr_Glob,2,2
-	.comm Next_Ptr_Glob,2,2
-	.comm Int_Glob,2,2
-	.comm Bool_Glob,2,2
-	.comm Ch_1_Glob,1
-	.comm Ch_2_Glob,1
-	.comm Arr_1_Glob,50,2
-	.comm Arr_2_Glob,1250,2
-.global	Reg_Define
-	.data
-	.type	Reg_Define,@object
-	.size	Reg_Define,26
-Reg_Define:
-	.string	"Register option selected."
-	.comm Begin_Time,4,2
-	.comm End_Time,4,2
-	.comm User_Time,4,2
-	.comm Microseconds,4,2
-	.comm Dhrystones_Per_Second,4,2
-	.comm Vax_Mips,4,2
+	.text
+	.p2align 1,0
+.global	Proc_2
+	.type	Proc_2,@function
+/***********************
+ * Function `Proc_2' 
+ ***********************/
+Proc_2:
+	mov	@r15, r14
+	cmp.b	#65, &Ch_1_Glob
+	jne	.L1
+	add	#9, r14
+	sub	&Int_Glob, r14
+	mov	r14, @r15
+.L1:
+	ret
+.Lfe1:
+	.size	Proc_2,.Lfe1-Proc_2
+;; End of function 
+
+	.p2align 1,0
+.global	Proc_3
+	.type	Proc_3,@function
+/***********************
+ * Function `Proc_3' 
+ ***********************/
+Proc_3:
+	mov	&Ptr_Glob, r14
+	cmp	#0, r14
+	jeq	.L4
+	mov	@r14, @r15
+.L4:
+	mov	&Ptr_Glob, r13
+	add	#6, r13
+	mov	&Int_Glob, r14
+	mov	#10, r15
+	call	#Proc_7
+	ret
+.Lfe2:
+	.size	Proc_3,.Lfe2-Proc_3
+;; End of function 
+
+	.p2align 1,0
+.global	Proc_1
+	.type	Proc_1,@function
+/***********************
+ * Function `Proc_1' 
+ ***********************/
+Proc_1:
+	push	r11
+	push	r10
+	mov	r15, r10
+	mov	@r15, r11
+	mov	#40, r13
+	mov	&Ptr_Glob, r14
+	mov	r11, r15
+	call	#memcpy
+	mov	#5, 6(r10)
+	mov	#5, 6(r11)
+	mov	@r10, @r11
+	mov	r11, r15
+	call	#Proc_3
+	cmp	#0, 2(r11)
+	jne	.L6
+	mov	#6, 6(r11)
+	mov	r11, r14
+	add	#4, r14
+	mov	4(r10), r15
+	call	#Proc_6
+	mov	&Ptr_Glob, r15
+	mov	@r15, @r11
+	mov	r11, r13
+	add	#6, r13
+	mov	#10, r14
+	mov	6(r11), r15
+	call	#Proc_7
+	jmp	.L5
+.L6:
+	mov	#40, r13
+	mov	@r10, r14
+	mov	r10, r15
+	call	#memcpy
+.L5:
+	pop	r10
+	pop	r11
+	ret
+.Lfe3:
+	.size	Proc_1,.Lfe3-Proc_1
+;; End of function 
+
+	.p2align 1,0
+.global	Proc_4
+	.type	Proc_4,@function
+/***********************
+ * Function `Proc_4' 
+ ***********************/
+Proc_4:
+	mov	#1, r15
+	cmp.b	#65, &Ch_1_Glob
+	jeq	.L9
+	mov	#0, r15
+.L9:
+	bis	r15, &Bool_Glob
+	mov.b	#66, &Ch_2_Glob
+	ret
+.Lfe4:
+	.size	Proc_4,.Lfe4-Proc_4
+;; End of function 
+
+	.p2align 1,0
+.global	Proc_5
+	.type	Proc_5,@function
+/***********************
+ * Function `Proc_5' 
+ ***********************/
+Proc_5:
+	mov.b	#65, &Ch_1_Glob
+	mov	#0, &Bool_Glob
+	ret
+.Lfe5:
+	.size	Proc_5,.Lfe5-Proc_5
+;; End of function 
+
 	.section	.rodata
 .LC0:
 	.string	"DHRYSTONE PROGRAM, SOME STRING"
@@ -101,35 +204,27 @@ Reg_Define:
  * Function `main' 
  ***********************/
 main:
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-76), r1
-	mov	#288, r15
-	mov	#23168, @r15
+	add	#llo(-68), r1
+	mov	#23168, &288
 	mov	#40, r15
 	call	#malloc
+	mov	r15, r11
 	mov	r15, &Next_Ptr_Glob
 	mov	#40, r15
 	call	#malloc
 	mov	r15, &Ptr_Glob
-	mov	&Ptr_Glob, r15
-	mov	&Next_Ptr_Glob, r14
-	mov	r14, @r15
-	mov	&Ptr_Glob, r15
+	mov	r11, @r15
 	mov	#0, 2(r15)
-	mov	&Ptr_Glob, r15
 	mov	#2, 4(r15)
-	mov	&Ptr_Glob, r15
 	mov	#40, 6(r15)
-	mov	&Ptr_Glob, r15
-	add	#8, r15
+	mov	#31, r13
 	mov	#.LC0, r14
-	mov	#31, r13
+	add	#8, r15
 	call	#memcpy
-	mov	r4, r15
-	add	#llo(-64), r15
-	mov	#.LC1, r14
 	mov	#31, r13
+	mov	#.LC1, r14
+	mov	r1, r15
+	add	#6, r15
 	call	#memcpy
 	mov	#10, &Arr_2_Glob+414
 	mov	#10, r15
@@ -138,131 +233,117 @@ main:
 	call	#puts
 	mov	#10, r15
 	call	#putchar
-	mov	#100, -72(r4)
-	push	-72(r4)
+	push	#100
 	push	#.LC3
 	call	#printf
 	add	#4, r1
 	mov	#llo(0x3f800000), &Begin_Time
 	mov	#lhi(0x3f800000), &Begin_Time+2
-	mov	#25, r15
-	mov.b	#1, @r15
-	mov	#1, -74(r4)
-	jmp	.L2
-.L9:
+	mov.b	#1, &25
+	mov	#1, r10
+	mov	#.LC4, r5
+	mov	#Arr_2_Glob, r6
+	mov	#Arr_1_Glob, r7
+.L18:
 	call	#Proc_5
 	call	#Proc_4
-	mov	#2, -70(r4)
-	mov	#3, -78(r4)
-	mov	r4, r15
-	add	#llo(-33), r15
-	mov	#.LC4, r14
+	mov	#2, @r1
 	mov	#31, r13
+	mov	r5, r14
+	mov	r1, r15
+	add	#37, r15
 	call	#memcpy
-	mov	#1, -66(r4)
-	mov	r4, r14
-	add	#llo(-33), r14
-	mov	r4, r15
-	add	#llo(-64), r15
+	mov	#1, 4(r1)
+	mov	r1, r14
+	add	#37, r14
+	mov	r1, r15
+	add	#6, r15
 	call	#Func_2
-	mov	r15, r14
-	mov	#1, r15
-	cmp	#0, r14
-	jeq	.L3
-	mov	#0, r15
-.L3:
-	mov	r15, &Bool_Glob
-	jmp	.L4
-.L5:
-	mov	-70(r4), r14
-	mov	r14, r15
-	rla	r15
-	rla	r15
-	add	r14, r15
-	sub	-78(r4), r15
-	mov	r15, -68(r4)
-	mov	-70(r4), r15
-	mov	r4, r14
-	add	#llo(-68), r14
-	mov	r14, r13
-	mov	-78(r4), r14
+	mov	#1, r13
+	cmp	#0, r15
+	jeq	.L12
+	mov	#0, r13
+.L12:
+	mov	r13, &Bool_Glob
+	mov	@r1, r13
+	cmp	#3, r13
+	jge	.L13
+.L20:
+	mov	r13, r12
+	rla	r12
+	rla	r12
+	add	r13, r12
+	add	#llo(-3), r12
+	mov	r12, 2(r1)
+	mov	r1, r13
+	add	#2, r13
+	mov	#3, r14
+	mov	@r1, r15
 	call	#Proc_7
-	mov	-70(r4), r15
-	add	#1, r15
-	mov	r15, -70(r4)
-.L4:
-	mov	-70(r4), r15
-	cmp	-78(r4), r15
-	jl	.L5
-	mov	-68(r4), r14
-	mov	-70(r4), r15
-	mov	r14, r12
-	mov	r15, r13
-	mov	#Arr_2_Glob, r14
-	mov	#Arr_1_Glob, r15
+	mov	@r1, r13
+	add	#1, r13
+	mov	r13, @r1
+	cmp	#3, r13
+	jl	.L20
+.L13:
+	mov	2(r1), r12
+	mov	r6, r14
+	mov	r7, r15
 	call	#Proc_8
 	mov	&Ptr_Glob, r15
 	call	#Proc_1
-	mov.b	#65, -76(r4)
-	jmp	.L6
-.L8:
+	cmp.b	#65, &Ch_2_Glob
+	jl	.L19
+	mov.b	#65, r11
+	mov	#3, r9
+	mov	#.LC5, r8
+.L17:
 	mov.b	#67, r14
-	mov.b	-76(r4), r15
+	mov.b	r11, r15
 	call	#Func_1
-	mov	r15, r14
-	mov	-66(r4), r15
-	cmp	r15, r14
-	jne	.L7
-	mov	r4, r15
-	add	#llo(-66), r15
-	mov	r15, r14
+	cmp	4(r1), r15
+	jne	.L16
+	mov	r1, r14
+	add	#4, r14
 	mov	#0, r15
 	call	#Proc_6
-	mov	r4, r15
-	add	#llo(-33), r15
-	mov	#.LC5, r14
 	mov	#31, r13
+	mov	r8, r14
+	mov	r1, r15
+	add	#37, r15
 	call	#memcpy
-	mov	-74(r4), -78(r4)
-	mov	-74(r4), &Int_Glob
-.L7:
-	add.b	#1, -76(r4)
-.L6:
-	mov.b	&Ch_2_Glob, r15
-	cmp.b	-76(r4), r15
-	jge	.L8
-	mov	-70(r4), r15
-	mov	-78(r4), r14
+	mov	r10, &Int_Glob
+	mov	r10, r9
+.L16:
+	add.b	#1, r11
+	cmp.b	r11, &Ch_2_Glob
+	jge	.L17
+	jmp	.L15
+.L19:
+	mov	#3, r9
+.L15:
+	mov	@r1, r14
+	mov	r9, r15
 	call	#__mulhi3
-	mov	r15, -78(r4)
-	mov	-68(r4), r15
-	mov	r15, r14
-	mov	-78(r4), r15
+	mov	r15, r11
+	mov	2(r1), r9
+	mov	r9, r14
 	call	#__divhi3
-	mov	r15, -70(r4)
-	mov	-68(r4), r15
-	mov	-78(r4), r14
-	sub	r15, r14
-	mov	r14, r15
-	rla	r15
-	rla	r15
-	rla	r15
-	mov	r15, r13
-	sub	r14, r13
-	mov	r13, r14
-	mov	-70(r4), r15
-	mov	r14, r13
-	sub	r15, r13
-	mov	r13, -78(r4)
-	mov	r4, r15
-	add	#llo(-70), r15
+	mov	r15, @r1
+	sub	r9, r11
+	mov	r11, r13
+	rla	r13
+	rla	r13
+	rla	r13
+	sub	r11, r13
+	mov	r13, r11
+	sub	r15, r11
+	mov	r1, r15
 	call	#Proc_2
-	add	#1, -74(r4)
-.L2:
-	cmp	-74(r4), -72(r4)
-	jge	.L9
-	mov	#25, r15
-	mov.b	#0, @r15
+	add	#1, r10
+	cmp	#101, r10
+	jne	.L18
+	mov.b	#0, &25
 	mov	#llo(0x40000000), &End_Time
 	mov	#lhi(0x40000000), &End_Time+2
 	mov	#.LC6, r15
@@ -273,8 +354,7 @@ main:
 	call	#puts
 	mov	#10, r15
 	call	#putchar
-	mov	&Int_Glob, r15
-	push	r15
+	push	&Int_Glob
 	push	#.LC8
 	call	#printf
 	add	#4, r1
@@ -282,8 +362,7 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	mov	&Bool_Glob, r15
-	push	r15
+	push	&Bool_Glob
 	push	#.LC10
 	call	#printf
 	add	#4, r1
@@ -311,8 +390,7 @@ main:
 	push	#.LC12
 	call	#printf
 	add	#4, r1
-	mov	&Arr_1_Glob+16, r15
-	push	r15
+	push	&Arr_1_Glob+16
 	push	#.LC14
 	call	#printf
 	add	#4, r1
@@ -320,8 +398,7 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	mov	&Arr_2_Glob+414, r15
-	push	r15
+	push	&Arr_2_Glob+414
 	push	#.LC15
 	call	#printf
 	add	#4, r1
@@ -330,16 +407,14 @@ main:
 	mov	#.LC17, r15
 	call	#puts
 	mov	&Ptr_Glob, r15
-	mov	@r15, r15
-	push	r15
+	push	@r15
 	push	#.LC18
 	call	#printf
 	add	#4, r1
 	mov	#.LC19, r15
 	call	#puts
 	mov	&Ptr_Glob, r15
-	mov	2(r15), r15
-	push	r15
+	push	2(r15)
 	push	#.LC20
 	call	#printf
 	add	#4, r1
@@ -348,8 +423,7 @@ main:
 	call	#printf
 	add	#4, r1
 	mov	&Ptr_Glob, r15
-	mov	4(r15), r15
-	push	r15
+	push	4(r15)
 	push	#.LC21
 	call	#printf
 	add	#4, r1
@@ -358,8 +432,7 @@ main:
 	call	#printf
 	add	#4, r1
 	mov	&Ptr_Glob, r15
-	mov	6(r15), r15
-	push	r15
+	push	6(r15)
 	push	#.LC22
 	call	#printf
 	add	#4, r1
@@ -378,16 +451,14 @@ main:
 	mov	#.LC25, r15
 	call	#puts
 	mov	&Next_Ptr_Glob, r15
-	mov	@r15, r15
-	push	r15
+	push	@r15
 	push	#.LC18
 	call	#printf
 	add	#4, r1
 	mov	#.LC26, r15
 	call	#puts
 	mov	&Next_Ptr_Glob, r15
-	mov	2(r15), r15
-	push	r15
+	push	2(r15)
 	push	#.LC20
 	call	#printf
 	add	#4, r1
@@ -396,8 +467,7 @@ main:
 	call	#printf
 	add	#4, r1
 	mov	&Next_Ptr_Glob, r15
-	mov	4(r15), r15
-	push	r15
+	push	4(r15)
 	push	#.LC21
 	call	#printf
 	add	#4, r1
@@ -406,8 +476,7 @@ main:
 	call	#printf
 	add	#4, r1
 	mov	&Next_Ptr_Glob, r15
-	mov	6(r15), r15
-	push	r15
+	push	6(r15)
 	push	#.LC22
 	call	#printf
 	add	#4, r1
@@ -423,8 +492,7 @@ main:
 	add	#4, r1
 	mov	#.LC24, r15
 	call	#puts
-	mov	-70(r4), r15
-	push	r15
+	push	2(r1)
 	push	#.LC27
 	call	#printf
 	add	#4, r1
@@ -432,7 +500,7 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	push	-78(r4)
+	push	r11
 	push	#.LC28
 	call	#printf
 	add	#4, r1
@@ -440,8 +508,7 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	mov	-68(r4), r15
-	push	r15
+	push	2+2(r1)
 	push	#.LC29
 	call	#printf
 	add	#4, r1
@@ -449,8 +516,7 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	mov	-66(r4), r15
-	push	r15
+	push	4+2(r1)
 	push	#.LC30
 	call	#printf
 	add	#4, r1
@@ -458,16 +524,16 @@ main:
 	push	#.LC9
 	call	#printf
 	add	#4, r1
-	mov	r4, r15
-	add	#llo(-64), r15
+	mov	r1, r15
+	add	#6, r15
 	push	r15
 	push	#.LC31
 	call	#printf
 	add	#4, r1
 	mov	#.LC32, r15
 	call	#puts
-	mov	r4, r15
-	add	#llo(-33), r15
+	mov	r1, r15
+	add	#37, r15
 	push	r15
 	push	#.LC33
 	call	#printf
@@ -476,201 +542,31 @@ main:
 	call	#puts
 	mov	#10, r15
 	call	#putchar
-	mov	#29, r15
-	mov.b	#1, @r15
+	mov.b	#1, &29
 	mov	#0, r15
-	add	#76, r1
+	add	#68, r1
 .LIRD0:
-.Lfe1:
-	.size	main,.Lfe1-main
-;; End of function 
-
-	.text
-	.p2align 1,0
-.global	Proc_1
-	.type	Proc_1,@function
-/***********************
- * Function `Proc_1' 
- ***********************/
-Proc_1:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#4, r1
-	mov	r15, -4(r4)
-	mov	-4(r4), r15
-	mov	@r15, -6(r4)
-	mov	-4(r4), r15
-	mov	@r15, r15
-	mov	&Ptr_Glob, r14
-	mov	#40, r13
-	call	#memcpy
-	mov	-4(r4), r15
-	mov	#5, 6(r15)
-	mov	-4(r4), r15
-	mov	6(r15), r14
-	mov	-6(r4), r15
-	mov	r14, 6(r15)
-	mov	-4(r4), r15
-	mov	@r15, r14
-	mov	-6(r4), r15
-	mov	r14, @r15
-	mov	-6(r4), r15
-	call	#Proc_3
-	mov	-6(r4), r15
-	mov	2(r15), r15
-	cmp	#0, r15
-	jne	.L11
-	mov	-6(r4), r15
-	mov	#6, 6(r15)
-	mov	-6(r4), r14
-	add	#4, r14
-	mov	-4(r4), r15
-	mov	4(r15), r15
-	call	#Proc_6
-	mov	&Ptr_Glob, r15
-	mov	@r15, r14
-	mov	-6(r4), r15
-	mov	r14, @r15
-	mov	-6(r4), r14
-	add	#6, r14
-	mov	-6(r4), r15
-	mov	6(r15), r15
-	mov	r14, r13
-	mov	#10, r14
-	call	#Proc_7
-	jmp	.L10
-.L11:
-	mov	-4(r4), r15
-	mov	@r15, r14
-	mov	-4(r4), r15
-	mov	#40, r13
-	call	#memcpy
-.L10:
-	add	#4, r1
-	pop	r4
-	ret
-.Lfe2:
-	.size	Proc_1,.Lfe2-Proc_1
-;; End of function 
-
-	.p2align 1,0
-.global	Proc_2
-	.type	Proc_2,@function
-/***********************
- * Function `Proc_2' 
- ***********************/
-Proc_2:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-6), r1
-	mov	r15, -4(r4)
-	mov	-4(r4), r15
-	mov	@r15, r15
-	mov	r15, r14
-	add	#10, r14
-	mov	r14, -8(r4)
-.L15:
-	mov.b	&Ch_1_Glob, r15
-	cmp.b	#65, r15
-	jne	.L14
-	add	#llo(-1), -8(r4)
-	mov	&Int_Glob, r15
-	mov	-8(r4), r14
-	sub	r15, r14
-	mov	-4(r4), r15
-	mov	r14, @r15
-	mov	#0, -6(r4)
-.L14:
-	cmp	#0, -6(r4)
-	jne	.L15
-	add	#6, r1
-	pop	r4
-	ret
-.Lfe3:
-	.size	Proc_2,.Lfe3-Proc_2
-;; End of function 
-
-	.p2align 1,0
-.global	Proc_3
-	.type	Proc_3,@function
-/***********************
- * Function `Proc_3' 
- ***********************/
-Proc_3:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#2, r1
-	mov	r15, -4(r4)
-	mov	&Ptr_Glob, r15
-	cmp	#0, r15
-	jeq	.L17
-	mov	&Ptr_Glob, r15
-	mov	@r15, r14
-	mov	-4(r4), r15
-	mov	r14, @r15
-.L17:
-	mov	&Ptr_Glob, r15
-	mov	r15, r14
-	add	#6, r14
-	mov	&Int_Glob, r15
-	mov	r14, r13
-	mov	r15, r14
-	mov	#10, r15
-	call	#Proc_7
-	add	#2, r1
-	pop	r4
-	ret
-.Lfe4:
-	.size	Proc_3,.Lfe4-Proc_3
-;; End of function 
-
-	.p2align 1,0
-.global	Proc_4
-	.type	Proc_4,@function
-/***********************
- * Function `Proc_4' 
- ***********************/
-Proc_4:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#2, r1
-	mov.b	&Ch_1_Glob, r14
-	mov	#1, r15
-	cmp.b	#65, r14
-	jeq	.L19
-	mov	#0, r15
-.L19:
-	mov	r15, -4(r4)
-	mov	&Bool_Glob, r15
-	bis	-4(r4), r15
-	mov	r15, &Bool_Glob
-	mov.b	#66, &Ch_2_Glob
-	add	#2, r1
-	pop	r4
-	ret
-.Lfe5:
-	.size	Proc_4,.Lfe5-Proc_4
-;; End of function 
-
-	.p2align 1,0
-.global	Proc_5
-	.type	Proc_5,@function
-/***********************
- * Function `Proc_5' 
- ***********************/
-Proc_5:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	mov.b	#65, &Ch_1_Glob
-	mov	#0, &Bool_Glob
-	pop	r4
-	ret
 .Lfe6:
-	.size	Proc_5,.Lfe6-Proc_5
+	.size	main,.Lfe6-main
 ;; End of function 
 
+	.comm Vax_Mips,4,2
+	.comm Dhrystones_Per_Second,4,2
+	.comm Microseconds,4,2
+	.comm User_Time,4,2
+	.comm End_Time,4,2
+	.comm Begin_Time,4,2
+.global	Reg_Define
+	.data
+	.type	Reg_Define,@object
+	.size	Reg_Define,26
+Reg_Define:
+	.string	"Register option selected."
+	.comm Arr_2_Glob,1250,2
+	.comm Arr_1_Glob,50,2
+	.comm Ch_2_Glob,1
+	.comm Ch_1_Glob,1
+	.comm Bool_Glob,2,2
+	.comm Int_Glob,2,2
+	.comm Next_Ptr_Glob,2,2
+	.comm Ptr_Glob,2,2
