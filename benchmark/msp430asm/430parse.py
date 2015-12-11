@@ -41,7 +41,7 @@ class DFGG:
 						, 'r8', 'r9', 'r10', 'r11', 'r12', 'r13', 'r14', 'r15']
 		self.funcName = ''
 		#count number of insts
-		self.instNumber = -1
+		self.instNumber = 1
 		#map from instNumbet to actual number
 		self.instNumberToActual = {}
 
@@ -228,7 +228,7 @@ for index in range(len(a)):
 		print("Finished function" + str(gen.funcName))
 
 		yan.generate_dot(gen.funcName + ".dot")
-		yan.extract_pattern(sys.argv[1][:-2] + "_" + gen.funcName + "_patterns.txt")
+		#yan.extract_pattern(sys.argv[1][:-2] + "_" + gen.funcName + "_patterns.txt")
 		print("Finished pattern extraction for function: " + str(gen.funcName))
 		yan.__init__()
 		gen.__init__()
