@@ -1,0 +1,75 @@
+pattern 5 (count = 245):
+	mov_0 -> mov_1
+
+pattern 7 (count = 298):
+	mov_0 -> add_0
+
+pattern 65 (count = 37):
+	1 -> add_0
+	add_0 -> cmp_0
+
+pattern 110 (count = 61):
+	rla_0 -> add_0
+	
+pattern 128 (count = 11):
+	add_0 -> cmp_0
+	0 -> cmp_0
+	
+pattern 180 (count = 114):
+	sub_0 -> mov_0
+
+pattern 240 (count = 144):
+	add_0 -> mov_0
+	
+pattern 245 (count = 25):
+	add_0 -> add_1
+	4 -> add_1
+	
+pattern 309 (count = 45):
+	4 -> add_0
+	4 -> add_1
+	add_1 -> add_0
+	
+pattern 444 (count = 197):
+	rla_0 -> rla_1
+	
+pattern 458 (count = 128):
+	rla_0 -> rla_1
+	rla_1 -> rla_2
+	
+pattern 707 (count = 64):
+	mov_0 -> rra_0
+	
+pattern 708 (count = 31):
+	add_0 -> mov_0
+	mov_0 -> rra_0
+	
+pattern 1050 (count = 63):
+	rla_0 -> rla_1
+	rla_1 -> rla_2
+	rla_2 -> rla_3
+
+pattern 1058 (count = 63):
+	rra_0 -> add_0
+
+pattern 1061 (count = 63):
+	rra_0 -> rra_1
+	rra_1 -> rra_2
+	rra_2 -> rra_3
+	rra_3 -> add_0
+	
+pattern 1065 (count = 64):
+	mov_0 -> add_0
+	add_0 -> xor_0
+
+pattern 1131 (count = 30):
+	rla_0 -> rla_1
+	rla_1 -> rla_2
+	rla_2 -> rla_3
+	rla_3 -> mov_0
+	
+pattern 1153 (count = 30):
+	add_0 -> mov_0
+	mov_0 -> rra_0
+	rra_0 -> rra_1
+	rra_1 -> rra_2
