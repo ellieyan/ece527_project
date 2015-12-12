@@ -5,7 +5,7 @@ from sets import Set
 MAX_INPUT_SIZE = 2
 MAX_OUTPUT_SIZE = 1
 MIN_PATTERN_SIZE = 2
-MAX_PATTERN_SIZE = 10
+MAX_PATTERN_SIZE = 7
 
 
 
@@ -73,7 +73,6 @@ class Pattern:
 			self.get_pattern()
 		for line in self.pattern_str:
 			fd.write(line)
-		fd.write(" \n")
 		for n in self.topo:
 			if n.opcode != None:
 				fd.write(n.instruction)
