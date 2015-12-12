@@ -228,7 +228,7 @@ for index in range(len(a)):
 		print("Finished function" + str(gen.funcName))
 
 		yan.generate_dot(gen.funcName + ".dot")
-		#yan.extract_pattern(sys.argv[1][:-2] + "_" + gen.funcName + "_patterns.txt")
+		yan.extract_pattern(sys.argv[1][:-2] + "_" + gen.funcName + "_patterns.txt")
 		print("Finished pattern extraction for function: " + str(gen.funcName))
 		yan.__init__()
 		gen.__init__()

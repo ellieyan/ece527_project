@@ -3,8 +3,9 @@ from sets import Set
 
 
 MAX_INPUT_SIZE = 2
+MAX_OUTPUT_SIZE = 1
 MIN_PATTERN_SIZE = 2
-MAX_PATTERN_SIZE = 5
+MAX_PATTERN_SIZE = 10
 
 
 
@@ -12,7 +13,8 @@ class Pattern:
 	def __init__(self):
 		self.nodes = []
 		self.topo = []
-		self.size = 0
+		self.in_size = 0
+		self.out_size = 0
 		self.pattern_str = [] # list of strings
 	def topological_sort(self):
 		while len(self.topo) != len(self.nodes):
@@ -22,8 +24,8 @@ class Pattern:
 					next_level.append(n)
 			self.topo.extend(next_level)
 	def get_pattern(self):
-		labels = {}
 		count = {}
+		labels = {}
 		self.topological_sort()
 		for n in self.topo:
 			for e in n.outEdges:
@@ -71,6 +73,10 @@ class Pattern:
 			self.get_pattern()
 		for line in self.pattern_str:
 			fd.write(line)
+		fd.write(" \n")
+		for n in self.topo:
+			if n.opcode != None:
+				fd.write(n.instruction)
 		fd.write("\n")
 
 class Node:
@@ -152,6 +158,14 @@ def get_input_size(p):
 				inputs.add(a)
 	return len(inputs)
 
+def get_output_size(p):
+	outputs = Set([])
+	for n in p.nodes:
+		for a in n.outNodes:
+			if a not in p.nodes:
+				outputs.add(a)
+	return len(outputs)
+
 def find_patterns(dag):
 	all_patterns = []
 	dag.topological_sort()
@@ -167,10 +181,12 @@ def find_patterns(dag):
 						p.nodes = list(set(pA.nodes) | set(pB.nodes) | set(pC.nodes) | set([curr]))
 						if len(p.nodes) > MAX_PATTERN_SIZE:
 							continue
-						p.size = get_input_size(p)
+						p.in_size = get_input_size(p)
+						p.out_size = get_output_size(p)
 						if all(not dag.same_pattern(p, i) for i in curr.patterns):
 							curr.patterns.append(p)
-							if len(p.nodes) >= MIN_PATTERN_SIZE and p.size <= MAX_INPUT_SIZE \
+							if len(p.nodes) >= MIN_PATTERN_SIZE \
+							and p.in_size <= MAX_INPUT_SIZE and p.out_size <= MAX_OUTPUT_SIZE \
 							and all(not dag.same_pattern(p, i) for i in all_patterns):
 								all_patterns.append(p)
 		elif len(curr.inNodes) == 2:
@@ -182,10 +198,12 @@ def find_patterns(dag):
 					p.nodes = list(set(pA.nodes) | set(pB.nodes) | set([curr]))
 					if len(p.nodes) > MAX_PATTERN_SIZE:
 						continue
-					p.size = get_input_size(p)
+					p.in_size = get_input_size(p)
+					p.out_size = get_output_size(p)
 					if all(not dag.same_pattern(p, i) for i in curr.patterns):
 						curr.patterns.append(p)
-						if len(p.nodes) >= MIN_PATTERN_SIZE and p.size <= MAX_INPUT_SIZE \
+						if len(p.nodes) >= MIN_PATTERN_SIZE \
+						and p.in_size <= MAX_INPUT_SIZE and p.out_size <= MAX_OUTPUT_SIZE \
 						and all(not dag.same_pattern(p, i) for i in all_patterns):
 							all_patterns.append(p)
 		elif len(curr.inNodes) == 1:
@@ -195,10 +213,12 @@ def find_patterns(dag):
 				p.nodes = pA.nodes + [curr]
 				if len(p.nodes) > MAX_PATTERN_SIZE:
 					continue
-				p.size = get_input_size(p)
+				p.in_size = get_input_size(p)
+				p.out_size = get_output_size(p)
 				if all(not dag.same_pattern(p, i) for i in curr.patterns):
 					curr.patterns.append(p)
-					if len(p.nodes) >= MIN_PATTERN_SIZE and p.size <= MAX_INPUT_SIZE \
+					if len(p.nodes) >= MIN_PATTERN_SIZE \
+					and p.in_size <= MAX_INPUT_SIZE and p.out_size <= MAX_OUTPUT_SIZE \
 					and all(not dag.same_pattern(p, i) for i in all_patterns):
 						all_patterns.append(p)
 		elif len(curr.inNodes) == 0:

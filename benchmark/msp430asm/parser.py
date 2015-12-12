@@ -40,9 +40,7 @@ for d in dirs:
 					for curr_line in lines:
 						if "pattern" in curr_line:
 							pattern = []
-						elif curr_line == "\n":
-							if len(pattern) > 8:
-								print "hahhahahahhaha"
+						elif curr_line == " \n":
 							add_pattern(pattern, patterns, count)
 						else:
 							pattern.append(curr_line)
