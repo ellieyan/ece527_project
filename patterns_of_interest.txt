@@ -1,75 +1,52 @@
-pattern 5 (count = 245):
-	mov_0 -> mov_1
-
-pattern 7 (count = 298):
-	mov_0 -> add_0
-
-pattern 65 (count = 37):
-	1 -> add_0
-	add_0 -> cmp_0
-
-pattern 110 (count = 61):
+pattern 22 (count = 45):
 	rla_0 -> add_0
-	
-pattern 128 (count = 11):
-	add_0 -> cmp_0
-	0 -> cmp_0
-	
-pattern 180 (count = 114):
-	sub_0 -> mov_0
 
-pattern 240 (count = 144):
-	add_0 -> mov_0
+from:
+	dhry_2_Proc_8_patterns.txt
+	intAVG_run_bm_patterns.txt
+	tea8_encrypt_patterns.txt
+	binSearch_bsearch_patterns.txt
+	tea8_run_bm_patterns.txt
+	dhry21b_Proc_8_patterns.txt
+	tea8_decrypt_patterns.txt
 	
-pattern 245 (count = 25):
-	add_0 -> add_1
-	4 -> add_1
+example:
+	(in intAVG_run_bm_patterns.txt)
+	rla	r12
+	add	r13, r12
 	
-pattern 309 (count = 45):
-	4 -> add_0
-	4 -> add_1
-	add_1 -> add_0
+	(in dhry_2_Proc_8_patterns.txt)
+	rla	r12
+	add	r15, r12
 	
-pattern 444 (count = 197):
+	(in tea8_decrypt_patterns.txt)
+	rla	r11
+	add	r13, r11
+	
+	
+pattern 159 (count = 196):
 	rla_0 -> rla_1
 	
-pattern 458 (count = 128):
-	rla_0 -> rla_1
-	rla_1 -> rla_2
+from:
+	dhry_2_Proc_8_patterns.txt
+	tea8_encrypt_patterns.txt
+	tea8_run_bm_patterns.txt
+	dhry21b_Proc_8_patterns.txt
+	tea8_decrypt_patterns.txt
+	dhry_1_main_patterns.txt
+	dhry21a_main_patterns.txt
 	
-pattern 707 (count = 64):
-	mov_0 -> rra_0
+example:
+	(in tea8_run_bm_patterns.txt)
+	rla	r14
+	rla	r14
 	
-pattern 708 (count = 31):
-	add_0 -> mov_0
-	mov_0 -> rra_0
+	(dhry_1_main_patterns.txt)
+	rla	r13
+	rla	r13
 	
-pattern 1050 (count = 63):
-	rla_0 -> rla_1
-	rla_1 -> rla_2
-	rla_2 -> rla_3
-
-pattern 1058 (count = 63):
-	rra_0 -> add_0
-
-pattern 1061 (count = 63):
-	rra_0 -> rra_1
-	rra_1 -> rra_2
-	rra_2 -> rra_3
-	rra_3 -> add_0
+	(in dhry_2_Proc_8_patterns.txt)
+	rla	r12
+	rla	r12
 	
-pattern 1065 (count = 64):
-	mov_0 -> add_0
-	add_0 -> xor_0
-
-pattern 1131 (count = 30):
-	rla_0 -> rla_1
-	rla_1 -> rla_2
-	rla_2 -> rla_3
-	rla_3 -> mov_0
 	
-pattern 1153 (count = 30):
-	add_0 -> mov_0
-	mov_0 -> rra_0
-	rra_0 -> rra_1
-	rra_1 -> rra_2
