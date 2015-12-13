@@ -50,3 +50,31 @@ example:
 	rla	r12
 	
 	
+pattern 552 (count = 62):
+	rra_0 -> add_0
+	
+	
+pattern 550 (count = 62):
+	rra_0 -> rra_1
+	rra_1 -> rra_2
+	rra_2 -> rra_3
+	rra_3 -> rra_4
+
+	
+pattern 541 (count = 188):
+	rra_0 -> rra_1
+	rra_1 -> rra_2
+
+	
+pattern 539 (count = 251):
+	rra_0 -> rra_1
+
+	
+pattern 557 (count = 62):
+	mov_0 -> rra_0
+	rra_0 -> rra_1
+	rra_1 -> rra_2
+	rra_2 -> rra_3
+	rra_3 -> rra_4
+	rra_4 -> add_0
+	
