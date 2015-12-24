@@ -1,5 +1,5 @@
 import os
-
+from collections import defaultdict
 
 def same_pattern(p1, p2):
 	if len(p1) != len(p2):
@@ -10,18 +10,23 @@ def same_pattern(p1, p2):
 		return False
 	return True
 
-def add_pattern(new_pattern, patterns, count):
+def add_pattern(new_pattern, patterns, count, filename):
 	for i in range(0, len(patterns)):
 		if same_pattern(patterns[i], new_pattern):
 			count[i] = count[i] + 1
+			if filename not in file_list[i]:
+				file_list[i].append(filename)
 			return
 	patterns.append(new_pattern)
 	count.append(1)
+
+	file_list[len(count)-1].append(filename)
 
 
 patterns = []
 pattern = []
 count = []
+file_list = defaultdict(list)
 
 top_dir = "../"
 dirs = os.listdir(top_dir)
@@ -34,6 +39,9 @@ for d in dirs:
 			filename = os.path.join(dirname, local_filename)
 			if os.path.isfile(filename) and "_patterns.txt" in filename:
 				print filename
+				#parse file name
+				_,_,real_file_name = filename.partition('/msp430asm/')
+				real_file_name,_,_ = real_file_name.partition('_')
 				#with open(filename) as f:
 				with open(filename, "r") as f:
 					lines = f.readlines()
@@ -41,7 +49,7 @@ for d in dirs:
 						if "pattern" in curr_line:
 							pattern = []
 						elif curr_line == "\n":
-							add_pattern(pattern, patterns, count)
+							add_pattern(pattern, patterns, count, real_file_name)
 						elif "->" in curr_line:
 							pattern.append(curr_line)
 
@@ -53,8 +61,13 @@ for i in range(0, len(patterns)):
 		out.write(line)
 	out.write("\n")
 
-	if count[i] > 10:
+	if count[i] > 30:
 		highFreq.write("pattern " + str(i) + " (count = " + str(count[i]) + "):\n")
 		for line in patterns[i]:
 			highFreq.write(line)
+		highFreq.write('This pattern comes from the following files:\n')
+		for f in file_list[i]:
+			highFreq.write(f)
+			highFreq.write(",")
+		highFreq.write("\n")
 		highFreq.write("\n")
